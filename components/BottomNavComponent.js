@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
 //Screens
 import HomeScreen from '../screens/HomeScreen.js';
@@ -16,52 +17,61 @@ const achievementsScreenName = 'Achievements';
 const statsScreenName = 'Stats';
 const profileScreenName = 'Profile';
 
-const BottomTab = createBottomTabNavigator();
+const BottomTab = createMaterialBottomTabNavigator();
 
 export default function BottomNavContainer() {
     return (
         <NavigationContainer>
             <BottomTab.Navigator
-                initialRouteName={homeScreenName}
-                screenOptions={({ route }) => ({
-                    tabBarActiveTintColor: "tomato",
-                    tabBarInactiveTintColor: "grey",
-                    tabBarLabelStyle: {
-                        "paddingBottom": 7,
-                        "fontSize": 10
-                    },
-                    tabBarStyle: [
-                        {
-                            "display":"flex"
-                        },
-                        null
-                    ],
-                    tabBarIcon: ({ focused, color, size }) => {
-                        let iconName;
-                        let rn = route.name;
+                initialRouteName="Feed"
+                activeColor="#010326"
+                inactiveColor='#3C74A6'
+                barStyle={{ backgroundColor: '#192959' }}>
 
-                        if (rn === homeScreenName) {
-                            iconName = focused ? 'home' : 'home-outline';
+                <BottomTab.Screen
+                    name={homeScreenName}
+                    component={HomeScreen}
+                    options={{
+                        tabBarLabel: 'Home',
+                        tabBarIcon: ({ color }) => (
+                            <Ionicons name="home" color={color} size={24} />
+                        ),
+                    }}
+                />
 
-                        } else if (rn === profileScreenName) {
-                            iconName = focused ? 'person' : 'person-outline';
-                        } else if (rn === statsScreenName) {
-                            iconName = focused ? 'pie-chart' : 'pie-chart-outline';
-                        } else if (rn === achievementsScreenName){
-                            iconName = focused ? 'md-ribbon' : 'md-ribbon-outline';
-                        }
+                <BottomTab.Screen
+                    name={statsScreenName}
+                    component={StatsScreen}
+                    options={{
+                        tabBarLabel: 'Stats',
+                        tabBarIcon: ({ color }) => (
+                            <Ionicons name="pie-chart" color={color} size={24} />
+                        ),
+                    }}
+                />
 
-                        // You can return any component that you like here!
-                        return <Ionicons name={iconName} size={size} color={color} />;
-                    }
+                <BottomTab.Screen
+                    name={achievementsScreenName}
+                    component={AchievementsScreen}
+                    options={{
+                        tabBarLabel: 'Achivements',
+                        tabBarIcon: ({ color }) => (
+                            <Ionicons name="md-ribbon" color={color} size={24} />
+                        ),
+                    }}
+                />
 
-                })}>
+                <BottomTab.Screen
+                    name={profileScreenName}
+                    component={ProfileScreen}
+                    options={{
+                        tabBarLabel: 'Profile',
+                        tabBarIcon: ({ color }) => (
+                            <Ionicons name="person" color={color} size={24} />
+                        ),
+                    }}
+                />
 
-                <BottomTab.Screen name={homeScreenName} component={HomeScreen} />
-                <BottomTab.Screen name={statsScreenName} component={StatsScreen} />
-                <BottomTab.Screen name={achievementsScreenName} component={AchievementsScreen} />
-                <BottomTab.Screen name={profileScreenName} component={ProfileScreen} />
-                
 
             </BottomTab.Navigator >
         </NavigationContainer >
