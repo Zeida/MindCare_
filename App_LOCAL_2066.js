@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-import BottomNavComponent from "./components/BottomNavComponent.js";
 import Challenge from './components/ChallengeComponent';
-
-
 
 export default function App() {
 
@@ -49,9 +45,7 @@ export default function App() {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-      <BottomNavComponent/>
     </View>
-    
   );
 }
 
