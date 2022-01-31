@@ -1,12 +1,10 @@
 import * as React from 'react';
 import { Text, View } from 'react-native';
-
+import ChallengeList from './ChallengesListScreen';
 export default function HomeScreen({ navigation }) {
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#BEDEFF' }}>
-            <Text
-                onPress={() => alert('Welcome!')}
-                style={{ fontSize: 26, fontWeight: 'bold' }}> Home Screen</Text>
+        <View style={{ flex: 1, justifyContent: 'center', backgroundColor: '#BEDEFF' }}>
+                <ChallengeList></ChallengeList>
         </View>
     );
 }
