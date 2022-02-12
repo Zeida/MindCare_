@@ -4,8 +4,6 @@ import { StatusBar } from 'expo-status-bar';
 
 import Challenge from '../components/ChallengeComponent';
 
-
-
 export default function ChallengeList() {
 
   const [challenge, setChallenge] = useState();
@@ -57,7 +55,7 @@ export default function ChallengeList() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFA470',
+    backgroundColor: '#BEDEFF',
   },
   tasksWrapper: {
     paddingTop: 80,
@@ -98,6 +96,4 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   addText: {},
-
-
 });

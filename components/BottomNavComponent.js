@@ -24,8 +24,8 @@ export default function BottomNavContainer() {
         <NavigationContainer>
             <BottomTab.Navigator
                 initialRouteName="Feed"
-                activeColor="#010326"
-                inactiveColor='#3C74A6'
+                activeColor="#B3F0FF"
+                inactiveColor='#769CD6'
                 barStyle={{ backgroundColor: '#192959' }}>
 
                 <BottomTab.Screen
