@@ -27,8 +27,8 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.buttonText}>{"Salud"}</Text>
         </Pressable>
         <Pressable style={styles.button}>
-          <Ionicons name="lock-closed" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{""}</Text>
+          <Ionicons name="md-people-circle-outline" color={'white'} size={30} />
+          <Text style={styles.buttonText}>{"Social"}</Text>
         </Pressable>
         <Pressable style={styles.button}>
           <Ionicons name="lock-closed" color={'white'} size={30} />
