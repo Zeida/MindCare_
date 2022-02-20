@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View, Dimensions} from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 export default function HomeScreen({ navigation }) {
   return (
@@ -11,7 +12,7 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.buttonText}>{"Aire libre"}</Text>
         </Pressable>
         <Pressable style={styles.button}>
-          <Ionicons name="md-barbell-outline" color={'white'} size={30} />
+          <MaterialIcons name="fitness-center" color={'white'} size={30} />
           <Text style={styles.buttonText}>{"Deporte"}</Text>
         </Pressable>
         <Pressable style={styles.button}>
@@ -27,8 +28,8 @@ export default function HomeScreen({ navigation }) {
           <Text style={styles.buttonText}>{"Salud"}</Text>
         </Pressable>
         <Pressable style={styles.button}>
-          <Ionicons name="lock-closed" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{""}</Text>
+          <Ionicons name="md-people-circle-outline" color={'white'} size={30} />
+          <Text style={styles.buttonText}>{"Social"}</Text>
         </Pressable>
         <Pressable style={styles.button}>
           <Ionicons name="lock-closed" color={'white'} size={30} />
