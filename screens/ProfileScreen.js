@@ -39,7 +39,7 @@ const ProfileScreen = () => {
         </View>
         <View style={styles.infoBox}>
           <Title>16h</Title>
-          <Caption>Dedicación</Caption>
+          <Caption>Dedicadas</Caption>
         </View>
       </View>
       <View style={styles.menuWrapper}>
