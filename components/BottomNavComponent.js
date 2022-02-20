@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-//import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 
@@ -24,7 +22,7 @@ export default function BottomNavContainer() {
         <NavigationContainer>
             <BottomTab.Navigator
                 initialRouteName="Feed"
-                activeColor="#B3F0FF"
+                activeColor="#BEDEFF"
                 inactiveColor='#769CD6'
                 barStyle={{ backgroundColor: '#192959' }}>
 
@@ -71,7 +69,6 @@ export default function BottomNavContainer() {
                         ),
                     }}
                 />
-
 
             </BottomTab.Navigator >
         </NavigationContainer >

@@ -20,15 +20,15 @@ const ProfileScreen = () => {
       </View >
       <View style={styles.userInfoSection}>
         <View style={styles.row}>
-          <Ionicons name="location-outline" color={'white'} size={20} />
+          <Ionicons name="location-outline" color={'black'} size={20} />
           <Text style={{ color: "#777777", marginLeft: 20 }}> Moya, Las Palmas</Text>
         </View>
         <View style={styles.row}>
-          <AntDesign name="phone" color={'white'} size={20} />
+          <AntDesign name="phone" color={'black'} size={20} />
           <Text style={{ color: "#777777", marginLeft: 20 }}> +34 928 11 22 33</Text>
         </View>
         <View style={styles.row}>
-          <Fontisto name="email" color={'white'} size={20} />
+          <Fontisto name="email" color={'black'} size={20} />
           <Text style={{ color: "#777777", marginLeft: 20 }}> Correo@email.com</Text>
         </View>
       </View>
@@ -45,7 +45,7 @@ const ProfileScreen = () => {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
-            <Fontisto name="player-settings" color={'white'} size={20} />
+            <Fontisto name="player-settings" color={'black'} size={20} />
             <Text style={styles.menuItemText}>Editar mi perfil</Text>
           </View>
         </TouchableRipple>
@@ -53,7 +53,7 @@ const ProfileScreen = () => {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
-            <MaterialCommunityIcons name="treasure-chest" color={'white'} size={20} />
+            <MaterialCommunityIcons name="treasure-chest" color={'black'} size={20} />
             <Text style={styles.menuItemText}>Mi lugar seguro</Text>
           </View>
         </TouchableRipple>
@@ -61,7 +61,7 @@ const ProfileScreen = () => {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
-            <MaterialCommunityIcons name="share" color={'white'} size={20} />
+            <MaterialCommunityIcons name="share" color={'black'} size={20} />
             <Text style={styles.menuItemText}>Anima a un amigx</Text>
           </View>
         </TouchableRipple>
