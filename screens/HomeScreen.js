@@ -1,49 +1,34 @@
 import * as React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, Dimensions} from 'react-native';
+import { Pressable, ScrollView, StyleSheet, Text, View, Dimensions, TextPropTypes } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
-export default function HomeScreen({ navigation }) {
+
+export default function HomeScreen(props) {
+  const challengesScope = [
+    { id: 0, scope: 'Aire libre', icon: 'ios-leaf-outline' },
+    { id: 1, scope: 'Deporte', icon: 'barbell-outline' },
+    { id: 2, scope: 'Ocio', icon: 'md-cafe-outline' },
+    { id: 3, scope: 'Descanso', icon: 'ios-bed-outline' },
+    { id: 4, scope: 'Salud', icon: 'md-fitness-outline' },
+    { id: 5, scope: 'Social', icon: 'md-people-circle-outline' },
+    { id: 6, scope: '', icon: 'lock-closed' },
+    { id: 7, scope: '', icon: 'lock-closed' },
+    { id: 8, scope: '', icon: 'lock-closed' },
+  ];
+
+  const color = 'white';
+  const size = 30;
   return (
-      <View style={styles.container}>
-        <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
-        <Pressable style={styles.button}>
-          <Ionicons name="ios-leaf-outline" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{"Aire libre"}</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <MaterialIcons name="fitness-center" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{"Deporte"}</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Ionicons name="md-cafe-outline" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{"Ocio"}</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Ionicons name="ios-bed-outline" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{"Descanso"}</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Ionicons name="md-fitness-outline" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{"Salud"}</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Ionicons name="md-people-circle-outline" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{"Social"}</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Ionicons name="lock-closed" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{""}</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Ionicons name="lock-closed" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{""}</Text>
-        </Pressable>
-        <Pressable style={styles.button}>
-          <Ionicons name="lock-closed" color={'white'} size={30} />
-          <Text style={styles.buttonText}>{""}</Text>
-        </Pressable>
-      </View>
+    <View style={styles.container}>
+      <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
+      {challengesScope.map((challengeScope) => {
+        return (<Pressable style={styles.button}>
+          <Ionicons name={challengeScope.icon} color={'white'} size={30} />
+          <Text style={styles.buttonText}>{challengeScope.scope}</Text>
+        </Pressable>)
+      }
+      )}
+    </View>
   );
 }
 
@@ -67,7 +52,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     height: 100,
     width: 100,
-    margin:2,
+    margin: 2,
   },
   buttonText: {
     fontSize: 14,

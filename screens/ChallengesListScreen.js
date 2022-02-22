@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 
 import Challenge from '../components/ChallengeComponent';
 
-export default function ChallengeList() {
+export default function ChallengesListScreen() {
 
   const [challenge, setChallenge] = useState();
   const [challengesItems, setChallengeItems] = useState([]);
@@ -38,7 +38,7 @@ export default function ChallengeList() {
 
       {/*Customize the challenges*/}
       <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        //behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTasksWrapper}>
         <TextInput style={styles.input} placeholder={'Customize your task'} value={challenge} onChangeText={text => setChallenge(text)}></TextInput>
         <TouchableOpacity onPress={() => handleAddChallenge()}>
