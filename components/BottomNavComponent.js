@@ -30,7 +30,7 @@ export default function BottomNavContainer() {
                     name={homeScreenName}
                     component={HomeScreen}
                     options={{
-                        tabBarLabel: 'Home',
+                        tabBarLabel: 'Inicio',
                         tabBarIcon: ({ color }) => (
                             <Ionicons name="home" color={color} size={24} />
                         ),
@@ -41,7 +41,7 @@ export default function BottomNavContainer() {
                     name={statsScreenName}
                     component={StatsScreen}
                     options={{
-                        tabBarLabel: 'Stats',
+                        tabBarLabel: 'Estadísticas',
                         tabBarIcon: ({ color }) => (
                             <Ionicons name="pie-chart" color={color} size={24} />
                         ),
@@ -52,7 +52,7 @@ export default function BottomNavContainer() {
                     name={achievementsScreenName}
                     component={AchievementsScreen}
                     options={{
-                        tabBarLabel: 'Achivements',
+                        tabBarLabel: 'Insignias',
                         tabBarIcon: ({ color }) => (
                             <Ionicons name="md-ribbon" color={color} size={24} />
                         ),
@@ -63,7 +63,7 @@ export default function BottomNavContainer() {
                     name={profileScreenName}
                     component={ProfileScreen}
                     options={{
-                        tabBarLabel: 'Profile',
+                        tabBarLabel: 'Perfil',
                         tabBarIcon: ({ color }) => (
                             <Ionicons name="person" color={color} size={24} />
                         ),

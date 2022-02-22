@@ -61,8 +61,16 @@ const ProfileScreen = () => {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
+            <Ionicons name="help-buoy-outline" color={'red'} size={20} />
+            <Text style={styles.menuItemText}>Necesito ayuda</Text>
+          </View>
+        </TouchableRipple>
+      </View>
+      <View style={styles.menuWrapper}>
+        <TouchableRipple onPress={() => { }}>
+          <View style={styles.menuItem}>
             <MaterialCommunityIcons name="share" color={'black'} size={20} />
-            <Text style={styles.menuItemText}>Anima a un amigx</Text>
+            <Text style={styles.menuItemText}>Quiero compartir</Text>
           </View>
         </TouchableRipple>
       </View>
