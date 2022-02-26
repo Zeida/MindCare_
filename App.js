@@ -1,12 +1,10 @@
 import * as React from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import BottomNavComponent from "./components/BottomNavComponent.js";
-
+import { StyleSheet } from 'react-native';
+import Navigation from "./components/NavComponent.js";
 
 export default function App() {
   return (
-    <BottomNavComponent/>
+    <Navigation />
   );
 }
 

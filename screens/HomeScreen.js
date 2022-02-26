@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { Pressable, ScrollView, StyleSheet, Text, View, Dimensions, TextPropTypes } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 
 export default function HomeScreen(props) {
   const challengesScope = [
@@ -16,16 +15,19 @@ export default function HomeScreen(props) {
     { id: 8, scope: '', icon: 'lock-closed' },
   ];
 
-  const color = 'white';
-  const size = 30;
   return (
     <View style={styles.container}>
       <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
       {challengesScope.map((challengeScope) => {
-        return (<Pressable style={styles.button}>
-          <Ionicons name={challengeScope.icon} color={'white'} size={30} />
-          <Text style={styles.buttonText}>{challengeScope.scope}</Text>
-        </Pressable>)
+        return (
+          <Pressable key={challengeScope.id} style={styles.button}
+            onPress={() => {
+              props.navigation.navigate('Objetivos');
+            }}>
+            <Ionicons name={challengeScope.icon} color={'white'} size={30} />
+            <Text style={styles.buttonText}>{challengeScope.scope}</Text>
+          </Pressable>
+        )
       }
       )}
     </View>

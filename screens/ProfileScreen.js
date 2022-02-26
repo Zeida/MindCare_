@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Caption, Text, Title, TouchableRipple } from 'react-native-paper';
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import Fontisto from 'react-native-vector-icons/Fontisto';
-import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { Ionicons, AntDesign, Fontisto, MaterialCommunityIcons } from '@expo/vector-icons';
 
 const ProfileScreen = () => {
   return (

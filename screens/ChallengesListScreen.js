@@ -22,7 +22,7 @@ export default function ChallengesListScreen() {
     <View style={styles.container}>
       {/*Task*/}
       <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>Let's challenge!</Text>
+        <Text style={styles.sectionTitle}>Objetivos</Text>
         <View style={StyleSheet.items}>
           {/*Task Location!*/}
           {
@@ -38,9 +38,8 @@ export default function ChallengesListScreen() {
 
       {/*Customize the challenges*/}
       <KeyboardAvoidingView
-        //behavior={Platform.OS === "ios" ? "padding" : "height"}
         style={styles.writeTasksWrapper}>
-        <TextInput style={styles.input} placeholder={'Customize your task'} value={challenge} onChangeText={text => setChallenge(text)}></TextInput>
+        <TextInput style={styles.input} placeholder={'Crea un objetivo'} value={challenge} onChangeText={text => setChallenge(text)}></TextInput>
         <TouchableOpacity onPress={() => handleAddChallenge()}>
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>+</Text>
@@ -57,7 +56,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   tasksWrapper: {
-    paddingTop: 80,
+    paddingTop: 20,
     paddingHorizontal: 20,
   },
   sectionTitle: {
@@ -76,6 +75,7 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   },
   input: {
+    marginBottom:5,
     paddingVertical: 15,
     paddingHorizontal: 15,
     backgroundColor: '#FFF',
