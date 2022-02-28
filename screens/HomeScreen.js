@@ -20,9 +20,9 @@ export default function HomeScreen(props) {
       <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
       {challengesScope.map((challengeScope) => {
         return (
-          <Pressable key={challengeScope.id} style={styles.button}
+          <Pressable key={challengeScope.id} value={challengeScope.scope} style={styles.button}
             onPress={() => {
-              props.navigation.navigate('Objetivos');
+              props.navigation.navigate('Todolist');
             }}>
             <Ionicons name={challengeScope.icon} color={'white'} size={30} />
             <Text style={styles.buttonText}>{challengeScope.scope}</Text>

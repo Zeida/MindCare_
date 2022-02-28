@@ -10,7 +10,7 @@ import ProfileScreen from '../screens/ProfileScreen.js';
 import StatsScreen from '../screens/StatsScreen.js';
 import AchievementsScreen from '../screens/AchievementsScreen';
 import ChallengesListScreen from '../screens/ChallengesListScreen';
-
+import ToDoListScreen from '../screens/ToDoListScreen';
 
 //Screens names
 const homeScreenName = 'Inicio';
@@ -18,6 +18,7 @@ const achievementsScreenName = 'Insignias';
 const statsScreenName = 'Estadísticas';
 const profileScreenName = 'Perfil';
 const challengesListScreenName = 'Objetivos';
+const toDoListScreenName = 'Todolist';
 
 const Stack = createNativeStackNavigator();
 
@@ -87,6 +88,7 @@ export default function Navigation() {
                 <Stack.Screen name={"BottomTabNavigator"} component={BottomTabNavigator} options={{ headerShown: false }} />
                 <Stack.Screen name={homeScreenName} component={HomeScreen} />
                 <Stack.Screen name={challengesListScreenName} component={ChallengesListScreen} />
+                <Stack.Screen name={toDoListScreenName} component={ToDoListScreen}  options={{ headerTitle:" "}}/>
                 <Stack.Screen name={statsScreenName} component={StatsScreen} />
                 <Stack.Screen name={achievementsScreenName} component={AchievementsScreen} />
                 <Stack.Screen name={profileScreenName} component={ProfileScreen} />
