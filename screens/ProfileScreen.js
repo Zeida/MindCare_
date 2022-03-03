@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Caption, Text, Title, TouchableRipple } from 'react-native-paper';
-import { Ionicons, AntDesign, Fontisto, MaterialCommunityIcons } from '@expo/vector-icons';
+import { Ionicons, AntDesign, Fontisto, MaterialCommunityIcons, FontAwesome5} from '@expo/vector-icons';
 
-const ProfileScreen = () => {
+const ProfileScreen = (props) => {
   return (
     <View styles={styles.profile}>
       <View style={styles.userInfoSection}>
         <View style={{ flexDirection: 'row', marginTop: 100 }}>
-          <Avatar.Image source={{ uri: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg', }} size={80} />
+          <Avatar.Image source={{ uri: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg' }} size={80} />
           <View style={{ marginLeft: 20 }}>
             <Title style={styles.title, { marginTop: 15, marginBottom: 5, }}>Usuario prueba</Title>
             <Caption style={styles.caption}>@user</Caption>
@@ -42,7 +42,27 @@ const ProfileScreen = () => {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
-            <Fontisto name="player-settings" color={'black'} size={20} />
+            <MaterialCommunityIcons name="treasure-chest" color={'black'} size={25} />
+            <Text style={styles.menuItemText}>Mi lugar seguro</Text>
+          </View>
+        </TouchableRipple>
+      </View>
+      <View style={styles.menuWrapper}>
+        <TouchableRipple onPress={() => {
+          props.navigation.navigate('Ayuda');
+         }}>
+          <View style={styles.menuItem}>
+            <Ionicons name="help-buoy-outline" color={'red'} size={25} />
+            <Text style={styles.menuItemText}>Necesito ayuda</Text>
+          </View>
+        </TouchableRipple>
+      </View>
+      <View style={styles.menuWrapper}>
+        <TouchableRipple onPress={() => {
+          props.navigation.navigate('Mi perfil');
+        }}>
+          <View style={styles.menuItem}>
+            <FontAwesome5 name="user-edit" color={'black'} size={25} />
             <Text style={styles.menuItemText}>Editar mi perfil</Text>
           </View>
         </TouchableRipple>
@@ -50,23 +70,7 @@ const ProfileScreen = () => {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => { }}>
           <View style={styles.menuItem}>
-            <MaterialCommunityIcons name="treasure-chest" color={'black'} size={20} />
-            <Text style={styles.menuItemText}>Mi lugar seguro</Text>
-          </View>
-        </TouchableRipple>
-      </View>
-      <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={() => { }}>
-          <View style={styles.menuItem}>
-            <Ionicons name="help-buoy-outline" color={'red'} size={20} />
-            <Text style={styles.menuItemText}>Necesito ayuda</Text>
-          </View>
-        </TouchableRipple>
-      </View>
-      <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={() => { }}>
-          <View style={styles.menuItem}>
-            <MaterialCommunityIcons name="share" color={'black'} size={20} />
+            <MaterialCommunityIcons name="share" color={'black'} size={25} />
             <Text style={styles.menuItemText}>Quiero compartir</Text>
           </View>
         </TouchableRipple>

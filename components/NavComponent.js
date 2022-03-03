@@ -1,8 +1,9 @@
+import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import * as React from 'react';
+
 
 //Screens
 import HomeScreen from '../screens/HomeScreen.js';
@@ -11,6 +12,8 @@ import StatsScreen from '../screens/StatsScreen.js';
 import AchievementsScreen from '../screens/AchievementsScreen';
 import ChallengesListScreen from '../screens/ChallengesListScreen';
 import ToDoListScreen from '../screens/ToDoListScreen';
+import EditProfileScreen from '../screens/EditProfileScreen.js';
+import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
 
 //Screens names
 const homeScreenName = 'Inicio';
@@ -19,6 +22,10 @@ const statsScreenName = 'Estadísticas';
 const profileScreenName = 'Perfil';
 const challengesListScreenName = 'Objetivos';
 const toDoListScreenName = 'Todolist';
+const editProfileScreenName = 'Mi perfil';
+const bottomTabNavigatorName = 'BottomTabNavigator';
+const cardsForHelpScreenName = 'Ayuda';
+
 
 const Stack = createNativeStackNavigator();
 
@@ -85,13 +92,15 @@ export default function Navigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name={"BottomTabNavigator"} component={BottomTabNavigator} options={{ headerShown: false }} />
+                <Stack.Screen name={bottomTabNavigatorName} component={BottomTabNavigator} options={{ headerShown: false }} />
                 <Stack.Screen name={homeScreenName} component={HomeScreen} />
                 <Stack.Screen name={challengesListScreenName} component={ChallengesListScreen} />
-                <Stack.Screen name={toDoListScreenName} component={ToDoListScreen}  options={{ headerTitle:" "}}/>
+                <Stack.Screen name={toDoListScreenName} component={ToDoListScreen} options={{ headerTitle: " " }} />
                 <Stack.Screen name={statsScreenName} component={StatsScreen} />
                 <Stack.Screen name={achievementsScreenName} component={AchievementsScreen} />
                 <Stack.Screen name={profileScreenName} component={ProfileScreen} />
+                <Stack.Screen name={editProfileScreenName} component={EditProfileScreen} options={{ headerTitle: " " }} />
+                <Stack.Screen name={cardsForHelpScreenName} component={CardsForHelpScreen} options={{ headerTitle: " " }} />
             </Stack.Navigator>
         </NavigationContainer>
     );

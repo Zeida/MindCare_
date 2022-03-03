@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View, SafeAreaView } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function HomeScreen(props) {
@@ -16,7 +16,7 @@ export default function HomeScreen(props) {
   ];
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
       {challengesScope.map((challengeScope) => {
         return (
@@ -30,7 +30,7 @@ export default function HomeScreen(props) {
         )
       }
       )}
-    </View>
+    </SafeAreaView>
   );
 }
 
