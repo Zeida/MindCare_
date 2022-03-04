@@ -1,16 +1,14 @@
-import { AntDesign, FontAwesome, Fontisto, Foundation, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign, FontAwesome, Fontisto, Foundation, Ionicons } from '@expo/vector-icons';
 import * as React from 'react';
 import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+
 export default function EditProfileScreen({ navigation }) {
-
-
-
 
     return (
         <View style={styles.container}>
             <View style={{ margin: 20 }}>
                 <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity onPress={() => { }}>
                         <View style={{
                             height: 100,
                             width: 100,
@@ -25,7 +23,7 @@ export default function EditProfileScreen({ navigation }) {
                                 style={{ height: 100, width: 100 }}
                                 imageStyle={{ borderRadius: 15 }}
                             >
-                                
+
                             </ImageBackground>
                         </View>
                     </TouchableOpacity>

@@ -1,16 +1,16 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { Avatar, Button, Card, Title, Paragraph } from 'react-native-paper';
+import { SafeAreaView, StyleSheet } from 'react-native';
+import { Card, Paragraph, Title } from 'react-native-paper';
 const CARDSFORHELP = [
     {
-        id: 1,
+        id:1,
         title: 'Teléfono de la esperanza',
         subtitle: 'Si necesitas contar, cuenta con nosotros',
         number: '717 003 717',
         link: 'https://telefonodelaesperanza.org/'
     },
     {
-        id: 2,
+        id:2,
         title: 'Psicólogos y psicólogas sin fronteras',
         subtitle: 'Nuestro lado más humano',
         number: '960 450 230',
@@ -18,13 +18,13 @@ const CARDSFORHELP = [
     },
 ];
 
-export default function NeedHelpScreen(props) {
+export default function CardsForHelpScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
             {CARDSFORHELP.map((card) => {
                 return (
-                    <Card style={styles.item}>
+                    <Card key={card.id} value={card.title} style={styles.item}>
                         <Card.Content>
                             <Title style={styles.title}>{card.title}</Title>
                             <Paragraph style={styles.subtitle}>{card.subtitle}</Paragraph>

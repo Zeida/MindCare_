@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { KeyboardAvoidingView, StyleSheet, Text, View, TextInput, TouchableOpacity, Keyboard, ScrollView } from 'react-native';
-import { StatusBar } from 'expo-status-bar';
-
+import { Keyboard, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import Challenge from '../components/ChallengeComponent';
+
 
 export default function ChallengesListScreen() {
 
