@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 
 const Challenge = (props) => {
     return (
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'space-between',
         marginBottom: 20,
-
     },
     itemLeft: {
         flexDirection: 'row',
@@ -35,17 +34,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#564FB0',
         opacity: 0.4,
         borderRadius: 5,
-        marginRight:15,
+        marginRight: 15,
     },
     itemText: {
-        maxWidth:'80%',
+        maxWidth: '80%',
     },
     circular: {
-        width:12,
-        height:12,
-        borderColor:'#564FB0',
-        borderWidth:2,
-        borderRadius:5,
+        width: 12,
+        height: 12,
+        borderColor: '#564FB0',
+        borderWidth: 2,
+        borderRadius: 5,
     },
 });
 

@@ -1,6 +1,6 @@
-import React from 'react';
-import { View, Text, StyleSheet, Pressable } from "react-native";
 import Checkbox from 'expo-checkbox';
+import React from 'react';
+import { Pressable, StyleSheet, Text } from "react-native";
 
 export default function Challenge(props) {
     return (<Pressable style={styles.view} onLongPress={() => props.deleteItem(props.index)}>
@@ -8,7 +8,7 @@ export default function Challenge(props) {
             value={props.data.isSelected}
             onValueChange={(value) => props.setIsSelected(props.index, value)}
         />
-        <Text style={{...styles.text, textDecorationLine: props.data.isSelected ? "line-through" : "none"}}>{props.data.text}</Text>
+        <Text style={{ ...styles.text, textDecorationLine: props.data.isSelected ? "line-through" : "none" }}>{props.data.text}</Text>
     </Pressable>);
 }
 
@@ -35,9 +35,7 @@ const styles = StyleSheet.create({
         height: 26,
         width: 26,
         borderRadius: 5,
-        backgroundColor: '#192959',
+        backgroundColor: '#fff',
         marginRight: 15
-
-
     }
 })

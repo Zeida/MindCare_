@@ -1,0 +1,9 @@
+const HOMES_CREEN_NAME = 'Inicio';
+const ACHIEVEMENTS_SCREEN_NAME = 'Insignias';
+const STATS_SCREEN_NAME = 'Estadísticas';
+const PROFILE_SCREEN_NAME = 'Perfil';
+const CHALLENGELIST_SCREEN_NAME = 'Objetivos';
+const TODOLIST_SCREEN_NAME = 'Todolist';
+const EDITPROFILE_SCREEN_NAME = 'Mi perfil';
+const BOTTOMTABNAVIGATOR_NAME = 'BottomTabNavigator';
+const CARDSFORHELP_SCREEN_NAME = 'Ayuda';

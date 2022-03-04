@@ -70,7 +70,7 @@ export default function ToDoListScreen() {
             <TouchableOpacity
                 style={styles.btn}
                 onPress={() => addText(value)}>
-                <Text style={{ fontSize: 34, color: "#E9E9E9" }}>+</Text>
+                <Text style={{ fontSize: 35, color: "#E9E9E9" }}>+</Text>
             </TouchableOpacity>
         </View>
     </View>
