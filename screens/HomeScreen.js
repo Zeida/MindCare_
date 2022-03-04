@@ -22,7 +22,7 @@ export default function HomeScreen(props) {
         return (
           <Pressable key={challengeScope.id} value={challengeScope.scope} style={styles.button}
             onPress={() => {
-              props.navigation.navigate('Todolist');
+              props.navigation.navigate('Todolist', {scope:challengeScope.scope});
             }}>
             <Ionicons name={challengeScope.icon} color={'white'} size={30} />
             <Text style={styles.buttonText}>{challengeScope.scope}</Text>

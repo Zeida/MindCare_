@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Alert, FlatList, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Challenge from '../components/Challenge';
-export default function ToDoListScreen() {
+export default function ToDoListScreen({ route, navigation }) {
 
     const [list, setList] = useState([])
     const [value, setValue] = useState("")
+    const { scope } = route.params;
 
     function addText(text) {
         if (value !== "") {
@@ -53,7 +54,7 @@ export default function ToDoListScreen() {
 
 
     return <View style={styles.container}>
-        <Text style={styles.text}>Mis objetivos:</Text>
+        <Text style={styles.text}>Retos de {scope}</Text>
         <FlatList style={{ flex: 1 }}
             data={list}
             renderItem={({ item, index }) => <Challenge data={item} index={index} setIsSelected={setIsSelected} deleteItem={deleteItem} />}
