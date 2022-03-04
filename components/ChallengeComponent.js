@@ -15,7 +15,7 @@ const Challenge = (props) => {
 
 const styles = StyleSheet.create({
     item: {
-        backgroundColor: '#fff',
+        backgroundColor: '#FFFFFF',
         padding: 15,
         borderRadius: 10,
         flexDirection: 'row',
@@ -31,7 +31,6 @@ const styles = StyleSheet.create({
     square: {
         width: 24,
         height: 24,
-        backgroundColor: '#564FB0',
         opacity: 0.4,
         borderRadius: 5,
         marginRight: 15,
@@ -42,7 +41,6 @@ const styles = StyleSheet.create({
     circular: {
         width: 12,
         height: 12,
-        borderColor: '#564FB0',
         borderWidth: 2,
         borderRadius: 5,
     },

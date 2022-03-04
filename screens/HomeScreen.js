@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Pressable, StyleSheet, Text, View, SafeAreaView } from 'react-native';
+import { Pressable, SafeAreaView, StyleSheet, Text } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 export default function HomeScreen(props) {

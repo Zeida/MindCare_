@@ -16,7 +16,7 @@ export default function ToDoListScreen() {
             })
             setValue("")
         } else {
-            Alert.alert("Upss!","No has escrito nada")
+            Alert.alert("Upss!", "No has escrito nada")
         }
     }
 
@@ -53,7 +53,7 @@ export default function ToDoListScreen() {
 
 
     return <View style={styles.container}>
-        <Text style={ styles.text }>Mis objetivos:</Text>
+        <Text style={styles.text}>Mis objetivos:</Text>
         <FlatList style={{ flex: 1 }}
             data={list}
             renderItem={({ item, index }) => <Challenge data={item} index={index} setIsSelected={setIsSelected} deleteItem={deleteItem} />}

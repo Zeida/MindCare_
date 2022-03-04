@@ -1,7 +1,7 @@
+import { AntDesign, FontAwesome5, Fontisto, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Caption, Text, Title, TouchableRipple } from 'react-native-paper';
-import { Ionicons, AntDesign, Fontisto, MaterialCommunityIcons, FontAwesome5} from '@expo/vector-icons';
 
 const ProfileScreen = (props) => {
   return (
@@ -10,7 +10,7 @@ const ProfileScreen = (props) => {
         <View style={{ flexDirection: 'row', marginTop: 100 }}>
           <Avatar.Image source={{ uri: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg' }} size={80} />
           <View style={{ marginLeft: 20 }}>
-            <Title style={styles.title, { marginTop: 15, marginBottom: 5, }}>Usuario prueba</Title>
+            <Title style={styles.title}>Usuario prueba</Title>
             <Caption style={styles.caption}>@user</Caption>
           </View >
         </View>
@@ -50,7 +50,7 @@ const ProfileScreen = (props) => {
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => {
           props.navigation.navigate('Ayuda');
-         }}>
+        }}>
           <View style={styles.menuItem}>
             <Ionicons name="help-buoy-outline" color={'red'} size={25} />
             <Text style={styles.menuItemText}>Necesito ayuda</Text>
@@ -103,8 +103,8 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
-    fontWeight: 'bold',
-
+    marginTop: 15,
+    marginBottom: 5
   },
   caption: {
     fontSize: 14,

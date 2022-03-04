@@ -16,8 +16,6 @@ const styles = StyleSheet.create({
     view: {
         elevation: 5,
         shadowColor: "#E9E9E9",
-        shadowOffset: { width: 2, height: 12 },
-        shadowRadius: 12,
         width: '100%',
         paddingVertical: 10,
         paddingHorizontal: 19,
@@ -29,13 +27,13 @@ const styles = StyleSheet.create({
     },
     text: {
         fontSize: 15,
-        color: "#003131"
+        color: "#000000"
     },
     checkbox: {
         height: 26,
         width: 26,
         borderRadius: 5,
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         marginRight: 15
     }
 })
