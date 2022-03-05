@@ -10,7 +10,6 @@ import HomeScreen from '../screens/HomeScreen.js';
 import ProfileScreen from '../screens/ProfileScreen.js';
 import StatsScreen from '../screens/StatsScreen.js';
 import AchievementsScreen from '../screens/AchievementsScreen';
-import ChallengesListScreen from '../screens/ChallengesListScreen';
 import ToDoListScreen from '../screens/ToDoListScreen';
 import EditProfileScreen from '../screens/EditProfileScreen.js';
 import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
@@ -20,7 +19,6 @@ const homeScreenName = 'Inicio';
 const achievementsScreenName = 'Insignias';
 const statsScreenName = 'Estadísticas';
 const profileScreenName = 'Perfil';
-const challengesListScreenName = 'Objetivos';
 const toDoListScreenName = 'Todolist';
 const editProfileScreenName = 'Mi perfil';
 const bottomTabNavigatorName = 'BottomTabNavigator';
@@ -94,7 +92,6 @@ export default function Navigation() {
             <Stack.Navigator>
                 <Stack.Screen name={bottomTabNavigatorName} component={BottomTabNavigator} options={{ headerShown: false }} />
                 <Stack.Screen name={homeScreenName} component={HomeScreen} />
-                <Stack.Screen name={challengesListScreenName} component={ChallengesListScreen} />
                 <Stack.Screen name={toDoListScreenName} component={ToDoListScreen} options={{ headerTitle: " " }} />
                 <Stack.Screen name={statsScreenName} component={StatsScreen} />
                 <Stack.Screen name={achievementsScreenName} component={AchievementsScreen} />

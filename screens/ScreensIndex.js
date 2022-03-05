@@ -1,6 +1,5 @@
 import AchievementsScreen from '../screens/AchievementsScreen';
 import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
-import ChallengesListScreen from '../screens/ChallengesListScreen';
 import EditProfileScreen from '../screens/EditProfileScreen.js';
 import HomeScreen from '../screens/HomeScreen.js';
 import ProfileScreen from '../screens/ProfileScreen.js';
