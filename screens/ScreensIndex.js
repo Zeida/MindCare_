@@ -6,4 +6,4 @@ import ProfileScreen from '../screens/ProfileScreen.js';
 import StatsScreen from '../screens/StatsScreen.js';
 import ToDoListScreen from '../screens/ToDoListScreen';
 
-export { HomeScreen, ProfileScreen, StatsScreen, AchievementsScreen, ChallengesListScreen, ToDoListScreen, EditProfileScreen, CardsForHelpScreen };
+export { HomeScreen, ProfileScreen, StatsScreen, AchievementsScreen, ToDoListScreen, EditProfileScreen, CardsForHelpScreen };

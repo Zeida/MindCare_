@@ -1,4 +1,5 @@
-import { AntDesign, FontAwesome, Fontisto, Foundation, Ionicons } from '@expo/vector-icons';
+import { AntDesign, FontAwesome, Fontisto, Foundation, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import { MaterialBottomTabView } from '@react-navigation/material-bottom-tabs';
 import * as React from 'react';
 import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
@@ -31,7 +32,7 @@ export default function EditProfileScreen({ navigation }) {
                 </View>
 
                 <View style={styles.action}>
-                    <FontAwesome name="user-o" size={20} />
+                    <MaterialCommunityIcons name="account" size={20} />
                     <TextInput
                         placeholder='Nombre y apellido'
                         placeholderTextColor='#666666'
@@ -49,7 +50,7 @@ export default function EditProfileScreen({ navigation }) {
                 </View>
 
                 <View style={styles.action}>
-                    <Ionicons name="location-outline" color={'black'} size={20} />
+                    <MaterialCommunityIcons name="map-marker" color={'black'} size={20} />
                     <TextInput
                         placeholder='Dirección'
                         placeholderTextColor='#666666'
@@ -58,7 +59,7 @@ export default function EditProfileScreen({ navigation }) {
                 </View>
 
                 <View style={styles.action}>
-                    <AntDesign name="phone" color={'black'} size={20} />
+                    <MaterialCommunityIcons name="phone" color={'black'} size={20} />
                     <TextInput
                         placeholder='Teléfono'
                         keyboardType='number-pad'
@@ -68,7 +69,7 @@ export default function EditProfileScreen({ navigation }) {
                 </View>
 
                 <View style={styles.action}>
-                    <Fontisto name="email" color={'black'} size={20} />
+                    <MaterialCommunityIcons name="email-outline" color={'black'} size={20} />
                     <TextInput
                         placeholder='Correo'
                         placeholderTextColor='#666666'
@@ -102,22 +103,16 @@ const styles = StyleSheet.create({
     },
     action: {
         flexDirection: 'row',
-        marginTop: 10,
-        marginBottom: 10,
+        marginTop: 5,
+        marginBottom: 5,
         borderBottomWidth: 1,
         borderBottomColor: '#f2f2f2',
-        paddingBottom: 5,
-    },
-    actionError: {
-        flexDirection: 'row',
-        marginTop: 10,
-        borderBottomWidth: 1,
-        borderBottomColor: '#FF0000',
-        paddingBottom: 5,
+        paddingBottom: 2,
     },
     textInput: {
         flex: 1,
-        marginTop: -12,
+        marginTop: 1,
+        marginBottom:1,
         paddingLeft: 10,
         color: '#05375a',
     },

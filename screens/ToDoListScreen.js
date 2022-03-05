@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Alert, FlatList, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
-import Challenge from '../components/Challenge';
+import ChallengeComponent from '../components/ChallengeComponent';
 export default function ToDoListScreen({ route, navigation }) {
 
     const [list, setList] = useState([])
@@ -57,7 +57,7 @@ export default function ToDoListScreen({ route, navigation }) {
         <Text style={styles.text}>Retos de {scope}</Text>
         <FlatList style={{ flex: 1 }}
             data={list}
-            renderItem={({ item, index }) => <Challenge data={item} index={index} setIsSelected={setIsSelected} deleteItem={deleteItem} />}
+            renderItem={({ item, index }) => <ChallengeComponent data={item} index={index} setIsSelected={setIsSelected} deleteItem={deleteItem} />}
             keyExtractor={(item, index) => index.toString()}
         />
 

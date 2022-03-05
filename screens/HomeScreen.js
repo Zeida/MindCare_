@@ -1,18 +1,18 @@
 import * as React from 'react';
 import { Pressable, SafeAreaView, StyleSheet, Text } from 'react-native';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function HomeScreen(props) {
   const challengesScope = [
-    { id: 0, scope: 'Aire libre', icon: 'ios-leaf-outline' },
-    { id: 1, scope: 'Deporte', icon: 'barbell-outline' },
-    { id: 2, scope: 'Ocio', icon: 'md-cafe-outline' },
-    { id: 3, scope: 'Descanso', icon: 'ios-bed-outline' },
-    { id: 4, scope: 'Salud', icon: 'md-fitness-outline' },
-    { id: 5, scope: 'Social', icon: 'md-people-circle-outline' },
-    { id: 6, scope: '', icon: 'lock-closed' },
-    { id: 7, scope: '', icon: 'lock-closed' },
-    { id: 8, scope: '', icon: 'lock-closed' },
+    { id: 0, scope: 'Aire libre', icon: 'nature-people' },
+    { id: 1, scope: 'Deporte', icon: 'arm-flex' },
+    { id: 2, scope: 'Hobbies', icon: 'puzzle' },
+    { id: 3, scope: 'Descanso', icon: 'bed' },
+    { id: 4, scope: 'Salud', icon: 'heart-pulse' },
+    { id: 5, scope: 'Social', icon: 'account-group' },
+    { id: 6, scope: '', icon: 'lock' },
+    { id: 7, scope: '', icon: 'lock' },
+    { id: 8, scope: '', icon: 'lock' },
   ];
 
   return (
@@ -24,7 +24,7 @@ export default function HomeScreen(props) {
             onPress={() => {
               props.navigation.navigate('Todolist', {scope:challengeScope.scope});
             }}>
-            <Ionicons name={challengeScope.icon} color={'white'} size={30} />
+            <MaterialCommunityIcons name={challengeScope.icon} color={'white'} size={30} />
             <Text style={styles.buttonText}>{challengeScope.scope}</Text>
           </Pressable>
         )
