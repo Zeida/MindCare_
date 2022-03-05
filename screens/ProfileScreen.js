@@ -2,7 +2,7 @@ import { AntDesign, FontAwesome5, Fontisto, Ionicons, MaterialCommunityIcons } f
 import * as React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Avatar, Caption, Text, Title, TouchableRipple } from 'react-native-paper';
-
+import ShareComponent from '../components/ShareComponent';
 const ProfileScreen = (props) => {
   return (
     <View styles={styles.profile}>
@@ -52,7 +52,7 @@ const ProfileScreen = (props) => {
           props.navigation.navigate('Ayuda');
         }}>
           <View style={styles.menuItem}>
-            <Ionicons name="help-buoy-outline" color={'red'} size={25} />
+            <MaterialCommunityIcons name="alarm-light" color={'red'} size={25} />
             <Text style={styles.menuItemText}>Necesito ayuda</Text>
           </View>
         </TouchableRipple>
@@ -62,18 +62,13 @@ const ProfileScreen = (props) => {
           props.navigation.navigate('Mi perfil');
         }}>
           <View style={styles.menuItem}>
-            <FontAwesome5 name="user-edit" color={'black'} size={25} />
+            <MaterialCommunityIcons name="account-edit" color={'black'} size={25} />
             <Text style={styles.menuItemText}>Editar mi perfil</Text>
           </View>
         </TouchableRipple>
       </View>
       <View style={styles.menuWrapper}>
-        <TouchableRipple onPress={() => { }}>
-          <View style={styles.menuItem}>
-            <MaterialCommunityIcons name="share" color={'black'} size={25} />
-            <Text style={styles.menuItemText}>Quiero compartir</Text>
-          </View>
-        </TouchableRipple>
+        <ShareComponent></ShareComponent>
       </View>
     </View>
   )
