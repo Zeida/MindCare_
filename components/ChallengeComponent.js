@@ -2,7 +2,7 @@ import Checkbox from 'expo-checkbox';
 import React from 'react';
 import { Pressable, StyleSheet, Text } from "react-native";
 
-export default function Challenge(props) {
+export default function ChallengeComponent(props) {
     return (<Pressable style={styles.view} onLongPress={() => props.deleteItem(props.index)}>
         <Checkbox style={styles.checkbox}
             value={props.data.isSelected}
