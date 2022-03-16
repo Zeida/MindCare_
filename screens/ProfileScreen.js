@@ -1,9 +1,20 @@
 import { AntDesign, FontAwesome5, Fontisto, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, TouchableOpacity } from 'react-native';
 import { Avatar, Caption, Text, Title, TouchableRipple } from 'react-native-paper';
 import ShareComponent from '../components/ShareComponent';
+import { auth } from '../firebase';
+
+
 const ProfileScreen = (props) => {
+  const handleSignOut = () => {
+    auth
+      .signOut()
+      .then(() => {
+        props.navigation.navigate('Login');
+      })
+      .catch(error => alert(error.message))
+  }
   return (
     <View styles={styles.profile}>
       <View style={styles.userInfoSection}>
@@ -68,7 +79,13 @@ const ProfileScreen = (props) => {
         </TouchableRipple>
       </View>
       <View style={styles.menuWrapper}>
-        <ShareComponent></ShareComponent>
+        <ShareComponent/>
+      </View>
+      <View style={styles.menuWrapper}>
+        <TouchableOpacity onPress={handleSignOut}
+          style={[styles.menuItem, styles.buttonLogOut]}>
+          <Text style={styles.menuItemTextLogOut}>Cerrar sesión</Text>
+        </TouchableOpacity>
       </View>
     </View>
   )
@@ -131,15 +148,33 @@ const styles = StyleSheet.create({
   },
   menuItem: {
     flexDirection: 'row',
-    paddingVertical: 10,
+    paddingVertical: 7,
     paddingHorizontal: 30,
-
   },
   menuItemText: {
-    color: '#777777',
+    color: '#000000',
     marginLeft: 20,
     fontWeight: '600',
     fontSize: 16,
     lineHeight: 26,
   },
+  menuItemTextLogOut: {
+    color: '#000000',
+    fontWeight: 'bold',
+    fontSize: 16,
+    lineHeight: 26,
+  },
+
+  buttonLogOut: {
+    fontSize: 16,
+    color: "#FA2B25",
+    fontWeight: "bold",
+    justifyContent: 'center',
+    backgroundColor: "#FA3C35",
+    borderRadius: 10,
+    marginLeft: 20,
+    marginRight:20,
+    padding: 10,
+  },
+
 });

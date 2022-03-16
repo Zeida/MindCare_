@@ -13,6 +13,7 @@ import AchievementsScreen from '../screens/AchievementsScreen';
 import ToDoListScreen from '../screens/ToDoListScreen';
 import EditProfileScreen from '../screens/EditProfileScreen.js';
 import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
+import LoginScreen from '../screens/LoginScreen.js';
 
 //Screens names
 const homeScreenName = 'Inicio';
@@ -23,6 +24,7 @@ const toDoListScreenName = 'Todolist';
 const editProfileScreenName = 'Mi perfil';
 const bottomTabNavigatorName = 'BottomTabNavigator';
 const cardsForHelpScreenName = 'Ayuda';
+const LoginScreenName = 'Login';
 
 
 const Stack = createNativeStackNavigator();
@@ -85,11 +87,12 @@ function BottomTabNavigator() {
         </BottomNavTabStack.Navigator >
     );
 }
-
+//<Stack.Screen name={LoginScreenName} component={LoginScreen} options={{ headerShown: false }} />
 export default function Navigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
+                <Stack.Screen name={LoginScreenName} component={LoginScreen} options={{ headerShown: false }} />
                 <Stack.Screen name={bottomTabNavigatorName} component={BottomTabNavigator} options={{ headerShown: false }} />
                 <Stack.Screen name={homeScreenName} component={HomeScreen} />
                 <Stack.Screen name={toDoListScreenName} component={ToDoListScreen} options={{ headerTitle: " " }} />

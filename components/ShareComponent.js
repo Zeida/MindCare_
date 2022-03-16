@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 
     },
     menuItemText: {
-        color: '#777777',
+        color: '#000000',
         marginLeft: 20,
         fontWeight: '600',
         fontSize: 16,
