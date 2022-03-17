@@ -1,5 +1,4 @@
-import { AntDesign, FontAwesome, Fontisto, Foundation, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import { MaterialBottomTabView } from '@react-navigation/material-bottom-tabs';
+import { Foundation, MaterialCommunityIcons } from '@expo/vector-icons';
 import * as React from 'react';
 import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 
@@ -24,7 +23,6 @@ export default function EditProfileScreen({ navigation }) {
                                 style={{ height: 100, width: 100 }}
                                 imageStyle={{ borderRadius: 15 }}
                             >
-
                             </ImageBackground>
                         </View>
                     </TouchableOpacity>
@@ -112,7 +110,7 @@ const styles = StyleSheet.create({
     textInput: {
         flex: 1,
         marginTop: 1,
-        marginBottom:1,
+        marginBottom: 1,
         paddingLeft: 10,
         color: '#05375a',
     },

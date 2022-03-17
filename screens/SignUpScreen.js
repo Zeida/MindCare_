@@ -7,12 +7,12 @@ import Firebase from '../config/firebase';
 
 const auth = Firebase.auth();
 
-export default function LoginScreen({ navigation }) {
+export default function SignupScreen({ navigation }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [rightIcon, setRightIcon] = useState('eye');
-  const [loginError, setLoginError] = useState('');
+  const [signupError, setSignupError] = useState('');
 
   const handlePasswordVisibility = () => {
     if (rightIcon === 'eye') {
@@ -24,13 +24,13 @@ export default function LoginScreen({ navigation }) {
     }
   };
 
-  const onLogin = async () => {
+  const onHandleSignup = async () => {
     try {
       if (email !== '' && password !== '') {
-        await auth.signInWithEmailAndPassword(email, password);
+        await auth.createUserWithEmailAndPassword(email, password);
       }
     } catch (error) {
-      setLoginError(error.message);
+      setSignupError(error.message);
     }
   };
 
@@ -41,7 +41,7 @@ export default function LoginScreen({ navigation }) {
         style={styles.tinyLogo}
         source={require('../images/logo.png')}
       />
-      <Text style={styles.title}>Bienvenido de nuevo!</Text>
+      <Text style={styles.title}>Crear una cuenta</Text>
       <InputField
         inputStyle={{
           fontSize: 14
@@ -78,11 +78,11 @@ export default function LoginScreen({ navigation }) {
         onChangeText={text => setPassword(text)}
         handlePasswordVisibility={handlePasswordVisibility}
       />
-      {loginError ? <ErrorMessage error={loginError} visible={true} /> : null}
+      {signupError ? <ErrorMessage error={signupError} visible={true} /> : null}
       <Button
-        onPress={onLogin}
+        onPress={onHandleSignup}
         backgroundColor='#F27C38'
-        title='Iniciar sesión'
+        title='Registrarme'
         tileColor='#fff'
         titleSize={20}
         containerStyle={{
@@ -90,8 +90,8 @@ export default function LoginScreen({ navigation }) {
         }}
       />
       <RNButton
-        onPress={() => navigation.navigate('Signup')}
-        title='Ir a registrarme'
+        onPress={() => navigation.navigate('Login')}
+        title='Ir a iniciar sesion'
         color='#192959'
       />
     </View>

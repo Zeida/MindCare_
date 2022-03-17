@@ -1,20 +1,11 @@
-import { AntDesign, FontAwesome5, Fontisto, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
-import * as React from 'react';
-import { StyleSheet, View, TouchableOpacity } from 'react-native';
+import { AntDesign, Fontisto, Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Avatar, Caption, Text, Title, TouchableRipple } from 'react-native-paper';
 import ShareComponent from '../components/ShareComponent';
-import { auth } from '../firebase';
-
 
 const ProfileScreen = (props) => {
-  const handleSignOut = () => {
-    auth
-      .signOut()
-      .then(() => {
-        props.navigation.navigate('Login');
-      })
-      .catch(error => alert(error.message))
-  }
+
   return (
     <View styles={styles.profile}>
       <View style={styles.userInfoSection}>
@@ -79,7 +70,7 @@ const ProfileScreen = (props) => {
         </TouchableRipple>
       </View>
       <View style={styles.menuWrapper}>
-        <ShareComponent/>
+        <ShareComponent />
       </View>
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => {
@@ -92,7 +83,7 @@ const ProfileScreen = (props) => {
         </TouchableRipple>
       </View>
       <View style={styles.menuWrapper}>
-        <TouchableOpacity onPress={handleSignOut}
+        <TouchableOpacity onPress={() => { }}
           style={[styles.menuItem, styles.buttonLogOut]}>
           <Text style={styles.menuItemTextLogOut}>Cerrar sesión</Text>
         </TouchableOpacity>
@@ -182,7 +173,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FA3C35",
     borderRadius: 10,
     marginLeft: 20,
-    marginRight:20,
+    marginRight: 20,
   },
 
 });

@@ -53,28 +53,30 @@ export default function ToDoListScreen({ route, navigation }) {
     }
 
 
-    return <View style={styles.container}>
-        <Text style={styles.text}>Retos de {scope}</Text>
-        <FlatList style={{ flex: 1 }}
-            data={list}
-            renderItem={({ item, index }) => <ChallengeComponent data={item} index={index} setIsSelected={setIsSelected} deleteItem={deleteItem} />}
-            keyExtractor={(item, index) => index.toString()}
-        />
+    return (
+        <View style={styles.container}>
+            <Text style={styles.text}>Retos de {scope}</Text>
+            <FlatList style={{ flex: 1 }}
+                data={list}
+                renderItem={({ item, index }) => <ChallengeComponent data={item} index={index} setIsSelected={setIsSelected} deleteItem={deleteItem} />}
+                keyExtractor={(item, index) => index.toString()}
+            />
 
-        <View style={styles.textBoxWrapper}>
-            <TextInput
-                style={styles.textInput}
-                placeholder="Añadir nuevo objetivo"
-                placeholderTextColor={"#003131"}
-                onChangeText={text => setValue(text)}
-                value={value} />
-            <TouchableOpacity
-                style={styles.btn}
-                onPress={() => addText(value)}>
-                <Text style={{ fontSize: 35, color: "#E9E9E9" }}>+</Text>
-            </TouchableOpacity>
+            <View style={styles.textBoxWrapper}>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder="Añadir nuevo objetivo"
+                    placeholderTextColor={"#003131"}
+                    onChangeText={text => setValue(text)}
+                    value={value} />
+                <TouchableOpacity
+                    style={styles.btn}
+                    onPress={() => addText(value)}>
+                    <Text style={{ fontSize: 35, color: "#E9E9E9" }}>+</Text>
+                </TouchableOpacity>
+            </View>
         </View>
-    </View>
+    );
 }
 
 const styles = StyleSheet.create({

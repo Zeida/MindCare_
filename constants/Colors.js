@@ -3,7 +3,7 @@ const COLORS = {
     SOFT_BLUE: '#BEDEFF',
     MIDDLE_BLUE: '#90D0CF',
     BLACK: '#000000',
-    SOFT_GREY: '#E9E9E9',  
+    SOFT_GREY: '#E9E9E9',
     DARK_GREY: '#606060',
     WHITE: '#FFFFFF',
     MIDDLE_GREY: '#777777',

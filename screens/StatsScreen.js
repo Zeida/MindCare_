@@ -1,11 +1,6 @@
 import * as React from 'react';
-import { Text, View, Dimensions } from 'react-native';
+import { Dimensions, Text, View } from 'react-native';
 import {
-    LineChart,
-    BarChart,
-    PieChart,
-    ProgressChart,
-    ContributionGraph,
     StackedBarChart
 } from "react-native-chart-kit";
 
@@ -54,7 +49,7 @@ export default function StatsScreen({ navigation }) {
                     borderRadius: 16
                 }}
                 data={data}
-                width={screenWidth}
+                width={350}
                 height={220}
                 chartConfig={chartConfig}
             />
