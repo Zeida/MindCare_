@@ -82,6 +82,16 @@ const ProfileScreen = (props) => {
         <ShareComponent/>
       </View>
       <View style={styles.menuWrapper}>
+        <TouchableRipple onPress={() => {
+          props.navigation.navigate('Informacion');
+        }}>
+          <View style={styles.menuItem}>
+            <MaterialCommunityIcons name="lightbulb-on-outline" color={'black'} size={25} />
+            <Text style={styles.menuItemText}>¿Quiénes somos?</Text>
+          </View>
+        </TouchableRipple>
+      </View>
+      <View style={styles.menuWrapper}>
         <TouchableOpacity onPress={handleSignOut}
           style={[styles.menuItem, styles.buttonLogOut]}>
           <Text style={styles.menuItemTextLogOut}>Cerrar sesión</Text>
@@ -110,8 +120,7 @@ const styles = StyleSheet.create({
   },
   userInfoSection: {
     paddingHorizontal: 30,
-    marginBottom: 25,
-
+    marginBottom: 20,
   },
   title: {
     fontSize: 24,
@@ -133,7 +142,7 @@ const styles = StyleSheet.create({
     borderTopColor: '#dddddd',
     borderTopWidth: 1,
     flexDirection: 'row',
-    height: 100,
+    height: 80,
   },
   infoBox: {
     width: '50%',
@@ -143,12 +152,12 @@ const styles = StyleSheet.create({
     borderRightWidth: 1
   },
   menuWrapper: {
-    marginTop: 10,
+    marginTop: 5,
 
   },
   menuItem: {
     flexDirection: 'row',
-    paddingVertical: 7,
+    paddingVertical: 8,
     paddingHorizontal: 30,
   },
   menuItemText: {
@@ -174,7 +183,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 20,
     marginRight:20,
-    padding: 10,
   },
 
 });
