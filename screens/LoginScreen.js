@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, SafeAreaView } from 'react-native'
+import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View, SafeAreaView, Image } from 'react-native'
 import { auth } from '../firebase';
 
 const LoginScreen = (props) => {
@@ -39,6 +39,10 @@ const LoginScreen = (props) => {
   }
   return (
     <SafeAreaView style={styles.container}>
+      <Image
+        style={styles.tinyLogo}
+        source={require('../images/logo.png')}
+      />
       <View style={styles.inputContainer}>
         <TextInput
           placeholder="Correo"
