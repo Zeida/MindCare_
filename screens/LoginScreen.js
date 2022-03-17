@@ -10,7 +10,8 @@ const LoginScreen = (props) => {
     const unsubscribe = auth.onAuthStateChanged(user => {
       if (user) {
         console.log("#MENSAJE CONTROL#");
-        props.navigation.navigate('Login');
+        console.log(user);
+          props.navigation.navigate('Inicio');
       }
     })
 
@@ -34,6 +35,7 @@ const LoginScreen = (props) => {
       .then(userCredentials => {
         const user = userCredentials.user;
         console.log('Sesion iniciada como:', user.email);
+        props.navigation.navigate('Inicio');
       })
       .catch(error => alert(error.message))
   }

@@ -92,9 +92,9 @@ export default function Navigation() {
     return (
         <NavigationContainer>
             <Stack.Navigator>
-                <Stack.Screen name={loginScreenName} component={LoginScreen} options={{ headerShown: false }} />
                 <Stack.Screen name={bottomTabNavigatorName} component={BottomTabNavigator} options={{ headerShown: false }} />
-                <Stack.Screen name={homeScreenName} component={HomeScreen} />
+                <Stack.Screen name={loginScreenName} component={LoginScreen} options={{ headerShown: false }} />
+                <Stack.Screen name={homeScreenName} component={HomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name={toDoListScreenName} component={ToDoListScreen} options={{ headerTitle: " " }} />
                 <Stack.Screen name={statsScreenName} component={StatsScreen} />
                 <Stack.Screen name={achievementsScreenName} component={AchievementsScreen} />
