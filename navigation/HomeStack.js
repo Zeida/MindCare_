@@ -5,15 +5,13 @@ import React from 'react';
 import AchievementsScreen from '../screens/AchievementsScreen';
 import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
 import EditProfileScreen from '../screens/EditProfileScreen.js';
+
 //Screens
 import HomeScreen from '../screens/HomeScreen.js';
 import LoginScreen from '../screens/LoginScreen.js';
 import ProfileScreen from '../screens/ProfileScreen.js';
 import StatsScreen from '../screens/StatsScreen.js';
 import ToDoListScreen from '../screens/ToDoListScreen';
-
-
-
 
 //Screens names
 const homeScreenName = 'Inicio';
