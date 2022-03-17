@@ -1,6 +1,14 @@
-import * as React from 'react';
-import { Pressable, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { StatusBar } from 'expo-status-bar';
+import React, { useContext } from 'react';
+import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { IconButton } from '../components/ComponentsIndex';
+import app from '../config/firebase';
+import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider ';
+
+
+
+const auth = app.auth();
 
 export default function HomeScreen(props) {
   const challengesScope = [
@@ -15,14 +23,33 @@ export default function HomeScreen(props) {
     { id: 8, scope: '', icon: 'lock' },
   ];
 
+  const { user } = useContext(AuthenticatedUserContext);
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.container}>
+      <StatusBar style='dark-content' />
+      <View style={styles.row}>
+        <Text style={styles.title}>Welcome {user.email}!</Text>
+        <IconButton
+          name='logout'
+          size={24}
+          color='red'
+          onPress={handleSignOut}
+        />
+      </View>
       <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
       {challengesScope.map((challengeScope) => {
         return (
           <Pressable key={challengeScope.id} value={challengeScope.scope} style={styles.button}
             onPress={() => {
-              props.navigation.navigate('Todolist', {scope:challengeScope.scope});
+              props.navigation.navigate('Todolist', { scope: challengeScope.scope });
             }}>
             <MaterialCommunityIcons name={challengeScope.icon} color={'white'} size={30} />
             <Text style={styles.buttonText}>{challengeScope.scope}</Text>
@@ -33,6 +60,8 @@ export default function HomeScreen(props) {
     </SafeAreaView>
   );
 }
+
+
 
 const styles = StyleSheet.create({
   container: {
@@ -71,5 +100,16 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: 'black',
     marginBottom: 10,
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 24
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: '600',
+    color: 'black',
   },
 });

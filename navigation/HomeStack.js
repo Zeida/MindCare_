@@ -1,19 +1,19 @@
-import * as React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-
-
+import { createStackNavigator } from '@react-navigation/stack';
+import React from 'react';
+import AchievementsScreen from '../screens/AchievementsScreen';
+import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
+import EditProfileScreen from '../screens/EditProfileScreen.js';
 //Screens
 import HomeScreen from '../screens/HomeScreen.js';
+import LoginScreen from '../screens/LoginScreen.js';
 import ProfileScreen from '../screens/ProfileScreen.js';
 import StatsScreen from '../screens/StatsScreen.js';
-import AchievementsScreen from '../screens/AchievementsScreen';
 import ToDoListScreen from '../screens/ToDoListScreen';
-import EditProfileScreen from '../screens/EditProfileScreen.js';
-import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
-import LoginScreen from '../screens/LoginScreen.js';
+
+
+
 
 //Screens names
 const homeScreenName = 'Inicio';
@@ -26,9 +26,7 @@ const bottomTabNavigatorName = 'BottomTabNavigator';
 const cardsForHelpScreenName = 'Ayuda';
 const loginScreenName = 'Login';
 
-
-const Stack = createNativeStackNavigator();
-
+const Stack = createStackNavigator();
 const BottomNavTabStack = createMaterialBottomTabNavigator();
 
 function BottomTabNavigator() {
@@ -87,21 +85,20 @@ function BottomTabNavigator() {
         </BottomNavTabStack.Navigator >
     );
 }
-//<Stack.Screen name={LoginScreenName} component={LoginScreen} options={{ headerShown: false }} />
-export default function Navigation() {
+
+
+export default function HomeStack() {
     return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen name={bottomTabNavigatorName} component={BottomTabNavigator} options={{ headerShown: false }} />
-                <Stack.Screen name={loginScreenName} component={LoginScreen} options={{ headerShown: false }} />
-                <Stack.Screen name={homeScreenName} component={HomeScreen} options={{ headerShown: false }} />
-                <Stack.Screen name={toDoListScreenName} component={ToDoListScreen} options={{ headerTitle: " " }} />
-                <Stack.Screen name={statsScreenName} component={StatsScreen} />
-                <Stack.Screen name={achievementsScreenName} component={AchievementsScreen} />
-                <Stack.Screen name={profileScreenName} component={ProfileScreen} />
-                <Stack.Screen name={editProfileScreenName} component={EditProfileScreen} options={{ headerTitle: " " }} />
-                <Stack.Screen name={cardsForHelpScreenName} component={CardsForHelpScreen} options={{ headerTitle: " " }} />
-            </Stack.Navigator>
-        </NavigationContainer>
+        <Stack.Navigator >
+            <Stack.Screen name={bottomTabNavigatorName} component={BottomTabNavigator} options={{ headerShown: false }} />
+            <Stack.Screen name={loginScreenName} component={LoginScreen} options={{ headerShown: false }} />
+            <Stack.Screen name={homeScreenName} component={HomeScreen} options={{ headerShown: false }} />
+            <Stack.Screen name={toDoListScreenName} component={ToDoListScreen} options={{ headerTitle: " " }} />
+            <Stack.Screen name={statsScreenName} component={StatsScreen} />
+            <Stack.Screen name={achievementsScreenName} component={AchievementsScreen} />
+            <Stack.Screen name={profileScreenName} component={ProfileScreen} />
+            <Stack.Screen name={editProfileScreenName} component={EditProfileScreen} options={{ headerTitle: " " }} />
+            <Stack.Screen name={cardsForHelpScreenName} component={CardsForHelpScreen} options={{ headerTitle: " " }} />
+        </Stack.Navigator>
     );
 }

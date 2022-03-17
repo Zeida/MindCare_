@@ -12,4 +12,4 @@ const SCREEN_NAMES = {
 
 }
 
-export {SCREEN_NAMES};
+export { SCREEN_NAMES };
