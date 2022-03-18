@@ -7,7 +7,7 @@ const Button = ({
   titleColor = '#fff',
   titleSize = 14,
   onPress,
-  width = '100%',
+  width = '70%',
   containerStyle
 }) => {
   return (
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: 42,
-    borderRadius: 10,
+    borderRadius: 40,
     paddingHorizontal: 12,
     paddingVertical:12,
     margin:7,

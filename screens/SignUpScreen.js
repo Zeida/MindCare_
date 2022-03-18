@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
-import { Button as RNButton, Image, StyleSheet, Text, View } from 'react-native';
+import { Button as RNButton, Image, StyleSheet, Text, View, ImageBackground } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, ErrorMessage, InputField } from '../components/ComponentsIndex';
 import Firebase from '../config/firebase';
-
 
 const auth = Firebase.auth();
 
@@ -40,83 +40,92 @@ export default function SignupScreen({ navigation }) {
   };
 
   return (
-    <View style={styles.container}>
-      <StatusBar style='dark-content' />
-      <Image
-        style={styles.tinyLogo}
-        source={require('../images/logo.png')}
-      />
-      <Text style={styles.title}>Crear una cuenta</Text>
-      <InputField
-        inputStyle={{
-          fontSize: 14
-        }}
-        containerStyle={{
-          backgroundColor: '#fff',
-          marginBottom: 20
-        }}
-        leftIcon='account'
-        placeholder='¿Cómo te llamas?'
-        autoCapitalize='none'
-        keyboardType='default'
-        textContentType='name'
-        autoFocus={true}
-        value={displayName}
-        onChangeText={text => setDisplayName(text)}
-      />
-      <InputField
-        inputStyle={{
-          fontSize: 14
-        }}
-        containerStyle={{
-          backgroundColor: '#fff',
-          marginBottom: 20
-        }}
-        leftIcon='email'
-        placeholder='Introduce tu correo'
-        autoCapitalize='none'
-        autoCorrect={false}
-        keyboardType='email-address'
-        textContentType='emailAddress'
-        value={email}
-        onChangeText={text => setEmail(text)}
-      />
-      <InputField
-        inputStyle={{
-          fontSize: 14
-        }}
-        containerStyle={{
-          backgroundColor: '#fff',
-          marginBottom: 20
-        }}
-        leftIcon='lock'
-        placeholder='Contraseña'
-        autoCapitalize='none'
-        autoCorrect={false}
-        secureTextEntry={passwordVisibility}
-        textContentType='password'
-        rightIcon={rightIcon}
-        value={password}
-        onChangeText={text => setPassword(text)}
-        handlePasswordVisibility={handlePasswordVisibility}
-      />
-      {signupError ? <ErrorMessage error={signupError} visible={true} /> : null}
-      <Button
-        onPress={onHandleSignup}
-        backgroundColor='#F27C38'
-        title='Registrarme'
-        tileColor='#fff'
-        titleSize={20}
-        containerStyle={{
-          marginBottom: 24
-        }}
-      />
-      <RNButton
-        onPress={() => navigation.navigate('Login')}
-        title='Tengo cuenta'
-        color='#192959'
-      />
-    </View>
+    <SafeAreaView style={styles.container}>
+      <ImageBackground source={require('../images/welcomeBackgroundWave.png')} style={styles.background}>
+        <View style={styles.view}>
+        <StatusBar style='dark-content' />
+          <Image
+            style={styles.tinyLogo}
+            source={require('../images/logo.png')}
+          />
+        <Text style={styles.title}>Crear una cuenta</Text>
+        <InputField
+          inputStyle={{
+            fontSize: 14
+          }}
+          containerStyle={{
+            backgroundColor: '#fff',
+            marginBottom: 20
+          }}
+          leftIcon='account'
+          placeholder='¿Cómo te llamas?'
+          autoCapitalize='none'
+          keyboardType='default'
+          textContentType='name'
+          value={displayName}
+          onChangeText={text => setDisplayName(text)}
+        />
+        <InputField
+          inputStyle={{
+            fontSize: 14
+          }}
+          containerStyle={{
+            backgroundColor: '#fff',
+            marginBottom: 20
+          }}
+          leftIcon='email'
+          placeholder='Introduce tu correo'
+          autoCapitalize='none'
+          autoCorrect={false}
+          keyboardType='email-address'
+          textContentType='emailAddress'
+          value={email}
+          onChangeText={text => setEmail(text)}
+        />
+        <InputField
+          inputStyle={{
+            fontSize: 14
+          }}
+          containerStyle={{
+            backgroundColor: '#fff',
+            marginBottom: 20
+          }}
+          leftIcon='lock'
+          placeholder='Contraseña'
+          autoCapitalize='none'
+          autoCorrect={false}
+          secureTextEntry={passwordVisibility}
+          textContentType='password'
+          rightIcon={rightIcon}
+          value={password}
+          onChangeText={text => setPassword(text)}
+          handlePasswordVisibility={handlePasswordVisibility}
+        />
+        {signupError ? <ErrorMessage error={signupError} visible={true} /> : null}
+        <Button
+          onPress={onHandleSignup}
+          backgroundColor='#F27C38'
+          title='Registrarme'
+          titleColor='#fff'
+          titleSize={20}
+          containerStyle={{
+            marginBottom: 15
+          }}
+        />
+        <Button
+          onPress={() => navigation.navigate('Login')}
+          backgroundColor='#BEDEFF'
+          title='Tengo cuenta'
+          titleColor='#F27C38'
+          titleSize={20}
+          containerStyle={{
+            marginBottom: 15,
+
+          }}
+        />
+        </View>
+      </ImageBackground>
+    </SafeAreaView>
   );
 }
 
@@ -124,10 +133,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#90D0CF',
-    paddingTop: 50,
-    paddingHorizontal: 12,
     justifyContent: 'center',
+  },
+  view: {
+    flex: 1,
     alignItems: 'center',
+    justifyContent: 'center',
   },
   title: {
     fontSize: 24,
@@ -135,5 +146,15 @@ const styles = StyleSheet.create({
     color: '#fff',
     alignSelf: 'center',
     paddingBottom: 24
-  }
+  },
+  background: {
+    flex: 1,
+    resizeMode: 'cover',
+    justifyContent: 'center',
+  },
+  logo: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
