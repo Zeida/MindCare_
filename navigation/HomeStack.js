@@ -12,6 +12,7 @@ import ToDoListScreen from '../screens/ToDoListScreen';
 import AchievementsScreen from '../screens/AchievementsScreen';
 import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
 import EditProfileScreen from '../screens/EditProfileScreen.js';
+import AboutUsCardScreen from '../screens/AboutUsCardsScreen.js';
 
 //Screens names
 const homeScreenName = 'Inicio';
@@ -23,6 +24,7 @@ const editProfileScreenName = 'Mi perfil';
 const bottomTabNavigatorName = 'BottomTabNavigator';
 const cardsForHelpScreenName = 'Ayuda';
 const loginScreenName = 'Login';
+const aboutUsCardScreenName = 'Sobre nosotros';
 
 const Stack = createStackNavigator();
 const BottomNavTabStack = createMaterialBottomTabNavigator();
@@ -99,6 +101,7 @@ export default function HomeStack() {
             <Stack.Screen name={profileScreenName} component={ProfileScreen} />
             <Stack.Screen name={editProfileScreenName} component={EditProfileScreen} options={{ headerTitle: " " }} />
             <Stack.Screen name={cardsForHelpScreenName} component={CardsForHelpScreen} options={{ headerTitle: " " }} />
+            <Stack.Screen name={aboutUsCardScreenName} component={AboutUsCardScreen} options={{ headerTitle: " " }} />
         </Stack.Navigator>
     );
 }

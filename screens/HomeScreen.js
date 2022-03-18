@@ -36,7 +36,7 @@ export default function HomeScreen(props) {
     <SafeAreaView style={styles.container}>
       <StatusBar style='dark-content' />
       <View style={styles.row}>
-        <Text style={styles.title}>Welcome {user.email}!</Text>
+        <Text style={styles.title}>Hola {user.email}!</Text>
         <IconButton
           name='logout'
           size={24}
@@ -60,8 +60,6 @@ export default function HomeScreen(props) {
     </SafeAreaView>
   );
 }
-
-
 
 const styles = StyleSheet.create({
   container: {

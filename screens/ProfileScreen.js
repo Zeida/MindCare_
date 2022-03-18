@@ -74,7 +74,7 @@ const ProfileScreen = (props) => {
       </View>
       <View style={styles.menuWrapper}>
         <TouchableRipple onPress={() => {
-          props.navigation.navigate('Informacion');
+          props.navigation.navigate('Sobre nosotros');
         }}>
           <View style={styles.menuItem}>
             <MaterialCommunityIcons name="lightbulb-on-outline" color={'black'} size={25} />
