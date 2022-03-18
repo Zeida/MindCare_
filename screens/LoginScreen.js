@@ -5,7 +5,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Button, ErrorMessage, InputField } from '../components/ComponentsIndex';
 import Firebase from '../config/firebase';
 
-
 const auth = Firebase.auth();
 
 export default function LoginScreen({ navigation }) {
@@ -34,7 +33,7 @@ export default function LoginScreen({ navigation }) {
       setLoginError(error.message);
     }
   };
-  
+
   const onLoginAnonymously = async () => {
     auth
       .signInAnonymously()
