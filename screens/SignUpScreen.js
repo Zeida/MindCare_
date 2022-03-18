@@ -8,6 +8,7 @@ import Firebase from '../config/firebase';
 const auth = Firebase.auth();
 
 export default function SignupScreen({ navigation }) {
+  const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordVisibility, setPasswordVisibility] = useState(true);
@@ -28,6 +29,10 @@ export default function SignupScreen({ navigation }) {
     try {
       if (email !== '' && password !== '') {
         await auth.createUserWithEmailAndPassword(email, password);
+        // const currentUser = firebase.auth().currentUser;
+        // currentUser.updateProfile({
+        //   displayName: setDisplayName(displayName)
+        // })
       }
     } catch (error) {
       setSignupError(error.message);
@@ -50,12 +55,29 @@ export default function SignupScreen({ navigation }) {
           backgroundColor: '#fff',
           marginBottom: 20
         }}
+        leftIcon='account'
+        placeholder='¿Cómo te llamas?'
+        autoCapitalize='none'
+        keyboardType='default'
+        textContentType='name'
+        autoFocus={true}
+        value={displayName}
+        onChangeText={text => setDisplayName(text)}
+      />
+      <InputField
+        inputStyle={{
+          fontSize: 14
+        }}
+        containerStyle={{
+          backgroundColor: '#fff',
+          marginBottom: 20
+        }}
         leftIcon='email'
         placeholder='Introduce tu correo'
         autoCapitalize='none'
+        autoCorrect={false}
         keyboardType='email-address'
         textContentType='emailAddress'
-        autoFocus={true}
         value={email}
         onChangeText={text => setEmail(text)}
       />
@@ -91,7 +113,7 @@ export default function SignupScreen({ navigation }) {
       />
       <RNButton
         onPress={() => navigation.navigate('Login')}
-        title='Ir a iniciar sesion'
+        title='Tengo cuenta'
         color='#192959'
       />
     </View>

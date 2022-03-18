@@ -2,9 +2,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import AchievementsScreen from '../screens/AchievementsScreen';
-import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
-import EditProfileScreen from '../screens/EditProfileScreen.js';
 
 //Screens
 import HomeScreen from '../screens/HomeScreen.js';
@@ -12,6 +9,9 @@ import LoginScreen from '../screens/LoginScreen.js';
 import ProfileScreen from '../screens/ProfileScreen.js';
 import StatsScreen from '../screens/StatsScreen.js';
 import ToDoListScreen from '../screens/ToDoListScreen';
+import AchievementsScreen from '../screens/AchievementsScreen';
+import CardsForHelpScreen from '../screens/CardsForHelpScreen.js';
+import EditProfileScreen from '../screens/EditProfileScreen.js';
 
 //Screens names
 const homeScreenName = 'Inicio';
@@ -48,6 +48,7 @@ function BottomTabNavigator() {
             />
 
             <BottomNavTabStack.Screen
+
                 name={statsScreenName}
                 component={StatsScreen}
                 options={{
@@ -59,6 +60,7 @@ function BottomTabNavigator() {
             />
 
             <BottomNavTabStack.Screen
+
                 name={achievementsScreenName}
                 component={AchievementsScreen}
                 options={{
@@ -70,6 +72,7 @@ function BottomTabNavigator() {
             />
 
             <BottomNavTabStack.Screen
+
                 name={profileScreenName}
                 component={ProfileScreen}
                 options={{
@@ -83,7 +86,6 @@ function BottomTabNavigator() {
         </BottomNavTabStack.Navigator >
     );
 }
-
 
 export default function HomeStack() {
     return (
