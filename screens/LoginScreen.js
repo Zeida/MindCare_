@@ -33,6 +33,20 @@ export default function LoginScreen({ navigation }) {
       setLoginError(error.message);
     }
   };
+  const onLoginAnonymously = async () => {
+    auth
+      .signInAnonymously()
+      .then(() => {
+        console.log('User signed in anonymously');
+      })
+      .catch(error => {
+        if (error.code === 'auth/operation-not-allowed') {
+          console.log('Enable anonymous in your firebase console.');
+        }
+
+        console.error(error);
+      });
+  };
 
   return (
     <View style={styles.container}>
@@ -92,6 +106,11 @@ export default function LoginScreen({ navigation }) {
       <RNButton
         onPress={() => navigation.navigate('Signup')}
         title='No tengo cuenta'
+        color='#192959'
+      />
+      <Button
+        onPress={onLoginAnonymously}
+        title='No quiero hacerme cuenta'
         color='#192959'
       />
     </View>

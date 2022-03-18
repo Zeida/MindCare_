@@ -53,7 +53,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     minHeight: 42,
     borderRadius: 10,
-    paddingHorizontal: 12
+    paddingHorizontal: 12,
+    paddingVertical:12,
+    margin:7,
   }
 });
 
