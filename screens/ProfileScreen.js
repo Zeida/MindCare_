@@ -2,6 +2,7 @@ import { AntDesign, Fontisto, Ionicons, MaterialCommunityIcons } from '@expo/vec
 import React from 'react';
 import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Avatar, Caption, Text, Title, TouchableRipple } from 'react-native-paper';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import ShareComponent from '../components/ShareComponent';
 
 const ProfileScreen = (props) => {
@@ -90,6 +91,7 @@ const ProfileScreen = (props) => {
       </View>
     </View>
   )
+
 }
 
 
@@ -103,7 +105,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#BEDEFF',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    paddingVertical: 100,
+    paddingVertical: 20,
   },
   container: {
     flex: 1,

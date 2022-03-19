@@ -54,8 +54,8 @@ const styles = StyleSheet.create({
     minHeight: 42,
     borderRadius: 40,
     paddingHorizontal: 12,
-    paddingVertical:12,
-    margin:7,
+    paddingVertical: 12,
+    margin: 7,
   }
 });
 
