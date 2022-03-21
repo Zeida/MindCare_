@@ -1,16 +1,15 @@
-import { StatusBar } from "expo-status-bar";
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import {
+  Animated,
+  Dimensions,
+  Image,
+  SafeAreaView,
   StyleSheet,
   Text,
   View,
-  Image,
-  Dimensions,
-  SafeAreaView,
-  Animated,
+  Pressable,
 } from "react-native";
-
-import { LinearGradient } from "expo-linear-gradient";
 
 const imagenes = [
   "https://images.unsplash.com/photo-1559494007-9f5847c49d94?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80",
@@ -21,6 +20,7 @@ const imagenes = [
   "https://images.unsplash.com/photo-1503756234508-e32369269deb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80",
   "https://images.unsplash.com/photo-1504681869696-d977211a5f4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=652&q=80",
 ];
+
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -55,14 +55,14 @@ function Backdrop({ scrollX }) {
           outputRange: [0, 1, 0],
         });
         return (
-          <Animated.Image
-            key={index}
-            source={{ uri: imagen }}
-            style={[
-              { width: width, height: ALTURA_BACKDROP, opacity },
-              StyleSheet.absoluteFillObject,
-            ]}
-          />
+            <Animated.Image
+              key={index}
+              source={{ uri: imagen }}
+              style={[
+                { width: width, height: ALTURA_BACKDROP, opacity },
+                StyleSheet.absoluteFillObject,
+              ]}
+            />
         );
       })}
       <LinearGradient
@@ -78,11 +78,10 @@ function Backdrop({ scrollX }) {
   );
 }
 
-export default function App() {
+export default function AboutUsCardsScreen() {
   const scrollX = React.useRef(new Animated.Value(0)).current;
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar hidden />
       <Backdrop scrollX={scrollX} />
       <Animated.FlatList
         onScroll={Animated.event(
@@ -124,7 +123,11 @@ export default function App() {
                   transform: [{ translateY: scrollY }],
                 }}
               >
-                <Image source={{ uri: item }} style={styles.posterImage} />
+                <Image
+                  source={{ uri: item }}
+                  style={styles.posterImage}
+                />
+
                 <Text style={{ fontWeight: "bold", fontSize: 26 }}>
                   {" "}
                   Título

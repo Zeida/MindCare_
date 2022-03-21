@@ -1,58 +1,94 @@
-import * as React from 'react';
-import { Dimensions, Text, View } from 'react-native';
-import {
-    StackedBarChart
-} from "react-native-chart-kit";
-
-const screenWidth = Dimensions.get("window").width;
-
-const chartConfig = {
-    backgroundGradientFrom: "#1E2923",
-    backgroundGradientFromOpacity: 0,
-    backgroundGradientTo: "#08130D",
-    backgroundGradientToOpacity: 0.5,
-    color: (opacity = 1) => `rgba(26, 255, 146, ${opacity})`,
-    strokeWidth: 2, // optional, default 3
-    barPercentage: 0.5,
-    useShadowColorFromDataset: false, // optional
-    backgroundColor: "#e26a00",
-    backgroundGradientFrom: "#fb8c00",
-    backgroundGradientTo: "#ffa726",
-    decimalPlaces: 2, // optional, defaults to 2dp
-    color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-    labelColor: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-    style: {
-        borderRadius: 16
-    },
-    propsForDots: {
-        r: "6",
-        strokeWidth: "2",
-        stroke: "#ffa726"
-    }
-};
-
-const data = {
-    labels: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"],
-    data: [
-        [60, 60, 60],
-        [30, 30, 60]
-    ],
-    barColors: ["#47AD6D", "#AD352F", "#FBA27B"]
-};
+import React, { useState } from "react";
+import { Dimensions, Text, View, StyleSheet, Switch } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
+import { daydata, weekdata } from "../data/StatsData";
+import PieChartComponent from "../components/PieChartComponent";
+import Button from "../components/Button";
 export default function StatsScreen({ navigation }) {
-    return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Mis estadísticas de cuidado</ Text>
-            <StackedBarChart
-                style={{
-                    marginVertical: 8,
-                    borderRadius: 16
-                }}
-                data={data}
-                width={350}
-                height={220}
-                chartConfig={chartConfig}
-            />
+  const [isEnabled, setIsEnabled] = useState(false);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+
+  return (
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.switchContainer}>
+          <Text style={styles.switchText}>Día</Text>
+          <Switch
+            style={styles.switch}
+            trackColor={{ false: "#fff", true: "#192959" }}
+            thumbColor={isEnabled ? "#F27C38" : "#777777"}
+            onValueChange={toggleSwitch}
+            value={isEnabled}
+          />
+          <Text style={styles.switchText}>Semana</Text>
+          <Button
+            title="Mi año en pixels"
+            backgroundColor="#192959"
+            onPress={() => navigation.navigate("Inicio")}
+            width="50%"
+            containerStyle={{
+              marginLeft: 35,
+            }}
+          />
         </View>
-    );
+
+        <Text style={styles.text}>Mis estadísticas de cuidado</Text>
+        {isEnabled ? (
+          <View>
+            <Text style={styles.subtext}>Mi semana</Text>
+            <PieChartComponent data={weekdata} />
+          </View>
+        ) : (
+          <View>
+            <Text style={styles.subtext}>Mi día</Text>
+            <PieChartComponent data={daydata} />
+          </View>
+        )}
+      </View>
+    </ScrollView>
+  );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingVertical: 10,
+    margin: 10,
+    marginHorizontal: 10,
+  },
+  text: {
+    fontSize: 20,
+    lineHeight: 30,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "black",
+    marginBottom: 10,
+    textAlign: "center",
+  },
+  subtext: {
+    fontSize: 15,
+    lineHeight: 30,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "black",
+    margin: 5,
+    marginLeft: 20,
+    textAlign: "left",
+  },
+  switchContainer: {
+    margin: 10,
+    marginTop: 40,
+    marginLeft: 20,
+    flexDirection: "row",
+  },
+  switchText: {
+    fontSize: 15,
+    marginTop: 15,
+    paddingRight: 2,
+    fontWeight: "bold",
+  },
+  switch: {
+    paddingLeft: 0,
+  },
+});
