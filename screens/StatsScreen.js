@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Dimensions, Text, View, StyleSheet, Switch } from "react-native";
+import { Text, View, StyleSheet, Switch, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { daydata, weekdata } from "../data/StatsData";
 import PieChartComponent from "../components/PieChartComponent";
@@ -33,6 +33,7 @@ export default function StatsScreen({ navigation }) {
         </View>
 
         <Text style={styles.text}>Mis estadísticas de cuidado</Text>
+        <Image style={styles.image} source={require("../images/stats.png")} />
         {isEnabled ? (
           <View>
             <Text style={styles.subtext}>Mi semana</Text>
@@ -84,11 +85,17 @@ const styles = StyleSheet.create({
   },
   switchText: {
     fontSize: 15,
-    marginTop: 15,
+    marginTop: 18,
     paddingRight: 2,
     fontWeight: "bold",
   },
   switch: {
     paddingLeft: 0,
   },
+  image:{
+    width: 300,
+    height: 250,
+    marginLeft:30,
+    marginRight:30,
+  }
 });

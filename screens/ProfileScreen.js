@@ -37,20 +37,6 @@ const ProfileScreen = (props) => {
         </View>
         <View style={styles.userInfoSection}>
           <View style={styles.row}>
-            <Ionicons name="location-outline" color={"black"} size={20} />
-            <Text style={{ color: "#777777", marginLeft: 20 }}>
-              {" "}
-              Moya, Las Palmas
-            </Text>
-          </View>
-          <View style={styles.row}>
-            <AntDesign name="phone" color={"black"} size={20} />
-            <Text style={{ color: "#777777", marginLeft: 20 }}>
-              {" "}
-              +34 928 11 22 33
-            </Text>
-          </View>
-          <View style={styles.row}>
             <Fontisto name="email" color={"black"} size={20} />
             <Text style={{ color: "#777777", marginLeft: 20 }}>
               {" "}
@@ -162,7 +148,7 @@ const styles = StyleSheet.create({
   },
   userInfoSection: {
     paddingHorizontal: 30,
-    marginBottom: 20,
+    marginBottom: 5,
   },
   title: {
     fontSize: 24,
