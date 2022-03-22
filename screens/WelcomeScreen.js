@@ -26,11 +26,8 @@ export default function WelcomeScreen({ navigation }) {
         source={require("../images/welcomeBackgroundWave.png")}
         style={styles.background}
       >
-        <View style={styles.logo}>
-          <Image
-            style={styles.tinyLogo}
-            source={require("../images/logo.png")}
-          />
+        <View style={styles.logoandtitle}>
+          <Image style={styles.logo} source={require("../images/logo.png")} />
         </View>
         <View style={styles.view}>
           <Text style={styles.title}>Bienvenid@!</Text>
@@ -81,9 +78,15 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    height: 220,
+    width: 220,
+    marginLeft: 60,
+    marginRight: 60,
+    marginBottom: 5,
+    marginTop: 10,
+  },
+  logoandtitle: {
+    margin: 10,
   },
   title: {
     fontSize: 32,
