@@ -23,7 +23,7 @@ export default function WelcomeScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../images/welcomeBackgroundWave.png")}
+        source={require("../images/background.png")}
         style={styles.background}
       >
         <View style={styles.logoandtitle}>

@@ -48,14 +48,13 @@ export default function LoginScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../images/welcomeBackgroundWave.png")}
+        source={require("../images/background.png")}
         style={styles.background}
       >
-        <View style={styles.logoandtitle}>
+        <View style={styles.view}>
           <Image style={styles.logo} source={require("../images/logo.png")} />
           <Text style={styles.title}>Bienvenido de vuelta</Text>
-        </View>
-        <View style={styles.view}>
+        
           <InputField
             inputStyle={{
               fontSize: 14,
@@ -130,6 +129,8 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#fff",
     alignSelf: "center",
+    margin: 20,
+    marginTop:60
   },
   background: {
     flex: 1,
@@ -141,11 +142,11 @@ const styles = StyleSheet.create({
     width: 220,
     marginLeft: 60,
     marginRight: 60,
-    marginBottom: 5,
+    marginBottom: 10,
     marginTop: 10,
   },
   logoandtitle: {
-    margin: 10,
+    
   },
   view: {
     flex: 1,

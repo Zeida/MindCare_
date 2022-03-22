@@ -53,17 +53,13 @@ export default function SignupScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground
-        source={require("../images/welcomeBackgroundWave.png")}
+        source={require("../images/background.png")}
         style={styles.background}
       >
-        <View style={styles.logoandtitle}>
-          <Image
-            style={styles.logo}
-            source={require("../images/logo.png")}
-          />
-          <Text style={styles.title}>Crear una cuenta</Text>
-        </View>
         <View style={styles.view}>
+          <Image style={styles.logo} source={require("../images/logo.png")} />
+          <Text style={styles.title}>Crear una cuenta</Text>
+
           <InputField
             inputStyle={{
               fontSize: 14,
@@ -172,11 +168,11 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#fff",
     alignSelf: "center",
+    margin:20
   },
   background: {
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
   },
-
 });
