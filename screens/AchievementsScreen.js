@@ -6,7 +6,7 @@ export default function AchievementsScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> Has logrado mucho desde que estás aquí </Text>
+      <Text style={styles.text}> Puedo conseguir todo lo que me proponga</Text>
       <Image style={styles.image}
         source={require('../images/achievements.png')}
       />

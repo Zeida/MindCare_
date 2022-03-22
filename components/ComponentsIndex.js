@@ -4,5 +4,5 @@ import IconButton from './IconButton';
 import InputField from './InputField';
 import ChallengeComponent from './ChallengeComponent';
 import ShareComponent from './ShareComponent';
-
-export { IconButton, Button, ErrorMessage, InputField, ShareComponent, ChallengeComponent };
+import EmotionalScaleComponent from './EmotionalScaleComponent';
+export { IconButton, Button, ErrorMessage, InputField, ShareComponent, ChallengeComponent, EmotionalScaleComponent };

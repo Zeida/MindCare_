@@ -1,10 +1,5 @@
-import {
-  AntDesign,
-  Fontisto,
-  Ionicons,
-  MaterialCommunityIcons,
-} from "@expo/vector-icons";
-import React from "react";
+import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
+import React, { useContext } from 'react';
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
@@ -14,10 +9,22 @@ import {
   Title,
   TouchableRipple,
 } from "react-native-paper";
-import { SafeAreaView } from "react-native-safe-area-context";
 import ShareComponent from "../components/ShareComponent";
+import app from "../config/firebase";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+
+const auth = app.auth();
 
 const ProfileScreen = (props) => {
+  const { user } = useContext(AuthenticatedUserContext);
+  const handleSignOut = async () => {
+    try {
+      await auth.signOut();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <ScrollView>
       <View styles={styles.profile}>
@@ -119,7 +126,7 @@ const ProfileScreen = (props) => {
         </View>
         <View style={styles.menuWrapper}>
           <TouchableOpacity
-            onPress={() => {}}
+            onPress={handleSignOut}
             style={[styles.menuItem, styles.buttonLogOut]}
           >
             <Text style={styles.menuItemTextLogOut}>Cerrar sesión</Text>
@@ -186,7 +193,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     paddingVertical: 8,
     paddingHorizontal: 30,
-    marginBottom:2,
+    marginBottom: 2,
   },
   menuItemText: {
     color: "#000000",

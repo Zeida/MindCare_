@@ -22,9 +22,9 @@ export default function StatsScreen({ navigation }) {
           />
           <Text style={styles.switchText}>Semana</Text>
           <Button
-            title="Mi año en pixels"
+            title="Mi diario emocional"
             backgroundColor="#192959"
-            onPress={() => navigation.navigate("Inicio")}
+            onPress={() => navigation.navigate("Diario emocional")}
             width="50%"
             containerStyle={{
               marginLeft: 35,
@@ -92,10 +92,10 @@ const styles = StyleSheet.create({
   switch: {
     paddingLeft: 0,
   },
-  image:{
+  image: {
     width: 300,
     height: 250,
-    marginLeft:30,
-    marginRight:30,
-  }
+    marginLeft: 30,
+    marginRight: 30,
+  },
 });
