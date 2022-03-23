@@ -2,7 +2,7 @@ import React from 'react';
 import { Pressable, StyleSheet } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 
-const IconButton = ({ color, size, onPress, name }) => {
+const IconButtonComponent = ({ color, size, onPress, name }) => {
   return (
     <Pressable
       style={args => {
@@ -32,4 +32,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default IconButton;
+export default IconButtonComponent;

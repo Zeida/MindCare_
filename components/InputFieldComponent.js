@@ -2,7 +2,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
 
-const InputField = ({
+const InputFieldComponent = ({
   leftIcon,
   iconColor = '#000',
   rightIcon,
@@ -64,4 +64,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default InputField;
+export default InputFieldComponent;

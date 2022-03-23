@@ -2,11 +2,9 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { StatusBar } from 'expo-status-bar';
 import React, { useContext } from 'react';
 import { Pressable, SafeAreaView, StyleSheet, Text, View } from 'react-native';
-import { IconButton } from '../components/ComponentsIndex';
+import { IconButtonComponent } from '../components/ComponentsIndex';
 import app from '../config/firebase';
 import { AuthenticatedUserContext } from '../navigation/AuthenticatedUserProvider ';
-
-
 
 const auth = app.auth();
 
@@ -37,7 +35,7 @@ export default function HomeScreen(props) {
       <StatusBar style='dark-content' />
       <View style={styles.row}>
         <Text style={styles.title}>Hola {user.displayName}! </Text>
-        <IconButton
+        <IconButtonComponent
           name='logout'
           size={24}
           color='red'

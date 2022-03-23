@@ -1,7 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text } from 'react-native';
 
-const ErrorMessage = ({ error, visible }) => {
+const ErrorMessageComponent = ({ error, visible }) => {
   if (!error || !visible) {
     return null;
   }
@@ -18,4 +18,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default ErrorMessage;
+export default ErrorMessageComponent;

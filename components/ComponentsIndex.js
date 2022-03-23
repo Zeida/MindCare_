@@ -1,8 +1,8 @@
-import Button from './Button';
-import ErrorMessage from './ErrorMessage';
-import IconButton from './IconButton';
-import InputField from './InputField';
+import ButtonComponent from './ButtonComponent';
+import ErrorMessageComponent from './ErrorMessageComponent';
+import IconButtonComponent from './IconButtonComponent';
+import InputFieldComponent from './InputFieldComponent';
 import ChallengeComponent from './ChallengeComponent';
 import ShareComponent from './ShareComponent';
 import EmotionalScaleComponent from './EmotionalScaleComponent';
-export { IconButton, Button, ErrorMessage, InputField, ShareComponent, ChallengeComponent, EmotionalScaleComponent };
+export { IconButtonComponent, ButtonComponent, ErrorMessageComponent, InputFieldComponent, ShareComponent, ChallengeComponent, EmotionalScaleComponent };

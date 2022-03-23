@@ -2,7 +2,7 @@ import React from "react";
 import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
 import { Button as RNButton } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Button } from "../components/ComponentsIndex";
+import { ButtonComponent } from "../components/ComponentsIndex";
 import Firebase from "../config/firebase";
 const auth = Firebase.auth();
 export default function WelcomeScreen({ navigation }) {
@@ -35,7 +35,7 @@ export default function WelcomeScreen({ navigation }) {
             Estas a un paso de darle al cuidado emocional la importancia que se
             merece.
           </Text>
-          <Button
+          <ButtonComponent
             onPress={() => navigation.navigate("Login")}
             backgroundColor="#F27C38"
             title="Iniciar sesión"
@@ -45,7 +45,7 @@ export default function WelcomeScreen({ navigation }) {
               marginBottom: 15,
             }}
           />
-          <Button
+          <ButtonComponent
             onPress={() => navigation.navigate("Signup")}
             backgroundColor="#BEDEFF"
             title="No tengo cuenta"

@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import {
   Button as RNButton,
@@ -10,9 +9,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
-  Button,
-  ErrorMessage,
-  InputField,
+  ButtonComponent,
+  ErrorMessageComponent,
+  InputFieldComponent,
 } from "../components/ComponentsIndex";
 import Firebase from "../config/firebase";
 
@@ -61,7 +60,7 @@ export default function SignupScreen({ navigation }) {
           <Image style={styles.logo} source={require("../images/logo.png")} />
           <Text style={styles.title}>Crear una cuenta</Text>
 
-          <InputField
+          <InputFieldComponent
             inputStyle={{
               fontSize: 14,
             }}
@@ -77,7 +76,7 @@ export default function SignupScreen({ navigation }) {
             value={displayName}
             onChangeText={(text) => setDisplayName(text)}
           />
-          <InputField
+          <InputFieldComponent
             inputStyle={{
               fontSize: 14,
             }}
@@ -94,7 +93,7 @@ export default function SignupScreen({ navigation }) {
             value={email}
             onChangeText={(text) => setEmail(text)}
           />
-          <InputField
+          <InputFieldComponent
             inputStyle={{
               fontSize: 14,
             }}
@@ -114,9 +113,9 @@ export default function SignupScreen({ navigation }) {
             handlePasswordVisibility={handlePasswordVisibility}
           />
           {signupError ? (
-            <ErrorMessage error={signupError} visible={true} />
+            <ErrorMessageComponent error={signupError} visible={true} />
           ) : null}
-          <Button
+          <ButtonComponent
             onPress={onHandleSignup}
             backgroundColor="#F27C38"
             title="Registrarme"
@@ -126,7 +125,7 @@ export default function SignupScreen({ navigation }) {
               marginBottom: 15,
             }}
           />
-          <Button
+          <ButtonComponent
             onPress={() => navigation.navigate("Login")}
             backgroundColor="#BEDEFF"
             title="Tengo cuenta"

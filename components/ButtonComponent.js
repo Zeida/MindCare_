@@ -1,7 +1,7 @@
 import React from "react";
 import { Pressable, StyleSheet, Text } from "react-native";
 
-const Button = ({
+const ButtonComponent = ({
   title,
   backgroundColor = "#000",
   titleColor = "#fff",
@@ -59,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default ButtonComponent;

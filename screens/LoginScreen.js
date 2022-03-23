@@ -10,9 +10,9 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
-  Button,
-  ErrorMessage,
-  InputField,
+  ButtonComponent,
+  ErrorMessageComponent,
+  InputFieldComponent,
 } from "../components/ComponentsIndex";
 import Firebase from "../config/firebase";
 
@@ -55,7 +55,7 @@ export default function LoginScreen({ navigation }) {
           <Image style={styles.logo} source={require("../images/logo.png")} />
           <Text style={styles.title}>Bienvenido de vuelta</Text>
         
-          <InputField
+          <InputFieldComponent
             inputStyle={{
               fontSize: 14,
             }}
@@ -71,7 +71,7 @@ export default function LoginScreen({ navigation }) {
             value={email}
             onChangeText={(text) => setEmail(text)}
           />
-          <InputField
+          <InputFieldComponent
             inputStyle={{
               fontSize: 14,
             }}
@@ -91,9 +91,9 @@ export default function LoginScreen({ navigation }) {
             handlePasswordVisibility={handlePasswordVisibility}
           />
           {loginError ? (
-            <ErrorMessage error={loginError} visible={true} />
+            <ErrorMessageComponent error={loginError} visible={true} />
           ) : null}
-          <Button
+          <ButtonComponent
             onPress={onLogin}
             backgroundColor="#F27C38"
             title="Iniciar sesión"
@@ -103,7 +103,7 @@ export default function LoginScreen({ navigation }) {
               marginBottom: 15,
             }}
           />
-          <Button
+          <ButtonComponent
             onPress={() => navigation.navigate("Signup")}
             backgroundColor="#BEDEFF"
             title="No tengo cuenta"
