@@ -22,10 +22,6 @@ export default function WelcomeScreen({ navigation }) {
   };
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground
-        source={require("../images/background.png")}
-        style={styles.background}
-      >
         <View style={styles.logoandtitle}>
           <Image style={styles.logo} source={require("../images/logo.png")} />
         </View>
@@ -61,7 +57,6 @@ export default function WelcomeScreen({ navigation }) {
             color="#192959"
           />
         </View>
-      </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -69,7 +64,7 @@ export default function WelcomeScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#90D0CF",
+    backgroundColor: "#fff",
     justifyContent: "center",
   },
   view: {
@@ -91,7 +86,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 32,
     fontWeight: "600",
-    color: "#fff",
+    color: "#192959",
     alignSelf: "center",
     paddingBottom: 10,
     paddingTop: 10,
@@ -99,7 +94,7 @@ const styles = StyleSheet.create({
   subtitle: {
     fontSize: 15,
     fontWeight: "600",
-    color: "#fff",
+    color: "#606060",
     alignSelf: "center",
     paddingBottom: 24,
   },

@@ -47,10 +47,6 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground
-        source={require("../images/background.png")}
-        style={styles.background}
-      >
         <View style={styles.view}>
           <Image style={styles.logo} source={require("../images/logo.png")} />
           <Text style={styles.title}>Bienvenido de vuelta</Text>
@@ -114,7 +110,6 @@ export default function LoginScreen({ navigation }) {
             }}
           />
         </View>
-      </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -122,12 +117,12 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#90D0CF",
+    backgroundColor: "#fff",
   },
   title: {
     fontSize: 24,
     fontWeight: "600",
-    color: "#fff",
+    color: "#192959",
     alignSelf: "center",
     margin: 20,
     marginTop:60

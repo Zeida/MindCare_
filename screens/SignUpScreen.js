@@ -52,10 +52,6 @@ export default function SignupScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ImageBackground
-        source={require("../images/background.png")}
-        style={styles.background}
-      >
         <View style={styles.view}>
           <Image style={styles.logo} source={require("../images/logo.png")} />
           <Text style={styles.title}>Crear una cuenta</Text>
@@ -136,7 +132,6 @@ export default function SignupScreen({ navigation }) {
             }}
           />
         </View>
-      </ImageBackground>
     </SafeAreaView>
   );
 }
@@ -144,7 +139,7 @@ export default function SignupScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#90D0CF",
+    backgroundColor: "#fff",
     justifyContent: "center",
   },
   view: {
@@ -166,7 +161,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 24,
     fontWeight: "600",
-    color: "#fff",
+    color: "#192959",
     alignSelf: "center",
     margin:20
   },

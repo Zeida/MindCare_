@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     width: '100%',
-    fontSize: 18
+    fontSize: 18,
   },
   rightIcon: {
     alignSelf: 'center',
