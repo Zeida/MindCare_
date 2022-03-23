@@ -8,7 +8,7 @@ export default function AchievementsScreen({ navigation }) {
     <View style={styles.container}>
       <Text style={styles.text}> Puedo conseguir todo lo que me proponga</Text>
       <Image style={styles.image}
-        source={require('../images/achievements.png')}
+        source={require('../images/achievements/achievements.png')}
       />
       <ScrollView>
         <Text style={styles.subtext}>Mis insignias:</Text>

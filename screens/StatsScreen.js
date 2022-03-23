@@ -3,7 +3,8 @@ import { Text, View, StyleSheet, Switch, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { daydata, weekdata } from "../data/StatsData";
 import PieChartComponent from "../components/PieChartComponent";
-import Button from "../components/Button";
+import ButtonComponent from "../components/ButtonComponent";
+
 export default function StatsScreen({ navigation }) {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
@@ -21,7 +22,7 @@ export default function StatsScreen({ navigation }) {
             value={isEnabled}
           />
           <Text style={styles.switchText}>Semana</Text>
-          <Button
+          <ButtonComponent
             title="Mi diario emocional"
             backgroundColor="#192959"
             onPress={() => navigation.navigate("Diario emocional")}

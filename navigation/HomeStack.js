@@ -13,6 +13,7 @@ import CardsForHelpScreen from "../screens/CardsForHelpScreen.js";
 import EditProfileScreen from "../screens/EditProfileScreen.js";
 import AboutUsCardScreen from "../screens/AboutUsCardsScreen.js";
 import EmotionalDiaryScreen from "../screens/EmotionalDiaryScreen.js";
+import OnBoardingScreen from "../screens/OnBoardingScreen.js";
 
 //Screens names
 const homeScreenName = "Inicio";
@@ -25,6 +26,7 @@ const bottomTabNavigatorName = "BottomTabNavigator";
 const cardsForHelpScreenName = "Ayuda";
 const aboutUsCardScreenName = "Sobre nosotros";
 const emotionalDiaryScreenName = "Diario emocional";
+const onBoardingScreenName = "onboard";
 
 const Stack = createStackNavigator();
 const BottomNavTabStack = createMaterialBottomTabNavigator();
@@ -90,6 +92,11 @@ export default function HomeStack() {
       <Stack.Screen
         name={bottomTabNavigatorName}
         component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name={onBoardingScreenName}
+        component={OnBoardingScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
