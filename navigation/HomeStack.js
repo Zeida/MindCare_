@@ -95,7 +95,6 @@ export default function HomeStack() {
     return (
         <Stack.Navigator >
             <Stack.Screen name={bottomTabNavigatorName} component={BottomTabNavigator} options={{ headerShown: false }} />
-            <Stack.Screen name={loginScreenName} component={LoginScreen} options={{ headerShown: false }} />
             <Stack.Screen name={homeScreenName} component={HomeScreen} options={{ headerShown: false }} />
             <Stack.Screen name={toDoListScreenName} component={ToDoListScreen} options={{ headerTitle: " " }} />
             <Stack.Screen name={statsScreenName} component={StatsScreen} />
