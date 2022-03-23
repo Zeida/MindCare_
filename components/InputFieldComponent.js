@@ -44,6 +44,8 @@ const InputFieldComponent = ({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 4,
+    borderColor:'black',
+    borderWidth:1,
     flexDirection: 'row',
     paddingVertical: 8,
     paddingHorizontal: 30,
@@ -51,16 +53,22 @@ const styles = StyleSheet.create({
     marginRight:15,
   },
   leftIcon: {
-    marginRight: 10
+    marginRight: 5,
+    marginTop:5,
+    marginBottom:5,
   },
   input: {
     flex: 1,
     width: '100%',
     fontSize: 18,
+    marginTop:2,
+    marginBottom:2,
   },
   rightIcon: {
     alignSelf: 'center',
-    marginLeft: 10
+    marginLeft: 5, 
+    marginTop:5,
+    marginBottom:5,
   }
 });
 

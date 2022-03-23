@@ -1,5 +1,5 @@
-import { Text, StyleSheet, View, Image } from 'react-native'
 import React, { Component } from 'react'
+import { Image, StyleSheet, View } from 'react-native'
 
 export default class SplashScreen extends Component {
   render() {

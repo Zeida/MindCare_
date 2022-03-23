@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
 import { Animated, FlatList, StyleSheet, View } from "react-native";
-import NextButtonComponent from "../components/NextButtonComponent";
-import OnBoardingItemComponent from "../components/OnBoardingItemComponent";
-import PaginatorComponent from "../components/PaginatorComponent";
+import {
+  NextButtonComponent,
+  OnBoardingItemComponent,
+  PaginatorComponent,
+} from "../components/ComponentsIndex";
 import onboardingslidesdata from "../data/OnBoardingSlidesData";
+
 const OnBoardingScreen = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;

@@ -10,7 +10,7 @@ const OnBoardingItemComponent = ({ item }) => {
         source={item.image}
         style={[styles.image, { width, resizeMode: "contain" }]}
       />
-      <View style={{ flex: 0.3 }}>
+      <View style={{ flex: 0.4 }}>
         <Text style={styles.title}>{item.title}</Text>
         <Text style={styles.description}>{item.description}</Text>
       </View>
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   image: {
     flex: 0.7,
     justifyContent: "center",
+    marginTop:40
   },
   title: {
     fontWeight: "800",
@@ -34,6 +35,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: "#493d8a",
     textAlign: "center",
+    marginLeft:20,
+    marginRight:20
   },
   description: {
     fontWeight: "300",

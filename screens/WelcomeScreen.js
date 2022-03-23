@@ -1,10 +1,11 @@
 import React from "react";
-import { Image, ImageBackground, StyleSheet, Text, View } from "react-native";
-import { Button as RNButton } from "react-native";
+import { Button as RNButton, Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { ButtonComponent } from "../components/ComponentsIndex";
 import Firebase from "../config/firebase";
+
 const auth = Firebase.auth();
+
 export default function WelcomeScreen({ navigation }) {
   const onLoginAnonymously = async () => {
     auth
@@ -84,12 +85,13 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   title: {
-    fontSize: 32,
-    fontWeight: "600",
-    color: "#192959",
-    alignSelf: "center",
-    paddingBottom: 10,
-    paddingTop: 10,
+    fontWeight: "800",
+    fontSize: 28,
+    marginBottom: 10,
+    color: "#493d8a",
+    textAlign: "center",
+    marginLeft:20,
+    marginRight:20
   },
   subtitle: {
     fontSize: 15,

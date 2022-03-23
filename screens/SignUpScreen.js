@@ -1,17 +1,15 @@
 import React, { useState } from "react";
 import {
-  Button as RNButton,
   Image,
   StyleSheet,
   Text,
-  View,
-  ImageBackground,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   ButtonComponent,
   ErrorMessageComponent,
-  InputFieldComponent,
+  InputFieldComponent
 } from "../components/ComponentsIndex";
 import Firebase from "../config/firebase";
 

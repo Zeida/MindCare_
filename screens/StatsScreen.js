@@ -4,6 +4,7 @@ import { ScrollView } from "react-native-gesture-handler";
 import { daydata, weekdata } from "../data/StatsData";
 import PieChartComponent from "../components/PieChartComponent";
 import ButtonComponent from "../components/ButtonComponent";
+import { PieChartComponent, ButtonComponent } from "../components/ComponentsIndex";
 
 export default function StatsScreen({ navigation }) {
   const [isEnabled, setIsEnabled] = useState(false);

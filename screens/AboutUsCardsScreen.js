@@ -7,8 +7,7 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  View,
-  Pressable,
+  View
 } from "react-native";
 
 const imagenes = [
@@ -20,7 +19,6 @@ const imagenes = [
   "https://images.unsplash.com/photo-1503756234508-e32369269deb?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1035&q=80",
   "https://images.unsplash.com/photo-1504681869696-d977211a5f4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=652&q=80",
 ];
-
 
 const width = Dimensions.get("window").width;
 const height = Dimensions.get("window").height;
@@ -55,14 +53,14 @@ function Backdrop({ scrollX }) {
           outputRange: [0, 1, 0],
         });
         return (
-            <Animated.Image
-              key={index}
-              source={{ uri: imagen }}
-              style={[
-                { width: width, height: ALTURA_BACKDROP, opacity },
-                StyleSheet.absoluteFillObject,
-              ]}
-            />
+          <Animated.Image
+            key={index}
+            source={{ uri: imagen }}
+            style={[
+              { width: width, height: ALTURA_BACKDROP, opacity },
+              StyleSheet.absoluteFillObject,
+            ]}
+          />
         );
       })}
       <LinearGradient
@@ -123,10 +121,7 @@ export default function AboutUsCardsScreen() {
                   transform: [{ translateY: scrollY }],
                 }}
               >
-                <Image
-                  source={{ uri: item }}
-                  style={styles.posterImage}
-                />
+                <Image source={{ uri: item }} style={styles.posterImage} />
 
                 <Text style={{ fontWeight: "bold", fontSize: 26 }}>
                   {" "}

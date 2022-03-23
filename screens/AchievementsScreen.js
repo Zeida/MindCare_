@@ -1,14 +1,14 @@
 import * as React from "react";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 export default function AchievementsScreen({ navigation }) {
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}> Puedo conseguir todo lo que me proponga</Text>
-      <Image style={styles.image}
-        source={require('../images/achievements/achievements.png')}
+      <Image
+        style={styles.image}
+        source={require("../images/achievements/achievements.png")}
       />
       <ScrollView>
         <Text style={styles.subtext}>Mis insignias:</Text>
@@ -46,10 +46,10 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     textAlign: "left",
   },
-  image:{
+  image: {
     width: 300,
     height: 250,
-    marginLeft:30,
-    marginRight:30,
-  }
+    marginLeft: 30,
+    marginRight: 30,
+  },
 });

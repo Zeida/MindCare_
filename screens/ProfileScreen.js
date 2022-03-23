@@ -1,5 +1,5 @@
 import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
-import React, { useContext } from 'react';
+import React, { useContext } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
@@ -9,7 +9,7 @@ import {
   Title,
   TouchableRipple,
 } from "react-native-paper";
-import ShareComponent from "../components/ShareComponent";
+import { ShareComponent } from "../components/ComponentsIndex";
 import app from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
