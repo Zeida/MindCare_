@@ -37,8 +37,8 @@ const ProfileScreen = (props) => {
               size={80}
             />
             <View style={{ marginLeft: 20 }}>
-              <Title style={styles.title}>Usuario prueba</Title>
-              <Caption style={styles.caption}>@user</Caption>
+              <Title style={styles.title}>{user.displayName}</Title>
+              <Caption style={styles.caption}>@{user.displayName}</Caption>
             </View>
           </View>
         </View>
@@ -47,7 +47,7 @@ const ProfileScreen = (props) => {
             <Fontisto name="email" color={"black"} size={20} />
             <Text style={{ color: "#777777", marginLeft: 20 }}>
               {" "}
-              Correo@email.com
+              {user.email}
             </Text>
           </View>
         </View>

@@ -38,17 +38,18 @@ export default function SignupScreen({ navigation }) {
 
   const onHandleSignup = async () => {
     try {
-      if (email !== "" && password !== "") {
-        await auth.createUserWithEmailAndPassword(email, password);
-        // const currentUser = firebase.auth().currentUser;
-        // currentUser.updateProfile({
-        //   displayName: setDisplayName(displayName)
-        // })
-      }
-    } catch (error) {
-      setSignupError(error.message);
+     return await auth
+        .createUserWithEmailAndPassword(email, password)
+        .then( async (res) => {
+          const update = {
+            displayName: displayName,
+          };
+          await res.user.updateProfile(update)
+        })
+    } catch (e) {
+      console.log(e);
     }
-  };
+  }
 
   return (
     <SafeAreaView style={styles.container}>
