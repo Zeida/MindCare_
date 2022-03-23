@@ -1,10 +1,10 @@
-import React, { useState, useRef } from "react";
-import { View, Text, StyleSheet, FlatList, Animated } from "react-native";
-import onboardingslidesdata from "../data/OnBoardingSlidesData";
+import React, { useRef, useState } from "react";
+import { Animated, FlatList, StyleSheet, View } from "react-native";
+import NextButtonComponent from "../components/NextButtonComponent";
 import OnBoardingItemComponent from "../components/OnBoardingItemComponent";
 import PaginatorComponent from "../components/PaginatorComponent";
-import NextButtonComponent from "../components/NextButtonComponent";
-const OnBoardingScreen = () => {
+import onboardingslidesdata from "../data/OnBoardingSlidesData";
+const OnBoardingScreen = (props) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
@@ -17,7 +17,7 @@ const OnBoardingScreen = () => {
     if (currentIndex < onboardingslidesdata.length - 1) {
       slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      console.log("last item.");
+      props.navigation.navigate("Welcome");
     }
   };
   return (

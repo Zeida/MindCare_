@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  Animated,
-  useWindowDimensions,
-} from "react-native";
+import { Animated, StyleSheet, useWindowDimensions, View } from "react-native";
 
 const PaginatorComponent = ({ data, scrollX }) => {
   const { width } = useWindowDimensions();
@@ -19,11 +13,16 @@ const PaginatorComponent = ({ data, scrollX }) => {
           extrapolate: "clamp",
         });
         const opacity = scrollX.interpolate({
-            inputRange,
-            outputRange:[0.3, 1, 0.3],
-            extrapolate:'clamp'
-        })
-        return <Animated.View style={[styles.dot, { width: dotWidth, opacity }]} key={i.toString()} />;
+          inputRange,
+          outputRange: [0.3, 1, 0.3],
+          extrapolate: "clamp",
+        });
+        return (
+          <Animated.View
+            style={[styles.dot, { width: dotWidth, opacity }]}
+            key={i.toString()}
+          />
+        );
       })}
     </View>
   );

@@ -40,7 +40,7 @@ const NextButtonComponent = ({ percentage, scrollTo }) => {
     return () => {
       progressAnimation.removeAllListeners();
     };
-  },[]);
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -55,7 +55,7 @@ const NextButtonComponent = ({ percentage, scrollTo }) => {
           />
           <Circle
             ref={progressRef}
-            stroke="#f4338f"
+            stroke="#F27C38"
             cx={center}
             cy={center}
             r={radius}
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   },
   button: {
     position: "absolute",
-    backgroundColor: "#f4338f",
+    backgroundColor: "#F27C38",
     borderRadius: 100,
     padding: 20,
   },

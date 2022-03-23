@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View, Text, StyleSheet, FlatList } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import useWindowDimensions from "react-native/Libraries/Utilities/useWindowDimensions";
 
 const OnBoardingItemComponent = ({ item }) => {
