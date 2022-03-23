@@ -1,28 +1,14 @@
 import * as React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { Card, Paragraph, Title } from 'react-native-paper';
-const CARDSFORHELP = [
-    {
-        id: 1,
-        title: 'Teléfono de la esperanza',
-        subtitle: 'Si necesitas contar, cuenta con nosotros',
-        number: '717 003 717',
-        link: 'https://telefonodelaesperanza.org/'
-    },
-    {
-        id: 2,
-        title: 'Psicólogos y psicólogas sin fronteras',
-        subtitle: 'Nuestro lado más humano',
-        number: '960 450 230',
-        link: 'https://www.psicologossinfronteras.org/'
-    },
-];
+import {CardsForHelpData} from "../data/CardsForHelpData";
+
 
 export default function CardsForHelpScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
-            {CARDSFORHELP.map((card) => {
+            {CardsForHelpData.map((card) => {
                 return (
                     <Card key={card.id} value={card.title} style={styles.item}>
                         <Card.Content>
