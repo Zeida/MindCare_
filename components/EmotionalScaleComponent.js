@@ -5,31 +5,31 @@ import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
 const EmotionalScaleComponent = () => {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.icon} onPress={console.log("hey")}>
+      <Pressable style={styles.icon} onPress={()=>{}}>
         <Image
           style={styles.tinyLogo}
           source={require("../images/emotions/emotion1.png")}
         />
       </Pressable>
-      <Pressable style={styles.icon} onPress={console.log("hey")}>
+      <Pressable style={styles.icon} onPress={()=>{}}>
         <Image
           style={styles.tinyLogo}
           source={require("../images/emotions/emotion2.png")}
         />
       </Pressable>
-      <Pressable style={styles.icon} onPress={console.log("shey")}>
+      <Pressable style={styles.icon} onPress={()=>{}}>
         <Image
           style={styles.tinyLogo}
           source={require("../images/emotions/emotion3.png")}
         />
       </Pressable>
-      <Pressable style={styles.icon} onPress={console.log("hey")}>
+      <Pressable style={styles.icon} onPress={()=>{}}>
         <Image
           style={styles.tinyLogo}
           source={require("../images/emotions/emotion4.png")}
         />
       </Pressable>
-      <Pressable style={styles.icon} onPress={console.log("heyd")}>
+      <Pressable style={styles.icon} onPress={()=>{}}>
         <Image
           style={styles.tinyLogo}
           source={require("../images/emotions/emotion5.png")}

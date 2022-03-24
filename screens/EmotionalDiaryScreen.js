@@ -17,9 +17,6 @@ export default function EmotionalDiaryScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 10,
-    margin: 10,
-    marginHorizontal: 10,
   },
   text: {
     fontSize: 20,
