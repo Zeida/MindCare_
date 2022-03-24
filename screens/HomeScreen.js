@@ -9,27 +9,6 @@ import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvide
 const auth = app.auth();
 
 export default function HomeScreen(props) {
-  const challengesScope = [
-    {
-      id: 0,
-      scope: "Cuidado emocional",
-      image: require("../images/home/emotionalcare.png"),
-      title: "Retos de cuidado emocional:",
-    },
-    {
-      id: 1,
-      scope: "Cuidado personal",
-      image: require("../images/home/personalcare.png"),
-      title: "Retos de cuidado personal:",
-    },
-    {
-      id: 2,
-      scope: "Social",
-      image: require("../images/home/socialcare.png"),
-      title: "Retos sociales:",
-    },
-  ];
-
   const { user } = useContext(AuthenticatedUserContext);
   const handleSignOut = async () => {
     try {

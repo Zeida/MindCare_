@@ -1,4 +1,4 @@
-const challengesScope = [
+const ChallengesScopeData = [
     {
       id: 0,
       scope: "Cuidado emocional",
@@ -18,4 +18,4 @@ const challengesScope = [
       title: "Retos sociales:",
     },
   ];
-  export default challengesScope;
+  export default ChallengesScopeData;
