@@ -1,15 +1,9 @@
 import React from "react";
-import { Dimensions, StyleSheet, Text, View } from "react-native";
+import { Dimensions, StyleSheet, View } from "react-native";
 import { ContributionGraph } from "react-native-chart-kit";
 import { ScrollView } from "react-native-gesture-handler";
 import {
-  SOFT_BLUE,
-  ORANGE,
-  SOFT_GREEN,
-  SOFT_PINK,
-  DARK_BLUE,
-  MIDDLE_GREY,
-  SOFT_GREY,
+  DARK_BLUE, ORANGE, SOFT_BLUE, SOFT_GREEN, SOFT_GREY, SOFT_PINK
 } from "../constants/Colors";
 const screenWidth = Dimensions.get("window").width;
 
