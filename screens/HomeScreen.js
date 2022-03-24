@@ -4,8 +4,8 @@ import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TouchableRipple } from "react-native-paper";
 import { IconButtonComponent } from "../components/ComponentsIndex";
 import app from "../config/firebase";
+import ChallengeScopesData from "../data/ChallengeScopesData";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-
 const auth = app.auth();
 
 export default function HomeScreen(props) {
@@ -53,7 +53,7 @@ export default function HomeScreen(props) {
         />
       </View>
       <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
-      {challengesScope.map((challengeScope, index) => {
+      {ChallengeScopesData.map((challengeScope, index) => {
         return (
           <View key={index}>
             <TouchableRipple

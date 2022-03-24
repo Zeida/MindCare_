@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
   },
   text:{
     marginHorizontal:5,
-    fontSize:25,
+    fontSize:20,
 
   }
 });
