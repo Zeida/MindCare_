@@ -14,7 +14,8 @@ const styles = StyleSheet.create({
     color: 'red',
     fontSize: 20,
     marginBottom: 10,
-    fontWeight: '600'
+    fontWeight: '600',
+    marginHorizontal:20
   }
 });
 
