@@ -16,14 +16,15 @@ const styles = StyleSheet.create({
     view: {
         elevation: 5,
         shadowColor: "#E9E9E9",
-        width: '100%',
+        width: '90%',
         paddingVertical: 10,
         paddingHorizontal: 19,
         borderRadius: 15,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: "#E9E9E9",
-        marginBottom: 15
+        marginBottom: 15,
+        marginLeft:20,
     },
     text: {
         fontSize: 15,

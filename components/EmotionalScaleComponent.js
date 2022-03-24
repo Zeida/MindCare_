@@ -1,11 +1,10 @@
 import React from "react";
-import { Image, View, StyleSheet } from "react-native";
-import Pressable from "react-native/Libraries/Components/Pressable/Pressable";
+import { Image, View, StyleSheet, Pressable} from "react-native";
 
 const EmotionalScaleComponent = () => {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.icon} onPress={()=>{}}>
+      <Pressable style={styles.icon} onPress={console.log("hello")}>
         <Image
           style={styles.tinyLogo}
           source={require("../images/emotions/emotion1.png")}

@@ -44,7 +44,7 @@ export default function HomeScreen(props) {
       <StatusBar style="dark-content" />
       <View style={styles.row}>
         <Text style={styles.title}>Hola {user.displayName}! </Text>
-        
+
         <IconButtonComponent
           name="logout"
           size={24}
@@ -64,8 +64,11 @@ export default function HomeScreen(props) {
               }}
               key={index}
             >
-              <Image style={styles.image} source={challengeScope.image}
-              key={index}/>
+              <Image
+                style={styles.image}
+                source={challengeScope.image}
+                key={index}
+              />
             </TouchableRipple>
           </View>
         );

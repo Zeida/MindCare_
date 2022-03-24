@@ -1,6 +1,6 @@
 import ButtonComponent from "./ButtonComponent";
 import ErrorMessageComponent from "./ErrorMessageComponent";
-import IconButtonComponent from "./IconButtonComponent";
+import IconButtonComponent from "./IconButtonComponent.js";
 import InputFieldComponent from "./InputFieldComponent";
 import ChallengeComponent from "./ChallengeComponent";
 import ShareComponent from "./ShareComponent";

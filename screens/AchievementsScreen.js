@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import AchievementComponent from "../components/AchievementComponent";
 
 export default function AchievementsScreen({ navigation }) {
   return (
@@ -10,8 +11,15 @@ export default function AchievementsScreen({ navigation }) {
         style={styles.image}
         source={require("../images/achievements/achievements.png")}
       />
+      <Text style={styles.subtext}>Mis insignias:</Text>
       <ScrollView>
-        <Text style={styles.subtext}>Mis insignias:</Text>
+        <AchievementComponent
+        name="logout"
+        size={25}
+        color="red"
+        borderColor={'black'}
+        onPress={console.log("hey")}
+        text={"insignia prueba"}/>
       </ScrollView>
     </View>
   );
