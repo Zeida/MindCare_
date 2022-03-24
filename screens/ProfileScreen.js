@@ -1,4 +1,8 @@
-import { Fontisto, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  Fontisto,
+  MaterialCommunityIcons,
+  MaterialIcons,
+} from "@expo/vector-icons";
 import React, { useContext } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
@@ -28,29 +32,40 @@ const ProfileScreen = (props) => {
   return (
     <ScrollView>
       <View styles={styles.profile}>
-        <View style={styles.userInfoSection}>
-          <View style={{ flexDirection: "row", marginTop: 100 }}>
-            <Avatar.Image
-              source={{
-                uri: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
-              }}
-              size={80}
+        {user.email === null ? (
+          <View style={styles.anonymousUserContainer}>
+            <MaterialIcons
+              style={styles.iconanonymous}
+              name="person-pin"
+              size={150}
+              color="black"
             />
-            <View style={{ marginLeft: 20 }}>
-              <Title style={styles.title}>{user.displayName}</Title>
-              <Caption style={styles.caption}>@{user.displayName}</Caption>
-            </View>
-          </View>
-        </View>
-        <View style={styles.userInfoSection}>
-          <View style={styles.row}>
-            <Fontisto name="email" color={"black"} size={20} />
-            <Text style={{ color: "#777777", marginLeft: 20 }}>
-              {" "}
-              {user.email}
+            <Text style={styles.anonymousUserText}>
+              Has iniciado sesion de forma anónima
             </Text>
           </View>
-        </View>
+        ) : (
+          <View style={styles.userInfoSection}>
+            <View style={{ flexDirection: "row", marginTop: 100 }}>
+              <Avatar.Image
+                source={{
+                  uri: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+                }}
+                size={80}
+              />
+              <View style={{ marginLeft: 20 }}>
+                <Title style={styles.title}>{user.displayName}</Title>
+                <View style={styles.row}>
+                  <Fontisto name="email" color={"black"} size={20} />
+                  <Text style={{ color: "#777777", marginLeft: 20 }}>
+                    {" "}
+                    {user.email}
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+        )}
         <View style={styles.infoBoxWrapper}>
           <View style={styles.infoBox}>
             <Title>12</Title>
@@ -219,5 +234,17 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     marginBottom: 20,
+  },
+  anonymousUserText: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 20,
+  },
+  anonymousUserContainer: {
+    marginTop: 50,
+    marginBottom: 20,
+  },
+  iconanonymous: {
+    marginHorizontal: 100,
   },
 });

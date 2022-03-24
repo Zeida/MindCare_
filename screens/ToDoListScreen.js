@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import {
-    Alert,
-    FlatList,
-    StatusBar,
-    StyleSheet,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    View
+  Alert,
+  FlatList,
+  StatusBar,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
 } from "react-native";
 import { ChallengeComponent } from "../components/ComponentsIndex";
+import { Entypo } from "@expo/vector-icons";
+
 export default function ToDoListScreen({ route, navigation }) {
   const [list, setList] = useState([]);
   const [value, setValue] = useState("");
-  const { scope } = route.params;
+  const { title } = route.params;
 
   function addText(text) {
     if (value !== "") {
@@ -61,7 +63,7 @@ export default function ToDoListScreen({ route, navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Retos de {scope}</Text>
+      <Text style={styles.text}>{title}</Text>
       <FlatList
         style={{ flex: 1 }}
         data={list}
@@ -85,7 +87,7 @@ export default function ToDoListScreen({ route, navigation }) {
           value={value}
         />
         <TouchableOpacity style={styles.btn} onPress={() => addText(value)}>
-          <Text style={{ fontSize: 35, color: "#E9E9E9" }}>+</Text>
+          <Entypo name="plus" size={24} color="white" />
         </TouchableOpacity>
       </View>
     </View>
@@ -94,10 +96,9 @@ export default function ToDoListScreen({ route, navigation }) {
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: StatusBar.currentHeight + 10,
+    paddingTop: 20,
     flex: 1,
     backgroundColor: "#fff",
-    padding: 19,
   },
   textBoxWrapper: {
     width: "100%",
@@ -118,7 +119,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#E9E9E9",
     height: 42,
     paddingLeft: 15,
-    width: "90%",
+    width: "80%",
     color: "#003131",
     marginRight: 15,
     fontSize: 15,
@@ -134,6 +135,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     alignItems: "center",
     justifyContent: "center",
+    marginRight: 10,
   },
   text: {
     fontSize: 22,
@@ -141,6 +143,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "black",
-    marginBottom: 10,
+    marginBottom: 5,
+    marginLeft: 20,
   },
 });

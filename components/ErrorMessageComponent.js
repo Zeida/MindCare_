@@ -12,7 +12,7 @@ const ErrorMessageComponent = ({ error, visible }) => {
 const styles = StyleSheet.create({
   errorText: {
     color: 'red',
-    fontSize: 20,
+    fontSize: 15,
     marginBottom: 10,
     fontWeight: '600',
     marginHorizontal:20

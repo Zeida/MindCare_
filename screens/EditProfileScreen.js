@@ -1,117 +1,107 @@
-import { Foundation, MaterialCommunityIcons } from '@expo/vector-icons';
-import * as React from 'react';
-import { ImageBackground, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import React, { useContext, useState } from "react";
+import {
+    ImageBackground,
+    StyleSheet,
+    Text, TouchableOpacity,
+    View
+} from "react-native";
+import { InputFieldComponent } from "../components/ComponentsIndex";
+import Firebase from "../config/firebase";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+
+const auth = Firebase.auth();
 
 export default function EditProfileScreen({ navigation }) {
-
-    return (
-        <View style={styles.container}>
-            <View style={{ margin: 20 }}>
-                <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-                    <TouchableOpacity onPress={() => { }}>
-                        <View style={{
-                            height: 100,
-                            width: 100,
-                            borderRadius: 15,
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                        }}>
-                            <ImageBackground
-                                source={{
-                                    uri: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg'
-                                }}
-                                style={{ height: 100, width: 100 }}
-                                imageStyle={{ borderRadius: 15 }}
-                            >
-                            </ImageBackground>
-                        </View>
-                    </TouchableOpacity>
-                    <Text style={{ marginTop: 10, fontSize: 18, fontWeight: 'bold' }}>Username</Text>
-                </View>
-
-                <View style={styles.action}>
-                    <MaterialCommunityIcons name="account" size={20} />
-                    <TextInput
-                        placeholder='Nombre y apellido'
-                        placeholderTextColor='#666666'
-                        autoCorrect={false}
-                        style={[styles.textInput, { color: "#000000" }]} />
-                </View>
-
-                <View style={styles.action}>
-                    <Foundation name="at-sign" size={20} />
-                    <TextInput
-                        placeholder='Nombre usuario'
-                        placeholderTextColor='#666666'
-                        autoCorrect={false}
-                        style={[styles.textInput, { color: "#000000" }]} />
-                </View>
-
-                <View style={styles.action}>
-                    <MaterialCommunityIcons name="map-marker" color={'black'} size={20} />
-                    <TextInput
-                        placeholder='Dirección'
-                        placeholderTextColor='#666666'
-                        autoCorrect={false}
-                        style={[styles.textInput, { color: "#000000" }]} />
-                </View>
-
-                <View style={styles.action}>
-                    <MaterialCommunityIcons name="phone" color={'black'} size={20} />
-                    <TextInput
-                        placeholder='Teléfono'
-                        keyboardType='number-pad'
-                        placeholderTextColor='#666666'
-                        autoCorrect={false}
-                        style={[styles.textInput, { color: "#000000" }]} />
-                </View>
-
-                <View style={styles.action}>
-                    <MaterialCommunityIcons name="email-outline" color={'black'} size={20} />
-                    <TextInput
-                        placeholder='Correo'
-                        placeholderTextColor='#666666'
-                        keyboardType='email-address'
-                        autoCorrect={false}
-                        style={[styles.textInput, { color: "#000000" }]} />
-                </View>
-                <TouchableOpacity style={styles.commandButton} onPress={() => { }}>
-                    <Text style={styles.panelButtonTitle}>Actualizar</Text>
-                </TouchableOpacity>
+  const [displayName, setDisplayName] = useState("");
+  const { user } = useContext(AuthenticatedUserContext);
+  const updateDisplayName = async () => {
+    const update = {
+      displayName: displayName,
+    };
+    try {
+      return await user.updateProfile(update);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  return (
+    <View style={styles.container}>
+      <View style={{ margin: 20 }}>
+        <View style={{ alignItems: "center", justifyContent: "center" }}>
+          <TouchableOpacity onPress={() => {}}>
+            <View
+              style={{
+                height: 100,
+                width: 100,
+                borderRadius: 15,
+                justifyContent: "center",
+                alignItems: "center",
+              }}
+            >
+              <ImageBackground
+                source={{
+                  uri: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+                }}
+                style={{ height: 100, width: 100 }}
+                imageStyle={{ borderRadius: 15 }}
+              ></ImageBackground>
             </View>
+          </TouchableOpacity>
         </View>
-    );
+        <Text
+          style={{
+            margin: 10,
+            textAlign: "center",
+            fontWeight: "bold",
+            fontSize: 15,
+          }}
+        >
+          Actualizar mi perfil
+        </Text>
+        <View style={styles.action}>
+          <InputFieldComponent
+            inputStyle={{
+              fontSize: 14,
+            }}
+            containerStyle={{
+              backgroundColor: "#fff",
+              marginVertical: 20,
+            }}
+            leftIcon="account"
+            placeholder="Nombre"
+            autoCapitalize="none"
+            keyboardType="default"
+            textContentType="name"
+            value={displayName}
+            onChangeText={(text) => setDisplayName(text)}
+          />
+        </View>
+
+        <TouchableOpacity
+          style={styles.commandButton}
+          onPress={updateDisplayName}
+        >
+          <Text style={styles.panelButtonTitle}>Actualizar</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-    },
-    commandButton: {
-        padding: 15,
-        borderRadius: 10,
-        backgroundColor: '#192959',
-        alignItems: 'center',
-        marginTop: 10,
-    },
-    panelButtonTitle: {
-        fontSize: 17,
-        fontWeight: 'bold',
-        color: 'white',
-    },
-    action: {
-        flexDirection: 'row',
-        marginTop: 5,
-        marginBottom: 5,
-        borderBottomWidth: 1,
-        borderBottomColor: '#f2f2f2',
-        paddingBottom: 2,
-    },
-    textInput: {
-        flex: 1,
-        marginTop: 1,
-        marginBottom: 1,
-        paddingLeft: 10,
-        color: '#05375a',
-    },
+  container: {
+    flex: 1,
+  },
+  commandButton: {
+    padding: 15,
+    borderRadius: 10,
+    backgroundColor: "#192959",
+    alignItems: "center",
+    marginTop: 10,
+  },
+  panelButtonTitle: {
+    fontSize: 17,
+    fontWeight: "bold",
+    color: "white",
+  },
 });
