@@ -29,6 +29,9 @@ const chartConfig = {
   backgroundColor: "#e26a00",
   backgroundGradientFrom: "#fff",
   backgroundGradientTo: "#fff",
+  style: {
+    borderRadius: 10,
+  }
 };
 
 const commitsData = [
@@ -50,15 +53,16 @@ const PixelGraphComponent = ({ data }) => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <ContributionGraph
           values={commitsData}
-          endDate={new Date("2022-01-31")}
-          numDays={31}
+          endDate={new Date("2022-12-31")}
+          numDays={200}
           width={screenWidth}
-          height={200}
+          height={500}
           chartConfig={chartConfig}
           horizontal={false}
           showOutOfRangeDays={true}
-          gutterSize={1}
-          squareSize={25}
+          gutterSize={0.5}
+          squareSize={10}
+          showMonthLabels={false}
         />
       </ScrollView>
     </View>

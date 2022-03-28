@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { Card, Paragraph, Title } from 'react-native-paper';
-import {CardsForHelpData} from "../data/CardsForHelpData";
+import CardsForHelpData from "../data/CardsForHelpData";
 
 
 export default function CardsForHelpScreen() {
