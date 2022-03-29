@@ -3,7 +3,7 @@ import { Dimensions, StyleSheet, View } from "react-native";
 import { ContributionGraph } from "react-native-chart-kit";
 import { ScrollView } from "react-native-gesture-handler";
 import {
-  DARK_BLUE, ORANGE, SOFT_BLUE, SOFT_GREEN, SOFT_GREY, SOFT_PINK
+  DARK_BLUE, MIDDLE_BLUE, ORANGE, SOFT_GREEN, SOFT_GREY, SOFT_PINK
 } from "../constants/Colors";
 const screenWidth = Dimensions.get("window").width;
 
@@ -13,15 +13,15 @@ const chartConfig = {
       case 0.15:
         return SOFT_GREY;
       case 0.2:
-        return ORANGE;
-      case 0.4:
-        return SOFT_GREEN;
-      case 0.6:
-        return SOFT_PINK;
-      case 0.8:
         return DARK_BLUE;
+      case 0.4:
+        return MIDDLE_BLUE;
+      case 0.6:
+        return ORANGE;
+      case 0.8:
+        return SOFT_PINK;
       case 1:
-        return SOFT_BLUE;
+        return SOFT_GREEN;
       default:
         return "#ff0000";
     }

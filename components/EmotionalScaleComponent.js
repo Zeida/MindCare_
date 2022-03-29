@@ -1,26 +1,14 @@
 import React from "react";
 import { Image, View, StyleSheet, Pressable } from "react-native";
 import {
-  Entypo, Ionicons, FontAwesome5
+  MaterialCommunityIcons
 } from "@expo/vector-icons";
 
-const EmotionalScaleComponent = () => {
+const EmotionalScaleComponent = (icon, size, color, setValue) => {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.icon} onPress={console.log("hello")}>
-        <FontAwesome5 name="sad-cry" size={24} color="black" />
-      </Pressable>
-      <Pressable style={styles.icon} onPress={() => { }}>
-        <Entypo name="emoji-sad" size={24} color="black" />
-      </Pressable>
-      <Pressable style={styles.icon} onPress={() => { }}>
-        <Entypo name="emoji-neutral" size={24} color="black" />
-      </Pressable>
-      <Pressable style={styles.icon} onPress={() => { }}>
-        <Entypo name="emoji-happy" size={24} color="black" />
-      </Pressable>
-      <Pressable style={styles.icon} onPress={() => { }}>
-        <Ionicons name="happy-outline" size={24} color="black" />
+      <Pressable style={styles.icon} onPress={setValue}>
+        <MaterialCommunityIcons name={icon} size={size} color={color} />
       </Pressable>
     </View>
   );

@@ -44,7 +44,7 @@ export default function ToDoListScreen({ route, navigation }) {
 
   function deleteItem(idx) {
     Alert.alert(
-      "Posponer objetivo",
+      "Posponer reto",
       "¿Quieres descartarlo e intentarlo en otro momento?",
       [
         {
@@ -81,7 +81,7 @@ export default function ToDoListScreen({ route, navigation }) {
       <View style={styles.textBoxWrapper}>
         <TextInput
           style={styles.textInput}
-          placeholder="Añadir nuevo objetivo"
+          placeholder="Añadir nuevo reto"
           placeholderTextColor={"#003131"}
           onChangeText={(text) => setValue(text)}
           value={value}
