@@ -11,6 +11,7 @@ import {
   Title,
   TouchableRipple
 } from "react-native-paper";
+import AlertModalComponent from "../components/AlertModalComponent";
 import { ShareComponent } from "../components/ComponentsIndex";
 import app from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
@@ -29,7 +30,7 @@ const ProfileScreen = (props) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.container}>
       <View styles={styles.profile}>
         {user.email === null ? (
           <View style={styles.anonymousUserContainer}>
@@ -121,27 +122,12 @@ const ProfileScreen = (props) => {
           </View>
         ) : (
           <View style={styles.menuWrapper}>
-            <Modal
-              animationType="slide"
-              transparent={true}
-              visible={modalVisible}
-              onRequestClose={() => {
-                Alert.alert("Modal has been closed.");
-                setModalVisible(!modalVisible);
-              }}
-            >
-              <View style={styles.centeredView}>
-                <View style={styles.modalView}>
-                  <Text style={styles.modalText}>Regístrate para acceder a esta funcionalidad.</Text>
-                  <Pressable
-                    style={[styles.button, styles.buttonClose]}
-                    onPress={() => setModalVisible(!modalVisible)}
-                  >
-                    <Text style={styles.textStyle}>Vale!</Text>
-                  </Pressable>
-                </View>
-              </View>
-            </Modal>
+            <AlertModalComponent
+            modalVisible={modalVisible}
+            setModalVisible={setModalVisible}
+            modalText={'Regístrese para acceder a esta funcionalidad.'}
+            modalOptionText={'Vale!'}/>
+
             <TouchableRipple
               onPress={(() => setModalVisible(true))}
             >
@@ -191,11 +177,13 @@ const ProfileScreen = (props) => {
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
+  container:{
+    backgroundColor: "#fff",
+  },
   profile: {
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#fff",
     flexDirection: "row",
     flexWrap: "wrap",
   },
@@ -203,6 +191,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical:10,
     marginBottom: 5,
+    
   },
   title: {
     fontSize: 24,
@@ -275,6 +264,7 @@ const styles = StyleSheet.create({
   anonymousUserContainer: {
     marginTop: 80,
     marginBottom: 20,
+    
   },
   anonymousUserSubText: {
     textAlign: "center",
@@ -324,6 +314,4 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: "center"
   }
-
-
 });

@@ -14,7 +14,7 @@ const PieChartComponent = ({data}) => {
     <PieChart
       data={data}
       width={screenWidth}
-      height={220}
+      height={255}
       chartConfig={chartConfig}
       accessor={"minutes"}
       backgroundColor={"transparent"}

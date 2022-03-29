@@ -36,12 +36,12 @@ export default function StatsScreen({ navigation }) {
         <Image style={styles.image} source={require("../images/stats.png")} />
         {isEnabled ? (
           <View>
-            <Text style={styles.subtext}>Mis retos cumplidos esta semana</Text>
+            <Text style={styles.subtext}>Mis retos cumplidos esta semana:</Text>
             <PieChartComponent data={weekdata} />
           </View>
         ) : (
           <View>
-            <Text style={styles.subtext}>Mis retos cumplidos hoy</Text>
+            <Text style={styles.subtext}>Mis retos cumplidos hoy:</Text>
             <PieChartComponent data={daydata} />
           </View>
         )}
@@ -54,9 +54,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingVertical: 10,
-    margin: 10,
-    marginHorizontal: 10,
+    backgroundColor: "white",
   },
   text: {
     fontSize: 20,
@@ -79,7 +77,7 @@ const styles = StyleSheet.create({
   },
   switchContainer: {
     margin: 10,
-    marginTop: 40,
+    marginTop: 50,
     marginLeft: 20,
     flexDirection: "row",
   },

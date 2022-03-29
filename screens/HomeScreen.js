@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     paddingVertical: 50,
+    backgroundColor:"#fff"
   },
   text: {
     fontSize: 22,
