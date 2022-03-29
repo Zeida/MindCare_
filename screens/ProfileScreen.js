@@ -44,14 +44,14 @@ const ProfileScreen = (props) => {
           </View>
         ) : (
           <View style={styles.userInfoSection}>
-            <View style={{ flexDirection: "row", marginTop: 100 }}>
+            <View style={{ flexDirection: "row", marginTop: 50 }}>
               <Avatar.Image
                 source={{
                   uri: "https://picsum.photos/700",
                 }}
                 size={80}
               />
-              <View style={{ marginLeft: 20 }}>
+              <View style={{ marginLeft: 30 }}>
                 <Title style={styles.title}>{user.displayName}</Title>
                 <View style={styles.row}>
                   <Fontisto name="email" color={"black"} size={20} />
@@ -195,13 +195,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
-    backgroundColor: "#BEDEFF",
+    backgroundColor: "#fff",
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop: 100,
   },
   userInfoSection: {
     paddingHorizontal: 30,
+    paddingVertical:10,
     marginBottom: 5,
   },
   title: {
@@ -273,7 +273,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   anonymousUserContainer: {
-    marginTop: 100,
+    marginTop: 80,
     marginBottom: 20,
   },
   anonymousUserSubText: {

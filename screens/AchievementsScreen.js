@@ -29,9 +29,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    paddingVertical: 60,
-    margin: 10,
-    marginHorizontal: 10,
+    backgroundColor: "#fff",
   },
   text: {
     fontSize: 20,
@@ -39,10 +37,11 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "black",
-    marginBottom: 10,
-    marginLeft: 30,
-    marginRight: 30,
     textAlign: "center",
+    paddingVertical: 10,
+    marginTop:50,
+    margin: 10,
+    marginHorizontal: 10,
   },
   subtext: {
     fontSize: 15,
@@ -57,7 +56,6 @@ const styles = StyleSheet.create({
   image: {
     width: 300,
     height: 250,
-    marginLeft: 30,
-    marginRight: 30,
+    alignSelf:'center'
   },
 });

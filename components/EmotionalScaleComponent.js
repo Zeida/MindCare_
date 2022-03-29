@@ -1,38 +1,26 @@
 import React from "react";
-import { Image, View, StyleSheet, Pressable} from "react-native";
+import { Image, View, StyleSheet, Pressable } from "react-native";
+import {
+  Entypo, Ionicons, FontAwesome5
+} from "@expo/vector-icons";
 
 const EmotionalScaleComponent = () => {
   return (
     <View style={styles.container}>
       <Pressable style={styles.icon} onPress={console.log("hello")}>
-        <Image
-          style={styles.tinyLogo}
-          source={require("../images/emotions/emotion1.png")}
-        />
+        <FontAwesome5 name="sad-cry" size={24} color="black" />
       </Pressable>
-      <Pressable style={styles.icon} onPress={()=>{}}>
-        <Image
-          style={styles.tinyLogo}
-          source={require("../images/emotions/emotion2.png")}
-        />
+      <Pressable style={styles.icon} onPress={() => { }}>
+        <Entypo name="emoji-sad" size={24} color="black" />
       </Pressable>
-      <Pressable style={styles.icon} onPress={()=>{}}>
-        <Image
-          style={styles.tinyLogo}
-          source={require("../images/emotions/emotion3.png")}
-        />
+      <Pressable style={styles.icon} onPress={() => { }}>
+        <Entypo name="emoji-neutral" size={24} color="black" />
       </Pressable>
-      <Pressable style={styles.icon} onPress={()=>{}}>
-        <Image
-          style={styles.tinyLogo}
-          source={require("../images/emotions/emotion4.png")}
-        />
+      <Pressable style={styles.icon} onPress={() => { }}>
+        <Entypo name="emoji-happy" size={24} color="black" />
       </Pressable>
-      <Pressable style={styles.icon} onPress={()=>{}}>
-        <Image
-          style={styles.tinyLogo}
-          source={require("../images/emotions/emotion5.png")}
-        />
+      <Pressable style={styles.icon} onPress={() => { }}>
+        <Ionicons name="happy-outline" size={24} color="black" />
       </Pressable>
     </View>
   );

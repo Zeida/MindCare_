@@ -49,7 +49,7 @@ export default function EditProfileScreen({ navigation }) {
                 imageStyle={{ borderRadius: 15 }}
               ></ImageBackground>
             </View>
-            {signupError ? (
+            {updateError ? (
               <ErrorMessageComponent error={updateError} visible={true} />
             ) : null}
           </TouchableOpacity>
