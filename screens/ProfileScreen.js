@@ -1,8 +1,8 @@
 import {
   Fontisto, Ionicons, MaterialCommunityIcons
 } from "@expo/vector-icons";
-import React, { useContext } from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import React, { useContext, useState } from "react";
+import { StyleSheet, TouchableOpacity, View, Alert, Modal, Pressable } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
   Avatar,
@@ -26,6 +26,7 @@ const ProfileScreen = (props) => {
       console.log(error);
     }
   };
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <ScrollView>
@@ -38,7 +39,7 @@ const ProfileScreen = (props) => {
 
             <Text style={styles.anonymousUserSubText}>
               <Ionicons style={styles.anonymousUserSubTextIcon} name="warning-outline" size={14} color="red" />
-               Si cierra sesión perderá sus progresos.
+              Si cierra sesión perderá sus progresos.
             </Text>
           </View>
         ) : (
@@ -74,7 +75,7 @@ const ProfileScreen = (props) => {
           </View>
         </View>
         <View style={styles.menuWrapper}>
-          <TouchableRipple onPress={() => {props.navigation.navigate("Mi lugar seguro"); }}>
+          <TouchableRipple onPress={() => { props.navigation.navigate("Mi lugar seguro"); }}>
             <View style={styles.menuItem}>
               <MaterialCommunityIcons
                 name="treasure-chest"
@@ -101,22 +102,60 @@ const ProfileScreen = (props) => {
             </View>
           </TouchableRipple>
         </View>
-        <View style={styles.menuWrapper}>
-          <TouchableRipple
-            onPress={() => {
-              props.navigation.navigate("Mi perfil");
-            }}
-          >
-            <View style={styles.menuItem}>
-              <MaterialCommunityIcons
-                name="account-edit"
-                color={"black"}
-                size={25}
-              />
-              <Text style={styles.menuItemText}>Editar mi perfil</Text>
-            </View>
-          </TouchableRipple>
-        </View>
+        {user.email != null ? (
+          <View style={styles.menuWrapper}>
+            <TouchableRipple
+              onPress={() => {
+                props.navigation.navigate("Mi perfil");
+              }}
+            >
+              <View style={styles.menuItem}>
+                <MaterialCommunityIcons
+                  name="account-edit"
+                  color={"black"}
+                  size={25}
+                />
+                <Text style={styles.menuItemText}>Editar mi perfil</Text>
+              </View>
+            </TouchableRipple>
+          </View>
+        ) : (
+          <View style={styles.menuWrapper}>
+            <Modal
+              animationType="slide"
+              transparent={true}
+              visible={modalVisible}
+              onRequestClose={() => {
+                Alert.alert("Modal has been closed.");
+                setModalVisible(!modalVisible);
+              }}
+            >
+              <View style={styles.centeredView}>
+                <View style={styles.modalView}>
+                  <Text style={styles.modalText}>Regístrate para acceder a esta funcionalidad.</Text>
+                  <Pressable
+                    style={[styles.button, styles.buttonClose]}
+                    onPress={() => setModalVisible(!modalVisible)}
+                  >
+                    <Text style={styles.textStyle}>Vale!</Text>
+                  </Pressable>
+                </View>
+              </View>
+            </Modal>
+            <TouchableRipple
+              onPress={(() => setModalVisible(true))}
+            >
+              <View style={styles.menuItem}>
+                <MaterialCommunityIcons
+                  name="account-edit"
+                  color={"black"}
+                  size={25}
+                />
+                <Text style={styles.menuItemText}>Editar mi perfil</Text>
+              </View>
+            </TouchableRipple>
+          </View>
+        )}
         <View style={styles.menuWrapper}>
           <ShareComponent />
         </View>
@@ -159,7 +198,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#BEDEFF",
     flexDirection: "row",
     flexWrap: "wrap",
-    marginTop:100,
+    marginTop: 100,
   },
   userInfoSection: {
     paddingHorizontal: 30,
@@ -223,7 +262,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     justifyContent: "center",
     backgroundColor: "#FA3C35",
-    borderRadius: 10,
+    borderRadius: 40,
     marginLeft: 20,
     marginRight: 20,
     marginBottom: 20,
@@ -241,9 +280,50 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 12,
-    padding:10,
-    marginLeft:3,
+    padding: 10,
+    marginLeft: 3,
   },
+  centeredView: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    marginTop: 22
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: 35,
+    alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5
+  },
+  button: {
+    borderRadius: 40,
+    padding: 10,
+    elevation: 2
+  },
+  buttonOpen: {
+    backgroundColor: "#F27C38",
+  },
+  buttonClose: {
+    backgroundColor: "#F27C38",
+  },
+  textStyle: {
+    color: "white",
+    fontWeight: "bold",
+    textAlign: "center"
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: "center"
+  }
 
-  
+
 });
