@@ -46,7 +46,7 @@ const ProfileScreen = (props) => {
             <View style={{ flexDirection: "row", marginTop: 100 }}>
               <Avatar.Image
                 source={{
-                  uri: "https://rickandmortyapi.com/api/character/avatar/2.jpeg",
+                  uri: "https://picsum.photos/700",
                 }}
                 size={80}
               />
@@ -54,7 +54,7 @@ const ProfileScreen = (props) => {
                 <Title style={styles.title}>{user.displayName}</Title>
                 <View style={styles.row}>
                   <Fontisto name="email" color={"black"} size={20} />
-                  <Text style={{ color: "#777777", marginLeft: 20 }}>
+                  <Text style={{ color: "#777777", marginLeft: 5 }}>
                     {" "}
                     {user.email}
                   </Text>

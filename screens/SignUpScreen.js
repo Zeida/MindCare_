@@ -43,8 +43,9 @@ export default function SignupScreen({ navigation }) {
           };
           await res.user.updateProfile(update)
         })
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
+      setSignupError(error.message);
     }
   }
 
