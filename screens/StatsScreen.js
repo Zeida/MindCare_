@@ -36,12 +36,12 @@ export default function StatsScreen({ navigation }) {
         <Image style={styles.image} source={require("../images/stats.png")} />
         {isEnabled ? (
           <View>
-            <Text style={styles.subtext}>Mi semana</Text>
+            <Text style={styles.subtext}>Mis retos cumplidos esta semana</Text>
             <PieChartComponent data={weekdata} />
           </View>
         ) : (
           <View>
-            <Text style={styles.subtext}>Mi día</Text>
+            <Text style={styles.subtext}>Mis retos cumplidos hoy</Text>
             <PieChartComponent data={daydata} />
           </View>
         )}

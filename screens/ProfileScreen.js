@@ -1,7 +1,5 @@
 import {
-  Fontisto,
-  MaterialCommunityIcons,
-  MaterialIcons,
+  Fontisto, Ionicons, MaterialCommunityIcons
 } from "@expo/vector-icons";
 import React, { useContext } from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
@@ -11,7 +9,7 @@ import {
   Caption,
   Text,
   Title,
-  TouchableRipple,
+  TouchableRipple
 } from "react-native-paper";
 import { ShareComponent } from "../components/ComponentsIndex";
 import app from "../config/firebase";
@@ -34,14 +32,13 @@ const ProfileScreen = (props) => {
       <View styles={styles.profile}>
         {user.email === null ? (
           <View style={styles.anonymousUserContainer}>
-            <MaterialIcons
-              style={styles.iconanonymous}
-              name="person-pin"
-              size={150}
-              color="black"
-            />
             <Text style={styles.anonymousUserText}>
-              Has iniciado sesion de forma anónima
+              Has iniciado sesion de forma anónima.
+            </Text>
+
+            <Text style={styles.anonymousUserSubText}>
+              <Ionicons style={styles.anonymousUserSubTextIcon} name="warning-outline" size={14} color="red" />
+               Si cierra sesión perderá sus progresos.
             </Text>
           </View>
         ) : (
@@ -72,12 +69,12 @@ const ProfileScreen = (props) => {
             <Caption>Insignias</Caption>
           </View>
           <View style={styles.infoBox}>
-            <Title>16h</Title>
-            <Caption>Dedicadas</Caption>
+            <Title>16</Title>
+            <Caption>Retos completados</Caption>
           </View>
         </View>
         <View style={styles.menuWrapper}>
-          <TouchableRipple onPress={() => {}}>
+          <TouchableRipple onPress={() => {props.navigation.navigate("Mi lugar seguro"); }}>
             <View style={styles.menuItem}>
               <MaterialCommunityIcons
                 name="treasure-chest"
@@ -162,11 +159,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#BEDEFF",
     flexDirection: "row",
     flexWrap: "wrap",
-    paddingVertical: 10,
-  },
-  container: {
-    flex: 1,
-    backgroundColor: "#BEDEFF",
+    marginTop:100,
   },
   userInfoSection: {
     paddingHorizontal: 30,
@@ -238,13 +231,19 @@ const styles = StyleSheet.create({
   anonymousUserText: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 18,
   },
   anonymousUserContainer: {
-    marginTop: 50,
+    marginTop: 100,
     marginBottom: 20,
   },
-  iconanonymous: {
-    marginHorizontal: 100,
+  anonymousUserSubText: {
+    textAlign: "center",
+    fontWeight: "bold",
+    fontSize: 12,
+    padding:10,
+    marginLeft:3,
   },
+
+  
 });

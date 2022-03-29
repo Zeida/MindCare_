@@ -28,7 +28,8 @@ export default function CardsForHelpScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 10
+        marginTop: 10,
+        padding:10,
     },
     item: {
         backgroundColor: '#BEDEFF',

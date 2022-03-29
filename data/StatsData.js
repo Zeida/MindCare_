@@ -22,28 +22,21 @@ const months = [
 
 const daydata = [
   {
-    name: "h C. Emocional",
-    minutes: 30,
+    name: "Emocional",
+    minutes: 5,
     color: "#F2989A",
     legendFontColor: "#000000",
     legendFontSize: 10,
   },
   {
-    name: "h C. físico",
-    minutes: 20,
-    color: "#F27C38",
-    legendFontColor: "#000000",
-    legendFontSize: 10,
-  },
-  {
-    name: "h Meditando",
-    minutes: 15,
+    name: "Personal",
+    minutes: 5,
     color: "#74C4AB",
     legendFontColor: "#000000",
     legendFontSize: 10,
   },
   {
-    name: "h Descansando",
+    name: "Social",
     minutes: 10,
     color: "#90D0CF",
     legendFontColor: "#000000",
@@ -53,29 +46,22 @@ const daydata = [
 
 const weekdata = [
   {
-    name: "h C. Emocional",
-    minutes: 100,
+    name: "Emocional",
+    minutes: 20,
     color: "#F2989A",
     legendFontColor: "#000000",
     legendFontSize: 10,
   },
   {
-    name: "h C. físico",
-    minutes: 50,
-    color: "#F27C38",
-    legendFontColor: "#000000",
-    legendFontSize: 10,
-  },
-  {
-    name: "h Meditando",
-    minutes: 65,
+    name: "Personal",
+    minutes: 35,
     color: "#74C4AB",
     legendFontColor: "#000000",
     legendFontSize: 10,
   },
   {
-    name: "h Descansando",
-    minutes: 90,
+    name: "Social",
+    minutes: 40,
     color: "#90D0CF",
     legendFontColor: "#000000",
     legendFontSize: 10,

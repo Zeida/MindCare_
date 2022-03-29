@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     flexDirection: "row",
     flexWrap: "wrap",
-    paddingVertical: 80,
+    paddingVertical: 50,
   },
   text: {
     fontSize: 22,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "black",
-    marginBottom: 10,
+    margin:10
   },
   title: {
     fontSize: 24,
