@@ -80,6 +80,7 @@ const styles = StyleSheet.create({
     marginRight: 60,
     marginBottom: 5,
     marginTop: 10,
+    alignSelf:'center'
   },
   logoandtitle: {
     margin: 10,
