@@ -1,18 +1,20 @@
 import React, { useContext, useState } from "react";
 import {
-    ImageBackground,
-    StyleSheet,
-    Text, TouchableOpacity,
-    View
+  ImageBackground,
+  StyleSheet,
+  Text, TouchableOpacity,
+  View
 } from "react-native";
 import { InputFieldComponent } from "../components/ComponentsIndex";
 import Firebase from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+import ErrorMessageComponent from "../components/ErrorMessageComponent";
 
 const auth = Firebase.auth();
 
 export default function EditProfileScreen({ navigation }) {
   const [displayName, setDisplayName] = useState("");
+  const [updateError, setUpdateError] = useState("");
   const { user } = useContext(AuthenticatedUserContext);
   const updateDisplayName = async () => {
     const update = {
@@ -20,15 +22,16 @@ export default function EditProfileScreen({ navigation }) {
     };
     try {
       return await user.updateProfile(update);
-    } catch (e) {
-      console.log(e);
+    } catch (error) {
+      console.log(error);
+      setUpdateError(error.message);
     }
   };
   return (
     <View style={styles.container}>
       <View style={{ margin: 20 }}>
         <View style={{ alignItems: "center", justifyContent: "center" }}>
-          <TouchableOpacity onPress={() => {}}>
+          <TouchableOpacity onPress={() => { }}>
             <View
               style={{
                 height: 100,
@@ -46,6 +49,9 @@ export default function EditProfileScreen({ navigation }) {
                 imageStyle={{ borderRadius: 15 }}
               ></ImageBackground>
             </View>
+            {signupError ? (
+              <ErrorMessageComponent error={updateError} visible={true} />
+            ) : null}
           </TouchableOpacity>
         </View>
         <Text
