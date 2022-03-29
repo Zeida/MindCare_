@@ -8,7 +8,7 @@ const ShareComponent = () => {
         try {
             const result = await Share.share({
                 message:
-                    'MindCare | Descarga esta aplicacion y empieza a darle la importancia que se merece al cuidado emocional.',
+                    'MindCare | Descarga esta aplicacion y empieza a darle la importancia que se merece a la salud mental.',
             });
 
         } catch (error) {
