@@ -1,14 +1,38 @@
 import React from "react";
-import { Image, View, StyleSheet, Pressable } from "react-native";
-import {
-  MaterialCommunityIcons
-} from "@expo/vector-icons";
+import { Image, View, StyleSheet, Pressable} from "react-native";
 
-const EmotionalScaleComponent = (icon, size, color, setValue) => {
+const EmotionalScaleComponent = () => {
   return (
     <View style={styles.container}>
-      <Pressable style={styles.icon} onPress={setValue}>
-        <MaterialCommunityIcons name={icon} size={size} color={color} />
+      <Pressable style={styles.icon} onPress={console.log("hello")}>
+        <Image
+          style={styles.tinyLogo}
+          source={require("../images/emotions/emotion1.png")}
+        />
+      </Pressable>
+      <Pressable style={styles.icon} onPress={()=>{}}>
+        <Image
+          style={styles.tinyLogo}
+          source={require("../images/emotions/emotion2.png")}
+        />
+      </Pressable>
+      <Pressable style={styles.icon} onPress={()=>{}}>
+        <Image
+          style={styles.tinyLogo}
+          source={require("../images/emotions/emotion3.png")}
+        />
+      </Pressable>
+      <Pressable style={styles.icon} onPress={()=>{}}>
+        <Image
+          style={styles.tinyLogo}
+          source={require("../images/emotions/emotion4.png")}
+        />
+      </Pressable>
+      <Pressable style={styles.icon} onPress={()=>{}}>
+        <Image
+          style={styles.tinyLogo}
+          source={require("../images/emotions/emotion5.png")}
+        />
       </Pressable>
     </View>
   );
