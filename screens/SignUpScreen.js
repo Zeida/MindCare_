@@ -1,15 +1,10 @@
 import React, { useState } from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  View
-} from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
   ButtonComponent,
   ErrorMessageComponent,
-  InputFieldComponent
+  InputFieldComponent,
 } from "../components/ComponentsIndex";
 import Firebase from "../config/firebase";
 
@@ -35,102 +30,112 @@ export default function SignupScreen({ navigation }) {
 
   const onHandleSignup = async () => {
     try {
-     return await auth
+      return await auth
         .createUserWithEmailAndPassword(email, password)
-        .then( async (res) => {
+        .then(async (res) => {
           const update = {
             displayName: displayName,
           };
-          await res.user.updateProfile(update)
-        })
+          await res.user.updateProfile(update);
+        });
     } catch (error) {
+      switch (error.code) {
+        case "auth/weak-password":
+          return setSignupError("La contraseña no es muy segura.");
+        case "auth/invalid-email":
+          return setSignupError("Este correo no es válido.");
+        case "auth/email-already-in-use":
+          return setSignupError("Ya existe una cuenta con este correo.");
+        default:
+          return setSignupError(error.message);
+      }
+
       console.log(error);
-      setSignupError(error.message);
     }
-  }
+  };
 
   return (
     <SafeAreaView style={styles.container}>
-        <View style={styles.view}>
-          <Image style={styles.logo} source={require("../images/logo.png")} />
-          <Text style={styles.title}>Crear una cuenta</Text>
+      <View style={styles.view}>
+        <Image style={styles.logo} source={require("../images/logo.png")} />
+        <Text style={styles.title}>Crear una cuenta</Text>
 
-          <InputFieldComponent
-            inputStyle={{
-              fontSize: 14,
-            }}
-            containerStyle={{
-              backgroundColor: "#fff",
-              marginBottom: 20,
-            }}
-            leftIcon="account"
-            placeholder="¿Cómo te llamas?"
-            autoCapitalize="none"
-            keyboardType="default"
-            textContentType="name"
-            value={displayName}
-            onChangeText={(text) => setDisplayName(text)}
-          />
-          <InputFieldComponent
-            inputStyle={{
-              fontSize: 14,
-            }}
-            containerStyle={{
-              backgroundColor: "#fff",
-              marginBottom: 20,
-            }}
-            leftIcon="email"
-            placeholder="Introduce tu correo"
-            autoCapitalize="none"
-            autoCorrect={false}
-            keyboardType="email-address"
-            textContentType="emailAddress"
-            value={email}
-            onChangeText={(text) => setEmail(text)}
-          />
-          <InputFieldComponent
-            inputStyle={{
-              fontSize: 14,
-            }}
-            containerStyle={{
-              backgroundColor: "#fff",
-              marginBottom: 20,
-            }}
-            leftIcon="lock"
-            placeholder="Contraseña"
-            autoCapitalize="none"
-            autoCorrect={false}
-            secureTextEntry={passwordVisibility}
-            textContentType="password"
-            rightIcon={rightIcon}
-            value={password}
-            onChangeText={(text) => setPassword(text)}
-            handlePasswordVisibility={handlePasswordVisibility}
-          />
-          {signupError ? (
-            <ErrorMessageComponent error={signupError} visible={true} />
-          ) : null}
-          <ButtonComponent
-            onPress={onHandleSignup}
-            backgroundColor="#F27C38"
-            title="Registrarme"
-            titleColor="#fff"
-            titleSize={20}
-            containerStyle={{
-              marginBottom: 15,
-            }}
-          />
-          <ButtonComponent
-            onPress={() => navigation.navigate("Login")}
-            backgroundColor="#BEDEFF"
-            title="Tengo cuenta"
-            titleColor="#F27C38"
-            titleSize={20}
-            containerStyle={{
-              marginBottom: 15,
-            }}
-          />
-        </View>
+        <InputFieldComponent
+          inputStyle={{
+            fontSize: 14,
+          }}
+          containerStyle={{
+            backgroundColor: "#fff",
+            marginBottom: 20,
+          }}
+          leftIcon="account"
+          placeholder="¿Cómo te llamas?"
+          autoCapitalize="none"
+          keyboardType="default"
+          textContentType="name"
+          value={displayName}
+          onChangeText={(text) => setDisplayName(text)}
+        />
+        <InputFieldComponent
+          inputStyle={{
+            fontSize: 14,
+          }}
+          containerStyle={{
+            backgroundColor: "#fff",
+            marginBottom: 20,
+          }}
+          leftIcon="email"
+          placeholder="Introduce tu correo"
+          autoCapitalize="none"
+          autoCorrect={false}
+          keyboardType="email-address"
+          textContentType="emailAddress"
+          value={email}
+          onChangeText={(text) => setEmail(text)}
+        />
+        <InputFieldComponent
+          inputStyle={{
+            fontSize: 14,
+          }}
+          containerStyle={{
+            backgroundColor: "#fff",
+            marginBottom: 20,
+          }}
+          leftIcon="lock"
+          placeholder="Contraseña"
+          autoCapitalize="none"
+          autoCorrect={false}
+          secureTextEntry={passwordVisibility}
+          textContentType="password"
+          rightIcon={rightIcon}
+          value={password}
+          onChangeText={(text) => setPassword(text)}
+          handlePasswordVisibility={handlePasswordVisibility}
+        />
+        {signupError ? (
+          <ErrorMessageComponent error={signupError} visible={true} />
+        ) : null}
+        <ButtonComponent
+          onPress={onHandleSignup}
+          backgroundColor="#F27C38"
+          title="Registrarme"
+          titleColor="#fff"
+          titleSize={20}
+          containerStyle={{
+            marginBottom: 15,
+          }}
+        />
+        <ButtonComponent
+          onPress={() => navigation.navigate("Login")}
+          backgroundColor="#BEDEFF"
+          title="Tengo cuenta"
+          titleColor="#F27C38"
+          titleSize={20}
+          containerStyle={{
+            marginBottom: 15,
+          }}
+        />
+      </View>
     </SafeAreaView>
   );
 }
@@ -162,7 +167,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     color: "#192959",
     alignSelf: "center",
-    margin:20
+    margin: 20,
   },
   background: {
     flex: 1,

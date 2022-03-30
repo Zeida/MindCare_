@@ -33,7 +33,16 @@ export default function LoginScreen({ navigation }) {
         await auth.signInWithEmailAndPassword(email, password);
       }
     } catch (error) {
-      setLoginError(error.message);
+        switch (error.code) {
+          case "auth/user-not-found":
+            return setSignupError("No existe un usuario con este correo.");
+          case "auth/wrong-password":
+            return setSignupError("La contraseña es incorrecta.");
+          case "auth/invalid-email":
+            return setSignupError("Este correo no es válido.");
+          default:
+            return setSignupError(error.message);
+        }
     }
   };
 

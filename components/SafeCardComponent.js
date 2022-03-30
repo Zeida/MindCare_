@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
-import {SOFT_BLUE, MIDDLE_GREY, SOFT_PINK, SOFT_GREEN} from "../constants/Colors";
+import { StyleSheet, Text, View } from "react-native";
+import { MIDDLE_GREY, SOFT_BLUE } from "../constants/Colors";
 
 const SafeCardComponent = ({ safeCard }) => {
     return (
