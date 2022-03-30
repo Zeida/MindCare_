@@ -32,6 +32,11 @@ const styles = StyleSheet.create({
         alignSelf: "flex-end",
         color: 'black',
         fontSize: 14,
+    },
+    safeCardDate: {
+        alignSelf: "flex-end",
+        color: MIDDLE_GREY,
+        fontSize: 10,
     }
 });
 

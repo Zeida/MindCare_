@@ -44,8 +44,8 @@ export default function ToDoListScreen({ route, navigation }) {
 
   function deleteItem(idx) {
     Alert.alert(
-      "Posponer reto",
-      "¿Quieres descartarlo e intentarlo en otro momento?",
+      "Descartar reto",
+      "¿Quieres eliminar este reto?",
       [
         {
           text: "Mantener",
@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "black",
-    marginBottom: 5,
+    marginBottom: 10,
     marginLeft: 20,
   },
 });

@@ -10,6 +10,7 @@ export default function SafeCardModalComponent({ visible, setVisible, setSafeCar
     const [safeCardBody, setSafeCardBody] = React.useState("");
 
     const createSafeCard = () => {
+        
         setSafeCards((safeCards) => [
             ...safeCards,
             { id: Date.now(), title:{safeCardTitle}, body:{safeCardBody}, createdAt: Date.now() },
@@ -48,7 +49,7 @@ export default function SafeCardModalComponent({ visible, setVisible, setSafeCar
                     </View >
                     <View style={styles.buttonContainer}>
                         <ButtonComponent
-                            onPress={() => createSafeCard()}
+                            onPress={() =>createSafeCard()}
                             title={"Añadir"}
                             backgroundColor={SOFT_GREEN}
                             titleColor={"#fff"}
