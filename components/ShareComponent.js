@@ -26,10 +26,10 @@ const ShareComponent = () => {
 };
 const styles = StyleSheet.create({
     menuItem: {
-        flexDirection: 'row',
-        paddingVertical: 10,
+        flexDirection: "row",
+        paddingVertical: 8,
         paddingHorizontal: 30,
-
+        marginBottom: 2,
     },
     menuItemText: {
         color: '#000000',
