@@ -12,11 +12,9 @@ export default function EmotionalDiaryScreen({ navigation }) {
       <View style={styles.emotionalScaleContainer}>
         {FeelingIconData.map((feeling, index) => {
           return (
-
             <Pressable key={index} style={styles.icon} onPress={setValue}>
               <MaterialCommunityIcons key={index} name={feeling.icon} size={40} color={feeling.color} />
             </Pressable>
-
           );
         })}
       </View>
