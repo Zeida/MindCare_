@@ -123,10 +123,10 @@ const ProfileScreen = (props) => {
         ) : (
           <View style={styles.menuWrapper}>
             <AlertModalComponent
-            modalVisible={modalVisible}
-            setModalVisible={setModalVisible}
-            modalText={'Regístrese para acceder a esta funcionalidad.'}
-            modalOptionText={'Vale!'}/>
+              modalVisible={modalVisible}
+              setModalVisible={setModalVisible}
+              modalText={'Regístrese para acceder a esta funcionalidad.'}
+              modalOptionText={'Vale!'} />
 
             <TouchableRipple
               onPress={(() => setModalVisible(true))}
@@ -177,7 +177,7 @@ const ProfileScreen = (props) => {
 export default ProfileScreen;
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     backgroundColor: "#fff",
   },
   profile: {
@@ -189,9 +189,9 @@ const styles = StyleSheet.create({
   },
   userInfoSection: {
     paddingHorizontal: 30,
-    paddingVertical:10,
+    paddingVertical: 10,
     marginBottom: 5,
-    
+
   },
   title: {
     fontSize: 24,
@@ -239,12 +239,11 @@ const styles = StyleSheet.create({
     lineHeight: 26,
   },
   menuItemTextLogOut: {
-    color: "#000000",
+    color: "white",
     fontWeight: "bold",
     fontSize: 16,
     lineHeight: 26,
   },
-
   buttonLogOut: {
     fontSize: 16,
     color: "#FA2B25",
@@ -255,6 +254,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     marginBottom: 20,
+    marginTop: 5
   },
   anonymousUserText: {
     textAlign: "center",
@@ -264,7 +264,6 @@ const styles = StyleSheet.create({
   anonymousUserContainer: {
     marginTop: 80,
     marginBottom: 20,
-    
   },
   anonymousUserSubText: {
     textAlign: "center",
@@ -273,45 +272,4 @@ const styles = StyleSheet.create({
     padding: 10,
     marginLeft: 3,
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    marginTop: 22
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: "white",
-    borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: "#000",
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
-  },
-  button: {
-    borderRadius: 40,
-    padding: 10,
-    elevation: 2
-  },
-  buttonOpen: {
-    backgroundColor: "#F27C38",
-  },
-  buttonClose: {
-    backgroundColor: "#F27C38",
-  },
-  textStyle: {
-    color: "white",
-    fontWeight: "bold",
-    textAlign: "center"
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: "center"
-  }
 });

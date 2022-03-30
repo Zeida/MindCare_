@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Modal, Pressable, StyleSheet, View, Text } from "react-native";
+import { Alert, Modal, Pressable, StyleSheet, Text, View } from "react-native";
 
 const AlertModalComponent = ({ modalVisible, setModalVisible, modalText, modalOptionText }) => {
     return (
@@ -14,7 +14,7 @@ const AlertModalComponent = ({ modalVisible, setModalVisible, modalText, modalOp
         >
             <View style={styles.centeredView}>
                 <View style={styles.modalView}>
-                    <Text style={styles.modaltext}>{modalText}</Text>
+                    <Text style={styles.modalText}>{modalText}</Text>
                     <Pressable
                         style={[styles.button, styles.buttonClose]}
                         onPress={() => setModalVisible(!modalVisible)}
@@ -31,7 +31,8 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: "center",
         alignItems: "center",
-        marginTop: 22
+        marginTop: 22,
+        backgroundColor: "rgba(0,0,0,0.8)",
     },
     modalView: {
         margin: 20,
@@ -52,7 +53,7 @@ const styles = StyleSheet.create({
         borderRadius: 40,
         padding: 10,
         elevation: 2,
-        marginTop:5,
+        marginTop: 5,
     },
     buttonOpen: {
         backgroundColor: "#F27C38",

@@ -1,0 +1,38 @@
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import {SOFT_BLUE, MIDDLE_GREY, SOFT_PINK, SOFT_GREEN} from "../constants/Colors";
+
+const SafeCardComponent = ({ safeCard }) => {
+    return (
+        <View style={styles.safeCardContainer}>
+            <Text style={styles.safeCardTitle}>{safeCard.title}</Text>
+            <Text style={styles.safeCardBody}>{safeCard.body}</Text>
+        </View>
+    );
+};
+const styles = StyleSheet.create({
+    safeCardContainer: {
+        backgroundColor: SOFT_BLUE,
+        marginHorizontal: 20,
+        marginVertical: 8,
+        borderWidth: 1,
+        borderColor: MIDDLE_GREY,
+        borderRadius: 10,
+        padding: 10,
+    },
+    safeCardTitle: {
+        fontSize: 16,
+        color: "black",
+        fontWeight: "bold",
+        textAlign:'center',
+        marginBottom:5
+        
+    },
+    safeCardBody: {
+        alignSelf: "flex-end",
+        color: 'black',
+        fontSize: 14,
+    }
+});
+
+export default SafeCardComponent;

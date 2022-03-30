@@ -2,7 +2,7 @@ import * as React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
 import { Card, Paragraph, Title } from 'react-native-paper';
 import CardsForHelpData from "../data/CardsForHelpData";
-
+import {SOFT_BLUE} from "../constants/Colors";
 
 export default function CardsForHelpScreen() {
 
@@ -30,9 +30,10 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 10,
         padding: 10,
+        backgroundColor:"#fff"
     },
     item: {
-        backgroundColor: '#F27C38',
+        backgroundColor: SOFT_BLUE,
         padding: 20,
         marginVertical: 8,
         marginHorizontal: 16,

@@ -1,10 +1,9 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View, Pressable, Dimensions } from "react-native";
-import EmotionalScaleComponent from "../components/EmotionalScaleComponent";
-import PixelGraphComponent from "../components/PixelGraphComponent";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React, { useState } from "react";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import PixelGraphComponent from "../components/PixelGraphComponent";
 import FeelingIconData from "../data/FeelingIconData";
-const screenWidth = Dimensions.get("window").width;
+
 export default function EmotionalDiaryScreen({ navigation }) {
   const [value, setValue] = useState("");
   return (

@@ -4,12 +4,13 @@ import IconButtonComponent from "./IconButtonComponent.js";
 import InputFieldComponent from "./InputFieldComponent";
 import ChallengeComponent from "./ChallengeComponent";
 import ShareComponent from "./ShareComponent";
-import EmotionalScaleComponent from "./EmotionalScaleComponent";
 import NextButtonComponent from "./NextButtonComponent";
 import OnBoardingItemComponent from "./OnBoardingItemComponent";
 import PaginatorComponent from "./PaginatorComponent";
 import PieChartComponent from "./PieChartComponent";
 import PixelGraphComponent from "./PixelGraphComponent";
+import SafeCardComponent from "./SafeCardComponent";
+import AlertModalComponet from "./AlertModalComponent";
 export {
   IconButtonComponent,
   ButtonComponent,
@@ -17,10 +18,11 @@ export {
   InputFieldComponent,
   ShareComponent,
   ChallengeComponent,
-  EmotionalScaleComponent,
   NextButtonComponent,
   OnBoardingItemComponent,
   PaginatorComponent,
   PieChartComponent,
   PixelGraphComponent,
+  SafeCardComponent,
+  AlertModalComponet
 };

@@ -2,7 +2,7 @@ const onboardingslidesdata=[
     {
         id: '1',
         title: 'La salud mental es importante.',
-        description: 'En todas las etapas de la vida, desde la niñez hasta la vejez. Su cuidado te hará llegar muy lejos.',
+        description: 'Su cuidado tendrá un impacto positivo en todas las áreas de tu vida.',
         image: require('../images/onboardingslides/slide1.png'),
     },
     {
