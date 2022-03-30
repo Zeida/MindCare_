@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Image, StyleSheet, View, Text
+  Image, StyleSheet, Text, View
 } from "react-native";
 
 
@@ -18,7 +18,7 @@ export default function AboutUsCardsScreen() {
       <Text style={styles.subtextteammembers}>Zeida de los R. Rguez. Mendoza (Desarrolladora)</Text>
       <Text style={styles.subtextteammembers}>Ana Maria Plácido (Tutora del proyecto)</Text>
       <Text style={styles.subtextteammembers}>Arminda Castellano Quesada (Ilustradora)</Text>
-      
+
     </View>
   );
 }
@@ -53,19 +53,19 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     textAlign: "center",
   },
-  subtextleft:{
+  subtextleft: {
     fontSize: 15,
     lineHeight: 30,
     color: "black",
     marginLeft: 20,
     textAlign: "left",
   },
-  subtextteammembers:{
+  subtextteammembers: {
     fontSize: 15,
     lineHeight: 30,
     color: "black",
     marginLeft: 20,
     textAlign: "left",
-    fontWeight:'bold'
+    fontWeight: 'bold'
   }
 });

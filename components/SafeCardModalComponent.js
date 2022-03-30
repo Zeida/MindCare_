@@ -12,7 +12,7 @@ export default function SafeCardModalComponent({ visible, setVisible, setSafeCar
     const createSafeCard = () => {
         setSafeCards((safeCards) => [
             ...safeCards,
-            { id: Date.now(), safeCardTitle, safeCardBody, createdAt: Date.now() },
+            { id: Date.now(), title:{safeCardTitle}, body:{safeCardBody}, createdAt: Date.now() },
         ]);
         setSafeCardTitle("");
         setSafeCardBody("");
@@ -23,7 +23,12 @@ export default function SafeCardModalComponent({ visible, setVisible, setSafeCar
         <Modal visible={visible} transparent={true}>
             <View style={styles.modalContainer}>
                 <View style={styles.modalContent}>
-                    <Text style={styles.title}>Nuevo recordatorio</Text>
+                    <TouchableOpacity onPress={() => setVisible(false)}>
+                        <View style={{alignSelf: "flex-end", marginRight:10}}>
+                            <Text style={{fontSize:15}}>X</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <Text style={styles.title}>Para mi yo del futuro</Text>
                     <View style={styles.inputGroup}>
                         <TextInput
                             placeholder="Título"
@@ -35,15 +40,13 @@ export default function SafeCardModalComponent({ visible, setVisible, setSafeCar
                     <View style={styles.inputGroup}>
                         <TextInput
                             placeholder="Recordatorio"
-                            style={[styles.textInput, { height: 35 }]}
+                            style={[styles.textInput, { height: 60, marginTop:5 }]}
                             value={safeCardBody}
                             onChangeText={(text) => setSafeCardBody(text)}
                             multiline={true}
                         />
                     </View >
                     <View style={styles.buttonContainer}>
-
-
                         <ButtonComponent
                             onPress={() => createSafeCard()}
                             title={"Añadir"}
@@ -61,23 +64,7 @@ export default function SafeCardModalComponent({ visible, setVisible, setSafeCar
                                 borderRadius: 40,
                                 margin: 5
                             }} />
-                        <ButtonComponent
-                            onPress={() => setVisible(false)}
-                            title={"Cancelar"}
-                            backgroundColor={'red'}
-                            titleColor={"#fff"}
-                            titleSize={15}
-                            width={110}
-                            containerStyle={{
-                                alignSelf: "flex-end",
-                                borderWidth: 1,
-                                borderColor: "gray",
-                                paddingHorizontal: 20,
-                                paddingVertical: 5,
-                                marginTop: 15,
-                                borderRadius: 40,
-                                margin: 5
-                            }} />
+
                     </View>
                 </View>
             </View>
@@ -98,21 +85,24 @@ const styles = StyleSheet.create({
         width: "100%",
         paddingHorizontal: 15,
         paddingVertical: 20,
-        borderRadius: 40
+        borderRadius: 20
     },
     title: {
         fontSize: 20,
         textAlign: "center",
         marginBottom: 12,
+        fontWeight:'bold'
     },
-    inputGroup: { flexDirection: "row", marginVertical: 10 },
+    inputGroup: { flexDirection: "row", marginVertical: 3 },
     textInput: {
         flex: 1,
-        borderBottomWidth: 1,
-        borderColor: "#b7b7b7",
-        height: 24,
-        paddingVertical: 4,
-        paddingHorizontal: 5,
+        borderWidth: 1,
+        padding:10,
+        borderRadius:5,
+        borderColor: "black",
+        height: 28,
+        paddingVertical: 1,
+        paddingHorizontal: 10,
     },
     createButton: {
         alignSelf: "flex-end",
