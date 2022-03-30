@@ -2,15 +2,14 @@ import React, { useContext, useState } from "react";
 import {
   ImageBackground,
   StyleSheet,
-  Text, TouchableOpacity,
-  View
+  Text, View
 } from "react-native";
-import { InputFieldComponent } from "../components/ComponentsIndex";
-import Firebase from "../config/firebase";
-import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import ErrorMessageComponent from "../components/ErrorMessageComponent";
-import { ORANGE } from "../constants/Colors";
 import ButtonComponent from "../components/ButtonComponent";
+import { InputFieldComponent } from "../components/ComponentsIndex";
+import ErrorMessageComponent from "../components/ErrorMessageComponent";
+import Firebase from "../config/firebase";
+import { ORANGE } from "../constants/Colors";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 const auth = Firebase.auth();
 
 export default function EditProfileScreen({ navigation }) {
