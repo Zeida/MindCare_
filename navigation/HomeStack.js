@@ -15,6 +15,7 @@ import AboutUsCardScreen from "../screens/AboutUsCardsScreen.js";
 import EmotionalDiaryScreen from "../screens/EmotionalDiaryScreen.js";
 import OnBoardingScreen from "../screens/OnBoardingScreen.js";
 import SafePlaceScreen from "../screens/SafePlaceScreen.js";
+import ResourcesForHelpScreen from "../screens/ResourcesForHelpScreen.js";
 
 //Screens names
 const homeScreenName = "Inicio";
@@ -29,6 +30,7 @@ const aboutUsCardScreenName = "Sobre nosotros";
 const emotionalDiaryScreenName = "Diario emocional";
 const onBoardingScreenName = "onboard";
 const safePlaceScreenName = "Mi lugar seguro";
+const resourcesForHelpScreenName = "Recursos";
 
 const Stack = createStackNavigator();
 const BottomNavTabStack = createMaterialBottomTabNavigator();
@@ -125,6 +127,11 @@ export default function HomeStack() {
       <Stack.Screen
         name={safePlaceScreenName}
         component={SafePlaceScreen}
+        options={{ headerTitle: " " }}
+      />
+      <Stack.Screen
+        name={resourcesForHelpScreenName}
+        component={ResourcesForHelpScreen}
         options={{ headerTitle: " " }}
       />
       <Stack.Screen

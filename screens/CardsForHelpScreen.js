@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
-import { Card, Paragraph, Title } from 'react-native-paper';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { Card, Paragraph, Title} from 'react-native-paper';
 import CardsForHelpData from "../data/CardsForHelpData";
 import {SOFT_BLUE} from "../constants/Colors";
 
@@ -8,6 +8,7 @@ export default function CardsForHelpScreen() {
 
     return (
         <SafeAreaView style={styles.container}>
+            <Text style={styles.text}>Recursos gratuitos de atención profesional</Text>
             {CardsForHelpData.map((card) => {
                 return (
                     <Card key={card.id} value={card.title} style={styles.item}>
@@ -28,14 +29,12 @@ export default function CardsForHelpScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        marginTop: 10,
-        padding: 10,
         backgroundColor:"#fff"
     },
     item: {
         backgroundColor: SOFT_BLUE,
         padding: 20,
-        marginVertical: 8,
+        marginVertical: 10,
         marginHorizontal: 16,
     },
     title: {
@@ -56,6 +55,15 @@ const styles = StyleSheet.create({
         fontSize: 12,
         fontWeight: 'bold'
 
-    }
+    },
+      text: {
+        fontSize: 20,
+        lineHeight: 30,
+        fontWeight: "bold",
+        letterSpacing: 0.25,
+        color: "black",
+        marginBottom: 10,
+        textAlign: "center",
+      },
 
 });

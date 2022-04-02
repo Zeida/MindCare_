@@ -88,6 +88,18 @@ const ProfileScreen = (props) => {
           </TouchableRipple>
         </View>
         <View style={styles.menuWrapper}>
+          <TouchableRipple onPress={() => { props.navigation.navigate("Recursos"); }}>
+            <View style={styles.menuItem}>
+              <MaterialCommunityIcons
+                name="dropbox"
+                color={"black"}
+                size={25}
+              />
+              <Text style={styles.menuItemText}>Recursos de ayuda</Text>
+            </View>
+          </TouchableRipple>
+        </View>
+        <View style={styles.menuWrapper}>
           <TouchableRipple
             onPress={() => {
               props.navigation.navigate("Ayuda");
