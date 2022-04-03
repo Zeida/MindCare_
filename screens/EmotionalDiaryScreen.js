@@ -16,7 +16,7 @@ export default function EmotionalDiaryScreen() {
                 name={feeling.icon}
                 size={50}
                 color={feeling.color}
-                onPress={console.log(feeling.value)}
+                onPress={()=>{console.log(feeling.value)}}
               />
             </View>
           );

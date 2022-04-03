@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -27,7 +27,7 @@ export default function SignupScreen({ navigation }) {
   };
 
   const onHandleSignup = async () => {
-    registration(email, password, displayName, setSignupError);
+    useEffect(registration(email, password, displayName, setSignupError));
   };
 
   return (

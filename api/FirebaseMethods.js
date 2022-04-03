@@ -16,10 +16,9 @@ export async function registration(
           displayName: displayName,
         };
         await res.user.updateProfile(update);
-        db.collection("users").doc(currentUser.uid).set({
+        await db.collection("users").doc(currentUser.uid).set({
           email: currentUser.email,
           displayName: displayName,
-          password: password,
         });
       });
   } catch (error) {
