@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 import "firebase/firestore";
-import { auth } from "../config/firebase";
+import { auth, db } from "../config/firebase";
 
 export async function registration(
   email,
