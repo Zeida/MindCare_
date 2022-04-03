@@ -1,10 +1,9 @@
-import { MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { useState } from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import IconButtonComponent from "../components/IconButtonComponent";
 import PixelGraphComponent from "../components/PixelGraphComponent";
 import FeelingIconData from "../data/FeelingIconData";
-
-export default function EmotionalDiaryScreen({ navigation }) {
+export default function EmotionalDiaryScreen() {
   const [value, setValue] = useState("");
   return (
     <View style={styles.container}>
@@ -12,9 +11,14 @@ export default function EmotionalDiaryScreen({ navigation }) {
       <View style={styles.emotionalScaleContainer}>
         {FeelingIconData.map((feeling, index) => {
           return (
-            <Pressable key={index} style={styles.icon} onPress={setValue}>
-              <MaterialCommunityIcons key={index} name={feeling.icon} size={40} color={feeling.color} />
-            </Pressable>
+            <View key={index}>
+              <IconButtonComponent
+                name={feeling.icon}
+                size={50}
+                color={feeling.color}
+                onPress={console.log(feeling.value)}
+              />
+            </View>
           );
         })}
       </View>
@@ -29,7 +33,7 @@ export default function EmotionalDiaryScreen({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   text: {
     fontSize: 20,
@@ -50,14 +54,12 @@ const styles = StyleSheet.create({
     height: 50,
   },
   icon: {
-    padding: 10
+    padding: 10,
   },
   pixelgraph: {
-
-    alignSelf: 'center',
-    alignItems:'center',
-    marginLeft:50,
-    marginTop:10
-    
-  }
+    alignSelf: "center",
+    alignItems: "center",
+    marginLeft: 50,
+    marginTop: 10,
+  },
 });
