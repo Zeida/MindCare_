@@ -6,8 +6,8 @@ import {
   ErrorMessageComponent,
   InputFieldComponent,
 } from "../components/ComponentsIndex";
-import Firebase from "../config/firebase";
 import { auth } from "../config/firebase";
+import { login } from "../api/FirebaseMethods";
 
 
 export default function LoginScreen({ navigation }) {
@@ -26,25 +26,10 @@ export default function LoginScreen({ navigation }) {
       setPasswordVisibility(!passwordVisibility);
     }
   };
-
-  const onLogin = async () => {
-    try {
-      if (email !== "" && password !== "") {
-        await auth.signInWithEmailAndPassword(email, password);
-      }
-    } catch (error) {
-        switch (error.code) {
-          case "auth/user-not-found":
-            return setSignupError("No existe un usuario con este correo.");
-          case "auth/wrong-password":
-            return setSignupError("La contraseña es incorrecta.");
-          case "auth/invalid-email":
-            return setSignupError("Este correo no es válido.");
-          default:
-            return setSignupError(error.message);
-        }
-    }
+  const onHandleLogIn= async () => {
+    login(email, password, setLoginError);
   };
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -90,7 +75,7 @@ export default function LoginScreen({ navigation }) {
           <ErrorMessageComponent error={loginError} visible={true} />
         ) : null}
         <ButtonComponent
-          onPress={onLogin}
+          onPress={onHandleLogIn}
           backgroundColor="#F27C38"
           title="Iniciar sesión"
           titleColor="#fff"

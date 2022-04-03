@@ -1,30 +1,30 @@
-import {
-  Fontisto, Ionicons, MaterialCommunityIcons
-} from "@expo/vector-icons";
+import { Fontisto, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { useContext, useState } from "react";
-import { StyleSheet, TouchableOpacity, View, Alert, Modal, Pressable } from "react-native";
+import {
+  StyleSheet,
+  TouchableOpacity,
+  View,
+  Alert,
+  Modal,
+  Pressable,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
   Avatar,
   Caption,
   Text,
   Title,
-  TouchableRipple
+  TouchableRipple,
 } from "react-native-paper";
 import AlertModalComponent from "../components/AlertModalComponent";
 import { ShareComponent } from "../components/ComponentsIndex";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import { auth } from "../config/firebase";
-
+import { loggingOut } from "../api/FirebaseMethods";
 
 const ProfileScreen = (props) => {
   const { user } = useContext(AuthenticatedUserContext);
   const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-    } catch (error) {
-      console.log(error);
-    }
+    loggingOut();
   };
   const [modalVisible, setModalVisible] = useState(false);
 
@@ -38,7 +38,12 @@ const ProfileScreen = (props) => {
             </Text>
 
             <Text style={styles.anonymousUserSubText}>
-              <Ionicons style={styles.anonymousUserSubTextIcon} name="warning-outline" size={14} color="red" />
+              <Ionicons
+                style={styles.anonymousUserSubTextIcon}
+                name="warning-outline"
+                size={14}
+                color="red"
+              />
               Si cierra sesión perderá sus progresos.
             </Text>
           </View>
@@ -75,7 +80,11 @@ const ProfileScreen = (props) => {
           </View>
         </View>
         <View style={styles.menuWrapper}>
-          <TouchableRipple onPress={() => { props.navigation.navigate("Mi lugar seguro"); }}>
+          <TouchableRipple
+            onPress={() => {
+              props.navigation.navigate("Mi lugar seguro");
+            }}
+          >
             <View style={styles.menuItem}>
               <MaterialCommunityIcons
                 name="treasure-chest"
@@ -87,7 +96,11 @@ const ProfileScreen = (props) => {
           </TouchableRipple>
         </View>
         <View style={styles.menuWrapper}>
-          <TouchableRipple onPress={() => { props.navigation.navigate("Recursos"); }}>
+          <TouchableRipple
+            onPress={() => {
+              props.navigation.navigate("Recursos");
+            }}
+          >
             <View style={styles.menuItem}>
               <MaterialCommunityIcons
                 name="dropbox"
@@ -136,12 +149,11 @@ const ProfileScreen = (props) => {
             <AlertModalComponent
               modalVisible={modalVisible}
               setModalVisible={setModalVisible}
-              modalText={'Regístrese para acceder a esta funcionalidad.'}
-              modalOptionText={'Vale!'} />
+              modalText={"Regístrese para acceder a esta funcionalidad."}
+              modalOptionText={"Vale!"}
+            />
 
-            <TouchableRipple
-              onPress={(() => setModalVisible(true))}
-            >
+            <TouchableRipple onPress={() => setModalVisible(true)}>
               <View style={styles.menuItem}>
                 <MaterialCommunityIcons
                   name="account-edit"
@@ -202,7 +214,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     paddingVertical: 10,
     marginBottom: 5,
-
   },
   title: {
     fontSize: 24,
@@ -265,7 +276,7 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     marginRight: 20,
     marginBottom: 20,
-    marginTop: 5
+    marginTop: 5,
   },
   anonymousUserText: {
     textAlign: "center",

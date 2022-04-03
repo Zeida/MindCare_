@@ -10,22 +10,15 @@ import ErrorMessageComponent from "../components/ErrorMessageComponent";
 import Firebase from "../config/firebase";
 import { ORANGE } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-const auth = Firebase.auth();
+import { updateProfile } from "../api/FirebaseMethods";
 
 export default function EditProfileScreen({ navigation }) {
   const [displayName, setDisplayName] = useState("");
   const [updateError, setUpdateError] = useState("");
   const { user } = useContext(AuthenticatedUserContext);
-  const updateDisplayName = async () => {
-    const update = {
-      displayName: displayName,
-    };
-    try {
-      return await user.updateProfile(update);
-    } catch (error) {
-      console.log(error);
-      setUpdateError(error.message);
-    }
+  
+  const onHandleUpdate = async () => {
+    updateProfile(displayName, setUpdateError)
   };
   return (
     <View style={styles.container}>
@@ -81,7 +74,7 @@ export default function EditProfileScreen({ navigation }) {
           />
         </View>
         <ButtonComponent
-          onPress={updateDisplayName}
+          onPress={onHandleUpdate}
           title={"Actualizar"}
           backgroundColor={ORANGE}
           titleColor={"#fff"}

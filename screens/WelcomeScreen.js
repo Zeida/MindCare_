@@ -7,26 +7,15 @@ import {
   View,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { loginAnonymously } from "../api/FirebaseMethods";
 import { ButtonComponent } from "../components/ComponentsIndex";
-import Firebase from "../config/firebase";
-
-const auth = Firebase.auth();
 
 export default function WelcomeScreen({ navigation }) {
-  const onLoginAnonymously = async () => {
-    auth
-      .signInAnonymously()
-      .then(() => {
-        console.log("User signed in anonymously");
-      })
-      .catch((error) => {
-        if (error.code === "auth/operation-not-allowed") {
-          console.log("Enable anonymous in your firebase console.");
-        }
 
-        console.error(error);
-      });
+  const onHandleLoginAnonymously = async () => {
+    loginAnonymously();
   };
+  
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoandtitle}>
@@ -59,7 +48,7 @@ export default function WelcomeScreen({ navigation }) {
           }}
         />
         <RNButton
-          onPress={onLoginAnonymously}
+          onPress={onHandleLoginAnonymously}
           title="Acceder sin registro"
           color="#192959"
         />
