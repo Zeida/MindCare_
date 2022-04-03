@@ -13,10 +13,9 @@ import {
 } from "react-native-paper";
 import AlertModalComponent from "../components/AlertModalComponent";
 import { ShareComponent } from "../components/ComponentsIndex";
-import app from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+import { auth } from "../config/firebase";
 
-const auth = app.auth();
 
 const ProfileScreen = (props) => {
   const { user } = useContext(AuthenticatedUserContext);

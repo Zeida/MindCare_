@@ -7,8 +7,8 @@ import {
   InputFieldComponent,
 } from "../components/ComponentsIndex";
 import Firebase from "../config/firebase";
+import { auth } from "../config/firebase";
 
-const auth = Firebase.auth();
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");

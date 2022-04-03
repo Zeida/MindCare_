@@ -1,7 +1,6 @@
 import firebase from "firebase/app";
 import "firebase/auth";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDxyk4AVdQGessn5M52XDG0E_gjXG52fPM",
   authDomain: "mindcaretfg.firebaseapp.com",
@@ -17,5 +16,6 @@ let Firebase;
 if (firebase.apps.length === 0) {
   Firebase = firebase.initializeApp(firebaseConfig);
 }
+export const auth = Firebase.auth();
 
 export default Firebase;

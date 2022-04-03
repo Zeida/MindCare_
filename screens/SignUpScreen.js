@@ -6,9 +6,7 @@ import {
   ErrorMessageComponent,
   InputFieldComponent,
 } from "../components/ComponentsIndex";
-import Firebase from "../config/firebase";
-
-const auth = Firebase.auth();
+import { auth } from "../config/firebase";
 
 export default function SignupScreen({ navigation }) {
   const [displayName, setDisplayName] = useState("");
