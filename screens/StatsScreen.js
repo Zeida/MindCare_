@@ -95,5 +95,6 @@ const styles = StyleSheet.create({
     height: 250,
     marginLeft: 30,
     marginRight: 30,
+    alignSelf:'center'
   },
 });

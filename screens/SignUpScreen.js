@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -6,9 +6,7 @@ import {
   ErrorMessageComponent,
   InputFieldComponent,
 } from "../components/ComponentsIndex";
-import Firebase from "../config/firebase";
-
-const auth = Firebase.auth();
+import { registration } from "../api/FirebaseMethods";
 
 export default function SignupScreen({ navigation }) {
   const [displayName, setDisplayName] = useState("");
@@ -29,29 +27,7 @@ export default function SignupScreen({ navigation }) {
   };
 
   const onHandleSignup = async () => {
-    try {
-      return await auth
-        .createUserWithEmailAndPassword(email, password)
-        .then(async (res) => {
-          const update = {
-            displayName: displayName,
-          };
-          await res.user.updateProfile(update);
-        });
-    } catch (error) {
-      switch (error.code) {
-        case "auth/weak-password":
-          return setSignupError("La contraseña no es muy segura.");
-        case "auth/invalid-email":
-          return setSignupError("Este correo no es válido.");
-        case "auth/email-already-in-use":
-          return setSignupError("Ya existe una cuenta con este correo.");
-        default:
-          return setSignupError(error.message);
-      }
-
-      console.log(error);
-    }
+    useEffect(registration(email, password, displayName, setSignupError));
   };
 
   return (

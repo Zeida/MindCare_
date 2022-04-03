@@ -3,19 +3,14 @@ import React, { useContext } from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TouchableRipple } from "react-native-paper";
 import { IconButtonComponent } from "../components/ComponentsIndex";
-import app from "../config/firebase";
 import ChallengeScopesData from "../data/ChallengeScopesData";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-const auth = app.auth();
+import { loggingOut } from "../api/FirebaseMethods";
 
 export default function HomeScreen(props) {
   const { user } = useContext(AuthenticatedUserContext);
-  const handleSignOut = async () => {
-    try {
-      await auth.signOut();
-    } catch (error) {
-      console.log(error);
-    }
+  const handleLogginOut = async () => {
+    loggingOut();
   };
 
   return (
@@ -28,7 +23,7 @@ export default function HomeScreen(props) {
           name="logout"
           size={24}
           color="red"
-          onPress={handleSignOut}
+          onPress={handleLogginOut}
         />
       </View>
       <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
