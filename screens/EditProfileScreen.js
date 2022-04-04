@@ -5,9 +5,8 @@ import { InputFieldComponent } from "../components/ComponentsIndex";
 import ErrorMessageComponent from "../components/ErrorMessageComponent";
 import { ORANGE } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import updateProfile from "../api/FirebaseMethods";
 
-export default function EditProfileScreen({ navigation }) {
+const EditProfileScreen = (props)=> {
   const [displayName, setDisplayName] = useState("");
   const [updateError, setUpdateError] = useState("");
   const { user } = useContext(AuthenticatedUserContext);
@@ -18,6 +17,7 @@ export default function EditProfileScreen({ navigation }) {
     };
     try {
       return await user.updateProfile(update);
+      
     } catch (error) {
       console.log(error);
       setUpdateError(error.message);
@@ -92,8 +92,11 @@ export default function EditProfileScreen({ navigation }) {
   );
 }
 
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
 });
+
+export default EditProfileScreen;

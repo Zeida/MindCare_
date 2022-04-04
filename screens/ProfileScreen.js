@@ -146,14 +146,14 @@ const ProfileScreen = (props) => {
           </View>
         ) : (
           <View style={styles.menuWrapper}>
-            <AlertModalComponent
-              modalVisible={modalVisible}
-              setModalVisible={setModalVisible}
-              modalText={"Regístrese para acceder a esta funcionalidad."}
-              modalOptionText={"Vale!"}
-            />
-
-            <TouchableRipple onPress={() => setModalVisible(true)}>
+            <TouchableRipple
+              onPress={() =>
+                Alert.alert(
+                  "No disponible",
+                  "Regístrese para acceder a esta funcionalidad."
+                )
+              }
+            >
               <View style={styles.menuItem}>
                 <MaterialCommunityIcons
                   name="account-edit"

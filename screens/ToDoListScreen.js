@@ -1,20 +1,19 @@
+import { Entypo } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   Alert,
-  FlatList,
-  StatusBar,
-  StyleSheet,
+  FlatList, StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import { ChallengeComponent } from "../components/ComponentsIndex";
-import { Entypo } from "@expo/vector-icons";
 
 export default function ToDoListScreen({ route, navigation }) {
   const [list, setList] = useState([]);
   const [value, setValue] = useState("");
+  const [modalVisible, setModalVisible] = useState(false);
   const { title } = route.params;
 
   function addText(text) {
