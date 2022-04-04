@@ -1,16 +1,11 @@
-import React, { useContext, useState } from "react";
-import {
-  ImageBackground,
-  StyleSheet,
-  Text, View
-} from "react-native";
+import React, { useState, useContext } from "react";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import ButtonComponent from "../components/ButtonComponent";
 import { InputFieldComponent } from "../components/ComponentsIndex";
 import ErrorMessageComponent from "../components/ErrorMessageComponent";
-import Firebase from "../config/firebase";
 import { ORANGE } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import { updateProfile } from "../api/FirebaseMethods";
+import updateProfile from "../api/FirebaseMethods";
 
 export default function EditProfileScreen({ navigation }) {
   const [displayName, setDisplayName] = useState("");
@@ -18,7 +13,15 @@ export default function EditProfileScreen({ navigation }) {
   const { user } = useContext(AuthenticatedUserContext);
   
   const onHandleUpdate = async () => {
-    updateProfile(displayName, setUpdateError)
+    const update = {
+      displayName: displayName,
+    };
+    try {
+      return await user.updateProfile(update);
+    } catch (error) {
+      console.log(error);
+      setUpdateError(error.message);
+    }
   };
   return (
     <View style={styles.container}>
@@ -82,7 +85,8 @@ export default function EditProfileScreen({ navigation }) {
           containerStyle={{
             backgroundColor: ORANGE,
             alignItems: "center",
-          }} />
+          }}
+        />
       </View>
     </View>
   );

@@ -1,6 +1,8 @@
 import * as firebase from "firebase";
 import "firebase/firestore";
 import { auth, db } from "../config/firebase";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+
 
 export async function registration(
   email,
@@ -63,6 +65,7 @@ export async function loggingOut() {
 }
 
 export async function updateProfile(displayName, setUpdateError) {
+  const { user } = useContext(AuthenticatedUserContext);
   const update = {
     displayName: displayName,
   };
