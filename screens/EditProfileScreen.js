@@ -6,22 +6,24 @@ import ErrorMessageComponent from "../components/ErrorMessageComponent";
 import { ORANGE } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
-const EditProfileScreen = (props)=> {
+export default function (props) {
   const [displayName, setDisplayName] = useState("");
   const [updateError, setUpdateError] = useState("");
   const { user } = useContext(AuthenticatedUserContext);
   
   const onHandleUpdate = async () => {
     const update = {
-      displayName: displayName,
+      displayName: user.displayName,
     };
     try {
-      return await user.updateProfile(update);
+      await user.updateProfile(update)
+      return props.navigation.goBack();
       
     } catch (error) {
       console.log(error);
       setUpdateError(error.message);
     }
+    
   };
   return (
     <View style={styles.container}>
@@ -98,5 +100,3 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
-
-export default EditProfileScreen;

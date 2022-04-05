@@ -7,7 +7,7 @@ import {
 } from "../components/ComponentsIndex";
 import onboardingslidesdata from "../data/OnBoardingSlidesData";
 
-const OnBoardingScreen = (props) => {
+export default function OnBoardingScreen(props) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const scrollX = useRef(new Animated.Value(0)).current;
   const slidesRef = useRef(null);
@@ -63,4 +63,3 @@ const styles = StyleSheet.create({
   },
 });
 
-export default OnBoardingScreen;

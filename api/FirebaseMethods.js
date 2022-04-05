@@ -2,6 +2,7 @@ import * as firebase from "firebase";
 import "firebase/firestore";
 import { auth, db } from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+import React, { useContext } from "react";
 
 
 export async function registration(

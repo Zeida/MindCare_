@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import AchievementComponent from "../components/AchievementComponent";
 import AlertModalComponent from "../components/AlertModalComponent";
 
-export default function AchievementsScreen({ navigation }) {
+export default function AchievementsScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.container}>
