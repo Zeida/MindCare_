@@ -6,14 +6,14 @@ import ErrorMessageComponent from "../components/ErrorMessageComponent";
 import { ORANGE } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
-export default function (props) {
+export default function EditProfileScreen  (props){
   const [displayName, setDisplayName] = useState("");
   const [updateError, setUpdateError] = useState("");
   const { user } = useContext(AuthenticatedUserContext);
   
   const onHandleUpdate = async () => {
     const update = {
-      displayName: user.displayName,
+      displayName: displayName,
     };
     try {
       await user.updateProfile(update)
@@ -93,7 +93,6 @@ export default function (props) {
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {

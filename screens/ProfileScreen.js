@@ -1,9 +1,12 @@
 import { Fontisto, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import React, { useContext, useState } from "react";
 import {
-  Alert, StyleSheet,
+  StyleSheet,
   TouchableOpacity,
-  View
+  View,
+  Alert,
+  Modal,
+  Pressable,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
@@ -11,23 +14,18 @@ import {
   Caption,
   Text,
   Title,
-  TouchableRipple
+  TouchableRipple,
 } from "react-native-paper";
-import { loggingOut } from "../api/FirebaseMethods";
+import AlertModalComponent from "../components/AlertModalComponent";
 import { ShareComponent } from "../components/ComponentsIndex";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-
-
+import { loggingOut } from "../api/FirebaseMethods";
 export default function ProfileScreen (props) {
   const { user } = useContext(AuthenticatedUserContext);
   const handleSignOut = async () => {
     loggingOut();
   };
-  const [displayName, setDisplayName]= useState(user);
-  function handleDisplayNameChange(newDisplayName){
-    setDisplayName(newDisplayName);
-    
-  };
+  const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <ScrollView style={styles.container}>
@@ -37,6 +35,7 @@ export default function ProfileScreen (props) {
             <Text style={styles.anonymousUserText}>
               Has iniciado sesion de forma anónima.
             </Text>
+
             <Text style={styles.anonymousUserSubText}>
               <Ionicons
                 style={styles.anonymousUserSubTextIcon}
