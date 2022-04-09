@@ -5,9 +5,15 @@ import SafeCardModalComponent from "../components/SafeCardModalComponent";
 import SafeCardsData from "../data/SafeCardsData";
 import ButtonComponent from "../components/ButtonComponent";
 import { ORANGE } from "../constants/Colors";
+import { useFocusEffect } from '@react-navigation/native';
 export default function SafePlaceScreen() {
     const [modalVisible, setModalVisible] = React.useState(false);
     const [safeCards, setSafeCards] = React.useState(SafeCardsData);
+    useFocusEffect(
+      React.useCallback(() => {
+        setSafeCards(safeCards);
+      }, [])
+    );
     return (
         <View style={styles.container}>
             <Text style={styles.text}>Mi lugar seguro</Text>

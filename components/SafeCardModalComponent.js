@@ -4,7 +4,7 @@ import {
     TextInput, TouchableOpacity, View
 } from "react-native";
 import ButtonComponent from "../components/ButtonComponent";
-import { ORANGE, SOFT_GREEN } from "../constants/Colors";
+import { SOFT_GREEN } from "../constants/Colors";
 export default function SafeCardModalComponent({ visible, setVisible, setSafeCards }) {
     const [safeCardTitle, setSafeCardTitle] = React.useState("");
     const [safeCardBody, setSafeCardBody] = React.useState("");

@@ -4,7 +4,7 @@ import IconButtonComponent from "../components/IconButtonComponent";
 import PixelGraphComponent from "../components/PixelGraphComponent";
 import FeelingIconData from "../data/FeelingIconData";
 export default function EmotionalDiaryScreen({navigation}) {
-  const [value, setValue] = useState("");
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hoy me siento:</Text>
