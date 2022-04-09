@@ -2,7 +2,7 @@ import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import React from "react";
-
+import HeaderComponent from "../components/HeaderComponent";
 //Screens
 import HomeScreen from "../screens/HomeScreen.js";
 import ProfileScreen from "../screens/ProfileScreen.js";
@@ -13,7 +13,6 @@ import CardsForHelpScreen from "../screens/CardsForHelpScreen.js";
 import EditProfileScreen from "../screens/EditProfileScreen.js";
 import AboutUsCardScreen from "../screens/AboutUsCardsScreen.js";
 import EmotionalDiaryScreen from "../screens/EmotionalDiaryScreen.js";
-import OnBoardingScreen from "../screens/OnBoardingScreen.js";
 import SafePlaceScreen from "../screens/SafePlaceScreen.js";
 import ResourcesForHelpScreen from "../screens/ResourcesForHelpScreen.js";
 
@@ -28,7 +27,6 @@ const bottomTabNavigatorName = "BottomTabNavigator";
 const cardsForHelpScreenName = "Ayuda";
 const aboutUsCardScreenName = "Sobre nosotros";
 const emotionalDiaryScreenName = "Diario emocional";
-const onBoardingScreenName = "onboard";
 const safePlaceScreenName = "Mi lugar seguro";
 const resourcesForHelpScreenName = "Recursos";
 
@@ -96,16 +94,6 @@ export default function HomeStack() {
       <Stack.Screen
         name={bottomTabNavigatorName}
         component={BottomTabNavigator}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={onBoardingScreenName}
-        component={OnBoardingScreen}
-        options={{ headerShown: false }}
-      />
-      <Stack.Screen
-        name={homeScreenName}
-        component={HomeScreen}
         options={{ headerShown: false }}
       />
       <Stack.Screen
