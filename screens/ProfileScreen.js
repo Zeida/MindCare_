@@ -20,12 +20,21 @@ import AlertModalComponent from "../components/AlertModalComponent";
 import { ShareComponent } from "../components/ComponentsIndex";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 import { loggingOut } from "../api/FirebaseMethods";
+import { useFocusEffect } from '@react-navigation/native';
+
 export default function ProfileScreen (props) {
-  const { user } = useContext(AuthenticatedUserContext);
+  const { user, setUser} = useContext(AuthenticatedUserContext);
+  const [ displayName, setDisplayName] = useState("");
   const handleSignOut = async () => {
     loggingOut();
   };
   const [modalVisible, setModalVisible] = useState(false);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setDisplayName(user.displayName);
+    }, [])
+  );
 
   return (
     <ScrollView style={styles.container}>
@@ -56,7 +65,7 @@ export default function ProfileScreen (props) {
                 size={80}
               />
               <View style={{ marginLeft: 30 }}>
-                <Title style={styles.title}>{user.displayName}</Title>
+                <Title style={styles.title}>{displayName}</Title>
                 <View style={styles.row}>
                   <Fontisto name="email" color={"black"} size={20} />
                   <Text style={{ color: "#777777", marginLeft: 5 }}>

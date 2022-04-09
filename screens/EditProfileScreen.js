@@ -9,15 +9,16 @@ import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvide
 export default function EditProfileScreen  (props){
   const [displayName, setDisplayName] = useState("");
   const [updateError, setUpdateError] = useState("");
-  const { user } = useContext(AuthenticatedUserContext);
+  const { user, setUser } = useContext(AuthenticatedUserContext);
   
   const onHandleUpdate = async () => {
     const update = {
       displayName: displayName,
     };
     try {
-      await user.updateProfile(update)
-      return props.navigation.goBack();
+      await user.updateProfile(update);
+      setUser(user);
+      return props.navigation.goBack(user);
       
     } catch (error) {
       console.log(error);

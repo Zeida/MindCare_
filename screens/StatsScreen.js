@@ -9,8 +9,9 @@ export default function StatsScreen(props) {
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
-    <ScrollView>
+    
       <View style={styles.container}>
+        
         <View style={styles.switchContainer}>
           <Text style={styles.switchText}>Día</Text>
           <Switch
@@ -31,7 +32,7 @@ export default function StatsScreen(props) {
             }}
           />
         </View>
-
+        <ScrollView style={styles.scrollview}>
         <Text style={styles.text}>Mis estadísticas de cuidado</Text>
         <Image style={styles.image} source={require("../images/stats.png")} />
         {isEnabled ? (
@@ -45,16 +46,20 @@ export default function StatsScreen(props) {
             <PieChartComponent data={daydata} />
           </View>
         )}
+        </ScrollView>
       </View>
-    </ScrollView>
+    
   );
 }
 
 const styles = StyleSheet.create({
+  scrollview: {
+    backgroundColor: "#fff",
+  },
   container: {
     flex: 1,
     justifyContent: "center",
-    backgroundColor: "white",
+    backgroundColor: "#fff",
   },
   text: {
     fontSize: 20,

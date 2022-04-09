@@ -1,17 +1,26 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TouchableRipple } from "react-native-paper";
 import { IconButtonComponent } from "../components/ComponentsIndex";
 import ChallengeScopesData from "../data/ChallengeScopesData";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 import { loggingOut } from "../api/FirebaseMethods";
+import { useFocusEffect } from '@react-navigation/native';
 
 export default function HomeScreen(props) {
   const { user } = useContext(AuthenticatedUserContext);
+  const [ displayName, setDisplayName] = useState("");
   const handleLogginOut = async () => {
     loggingOut();
   };
+
+  useFocusEffect(
+    React.useCallback(() => {
+      setDisplayName(user.displayName);
+    }, [])
+    
+  );
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,7 +38,7 @@ export default function HomeScreen(props) {
       <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
       {ChallengeScopesData.map((challengeScope, index) => {
         return (
-          <View key={index}>
+          
             <TouchableRipple
               onPress={() => {
                 props.navigation.navigate("Todolist", {
@@ -44,7 +53,7 @@ export default function HomeScreen(props) {
                 key={index}
               />
             </TouchableRipple>
-          </View>
+
         );
       })}
     </SafeAreaView>
@@ -86,6 +95,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 24,
+    marginBottom: 2,
   },
 });

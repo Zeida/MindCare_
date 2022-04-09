@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from "react";
 
-export const AuthenticatedUserContext = createContext({});
+export const AuthenticatedUserContext = createContext();
 
 export const AuthenticatedUserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -11,3 +11,4 @@ export const AuthenticatedUserProvider = ({ children }) => {
     </AuthenticatedUserContext.Provider>
   );
 };
+
