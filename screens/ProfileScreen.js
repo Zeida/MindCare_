@@ -1,12 +1,10 @@
 import { Fontisto, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useFocusEffect } from '@react-navigation/native';
 import React, { useContext, useState } from "react";
 import {
-  StyleSheet,
+  Alert, StyleSheet,
   TouchableOpacity,
-  View,
-  Alert,
-  Modal,
-  Pressable,
+  View
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
@@ -14,13 +12,11 @@ import {
   Caption,
   Text,
   Title,
-  TouchableRipple,
+  TouchableRipple
 } from "react-native-paper";
-import AlertModalComponent from "../components/AlertModalComponent";
+import { loggingOut } from "../api/FirebaseMethods";
 import { ShareComponent } from "../components/ComponentsIndex";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import { loggingOut } from "../api/FirebaseMethods";
-import { useFocusEffect } from '@react-navigation/native';
 
 export default function ProfileScreen (props) {
   const { user, setUser} = useContext(AuthenticatedUserContext);
@@ -28,7 +24,6 @@ export default function ProfileScreen (props) {
   const handleSignOut = async () => {
     loggingOut();
   };
-  const [modalVisible, setModalVisible] = useState(false);
 
   useFocusEffect(
     React.useCallback(() => {
