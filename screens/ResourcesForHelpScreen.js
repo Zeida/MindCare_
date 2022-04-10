@@ -1,14 +1,29 @@
-import * as React from "react";
-import { SafeAreaView, StyleSheet, Image } from "react-native";
+import { useEffect, useState } from "react";
+import { SafeAreaView, StyleSheet, Image, ActivityIndicator, View } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
-import ResourcesForHelpData from "../data/ResourcesForHelpData";
 import { SOFT_BLUE } from "../constants/Colors";
+import { getResourcesForHelp } from "../api/FirebaseMethods";
 
 export default function ResourcesForHelpScreen() {
+  const [resources, setResources] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getResourcesForHelp(setResources);
+    setIsLoading(false);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+  }
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.image} source={require("../images/helptips.png")} />
-      {ResourcesForHelpData.map((resource) => {
+      {resources.map((resource) => {
         return (
           <Card key={resource.id} value={resource.title} style={styles.item}>
             <Card.Content>
