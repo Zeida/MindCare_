@@ -10,10 +10,9 @@ import {
 } from "react-native";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 
-export default function ToDoListScreen({ route, navigation }) {
+export default function ToDoListScreen({ route }) {
   const [list, setList] = useState([]);
   const [value, setValue] = useState("");
-  const [modalVisible, setModalVisible] = useState(false);
   const { title } = route.params;
 
   function addText(text) {

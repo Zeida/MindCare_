@@ -1,24 +1,28 @@
 import React from "react";
-import {
-  Image, StyleSheet, Text, View
-} from "react-native";
-
+import { Image, StyleSheet, Text, View } from "react-native";
 
 export default function AboutUsCardsScreen() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>¿Quién está detrás de esta app?</Text>
-      <Image
-        style={styles.image}
-        source={require("../images/team.png")}
-      />
-      <Text style={styles.subtext}>Un equipo multidisplinar concienciado con la importancia de la salud mental.</Text>
+      <Image style={styles.image} source={require("../images/team.png")} />
+      <Text style={styles.subtext}>
+        Un equipo multidisplinar concienciado con la importancia de la salud
+        mental.
+      </Text>
       <Text style={styles.subtextleft}>En el proyecto han trabajado:</Text>
-      <Text style={styles.subtextteammembers}>Crisamer Rivero Santana (Psicóloga)</Text>
-      <Text style={styles.subtextteammembers}>Zeida de los R. Rguez. Mendoza (Desarrolladora)</Text>
-      <Text style={styles.subtextteammembers}>Ana Maria Plácido (Tutora del proyecto)</Text>
-      <Text style={styles.subtextteammembers}>Arminda Castellano Quesada (Ilustradora)</Text>
-
+      <Text style={styles.subtextteammembers}>
+        Crisamer Rivero Santana (Psicóloga)
+      </Text>
+      <Text style={styles.subtextteammembers}>
+        Zeida de los R. Rguez. Mendoza (Desarrolladora)
+      </Text>
+      <Text style={styles.subtextteammembers}>
+        Ana Maria Plácido (Tutora del proyecto)
+      </Text>
+      <Text style={styles.subtextteammembers}>
+        Arminda Castellano Quesada (Ilustradora)
+      </Text>
     </View>
   );
 }
@@ -66,6 +70,6 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 20,
     textAlign: "left",
-    fontWeight: 'bold'
-  }
+    fontWeight: "bold",
+  },
 });

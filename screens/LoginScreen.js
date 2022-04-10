@@ -6,7 +6,6 @@ import {
   ErrorMessageComponent,
   InputFieldComponent,
 } from "../components/ComponentsIndex";
-import { auth } from "../config/firebase";
 import { login } from "../api/FirebaseMethods";
 
 
