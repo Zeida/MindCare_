@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert, Modal, Pressable, StyleSheet, Text, View } from "react-native";
+import { Modal, Pressable, StyleSheet, Text, View } from "react-native";
 
 const AlertModalComponent = ({ modalVisible, setModalVisible, modalText, modalOptionText }) => {
     return (
