@@ -17,6 +17,7 @@ import {
 import { loggingOut } from "../api/FirebaseMethods";
 import { ShareComponent } from "../components/ComponentsIndex";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+import { useCallback, useEffect } from "react";
 
 export default function ProfileScreen (props) {
   const { user, setUser} = useContext(AuthenticatedUserContext);
@@ -26,7 +27,7 @@ export default function ProfileScreen (props) {
   };
 
   useFocusEffect(
-    React.useCallback(() => {
+    useCallback(() => {
       setDisplayName(user.displayName);
     }, [])
   );

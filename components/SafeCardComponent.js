@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         
     },
     safeCardBody: {
-        alignSelf: "flex-end",
+        alignSelf: "center",
         color: 'black',
         fontSize: 14,
     },

@@ -4,7 +4,6 @@ import { auth, db } from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 import React, { useContext } from "react";
 
-
 export async function registration(
   email,
   password,
@@ -90,4 +89,14 @@ export async function loginAnonymously(displayName, setUpdateError) {
       }
       console.error(error);
     });
+}
+
+//collection de prueba hay que cambiarlo
+export async function getSafeCards(setSafeCards) {
+  const data = await db.collection("achievements").get();
+  const achievements = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  setSafeCards(achievements);
 }
