@@ -11,11 +11,10 @@ import { loginAnonymously } from "../api/FirebaseMethods";
 import { ButtonComponent } from "../components/ComponentsIndex";
 
 export default function WelcomeScreen({ navigation }) {
-
   const onHandleLoginAnonymously = async () => {
     loginAnonymously();
   };
-  
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoandtitle}>

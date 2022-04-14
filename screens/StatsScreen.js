@@ -2,37 +2,38 @@ import React, { useState } from "react";
 import { Text, View, StyleSheet, Switch, Image } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { daydata, weekdata } from "../data/StatsData";
-import { PieChartComponent, ButtonComponent } from "../components/ComponentsIndex";
+import {
+  PieChartComponent,
+  ButtonComponent,
+} from "../components/ComponentsIndex";
 
 export default function StatsScreen(props) {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
 
   return (
-    
-      <View style={styles.container}>
-        
-        <View style={styles.switchContainer}>
-          <Text style={styles.switchText}>Día</Text>
-          <Switch
-            style={styles.switch}
-            trackColor={{ false: "#fff", true: "#192959" }}
-            thumbColor={isEnabled ? "#F27C38" : "#777777"}
-            onValueChange={toggleSwitch}
-            value={isEnabled}
-          />
-          <Text style={styles.switchText}>Semana</Text>
-          <ButtonComponent
-            title="Mi diario emocional"
-            backgroundColor="#192959"
-            onPress={() => props.navigation.navigate("Diario emocional")}
-            width="50%"
-            containerStyle={{
-              marginLeft: 35,
-            }}
-          />
-        </View>
-        <ScrollView style={styles.scrollview}>
+    <View style={styles.container}>
+      <View style={styles.switchContainer}>
+        <Text style={styles.switchText}>Día</Text>
+        <Switch
+          style={styles.switch}
+          trackColor={{ false: "#fff", true: "#192959" }}
+          thumbColor={isEnabled ? "#F27C38" : "#777777"}
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
+        <Text style={styles.switchText}>Semana</Text>
+        <ButtonComponent
+          title="Mi diario emocional"
+          backgroundColor="#192959"
+          onPress={() => props.navigation.navigate("Diario emocional")}
+          width="50%"
+          containerStyle={{
+            marginLeft: 35,
+          }}
+        />
+      </View>
+      <ScrollView style={styles.scrollview}>
         <Text style={styles.text}>Mis estadísticas de cuidado</Text>
         <Image style={styles.image} source={require("../images/stats.png")} />
         {isEnabled ? (
@@ -46,9 +47,8 @@ export default function StatsScreen(props) {
             <PieChartComponent data={daydata} />
           </View>
         )}
-        </ScrollView>
-      </View>
-    
+      </ScrollView>
+    </View>
   );
 }
 
@@ -100,6 +100,6 @@ const styles = StyleSheet.create({
     height: 250,
     marginLeft: 30,
     marginRight: 30,
-    alignSelf:'center'
+    alignSelf: "center",
   },
 });

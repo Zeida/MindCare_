@@ -8,7 +8,6 @@ import {
 } from "../components/ComponentsIndex";
 import { login } from "../api/FirebaseMethods";
 
-
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,10 +24,9 @@ export default function LoginScreen({ navigation }) {
       setPasswordVisibility(!passwordVisibility);
     }
   };
-  const onHandleLogIn= async () => {
+  const onHandleLogIn = async () => {
     login(email, password, setLoginError);
   };
-
 
   return (
     <SafeAreaView style={styles.container}>

@@ -2,11 +2,12 @@ import { Entypo } from "@expo/vector-icons";
 import React, { useState } from "react";
 import {
   Alert,
-  FlatList, StyleSheet,
+  FlatList,
+  StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 
@@ -41,22 +42,18 @@ export default function ToDoListScreen({ route }) {
   }
 
   function deleteItem(idx) {
-    Alert.alert(
-      "Descartar reto",
-      "¿Quieres eliminar este reto?",
-      [
-        {
-          text: "Mantener",
+    Alert.alert("Descartar reto", "¿Quieres eliminar este reto?", [
+      {
+        text: "Mantener",
+      },
+      {
+        text: "Si",
+        onPress: () => {
+          const data = list.filter((item, index) => index !== idx);
+          setList(data);
         },
-        {
-          text: "Si",
-          onPress: () => {
-            const data = list.filter((item, index) => index !== idx);
-            setList(data);
-          },
-        },
-      ]
-    );
+      },
+    ]);
   }
 
   return (

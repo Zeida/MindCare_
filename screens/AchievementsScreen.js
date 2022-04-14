@@ -16,17 +16,19 @@ export default function AchievementsScreen() {
       <Text style={styles.subtext}>Mis insignias:</Text>
       <ScrollView>
         <AlertModalComponent
-        modalVisible={modalVisible}
-        setModalVisible={setModalVisible}
-        modalText={""}
-        modalOptionText={""}/>
+          modalVisible={modalVisible}
+          setModalVisible={setModalVisible}
+          modalText={""}
+          modalOptionText={""}
+        />
         <AchievementComponent
-        name="logout"
-        size={25}
-        color="red"
-        borderColor={'black'}
-        onPress={(() => setModalVisible(true))}
-        text={"insignia prueba"}/>
+          name="logout"
+          size={25}
+          color="red"
+          borderColor={"black"}
+          onPress={() => setModalVisible(true)}
+          text={"insignia prueba"}
+        />
       </ScrollView>
     </View>
   );
@@ -46,7 +48,7 @@ const styles = StyleSheet.create({
     color: "black",
     textAlign: "center",
     paddingVertical: 10,
-    marginTop:50,
+    marginTop: 50,
     margin: 10,
     marginHorizontal: 10,
   },
@@ -63,6 +65,6 @@ const styles = StyleSheet.create({
   image: {
     width: 300,
     height: 250,
-    alignSelf:'center'
+    alignSelf: "center",
   },
 });

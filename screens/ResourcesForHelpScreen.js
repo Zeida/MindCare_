@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
-import { SafeAreaView, StyleSheet, Image, ActivityIndicator, View } from "react-native";
+import {
+  SafeAreaView,
+  StyleSheet,
+  Image,
+  ActivityIndicator,
+  View,
+} from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 import { SOFT_BLUE } from "../constants/Colors";
 import { getResourcesForHelp } from "../api/FirebaseMethods";

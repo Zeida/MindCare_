@@ -3,8 +3,7 @@ import { StyleSheet, Text, View } from "react-native";
 import IconButtonComponent from "../components/IconButtonComponent";
 import PixelGraphComponent from "../components/PixelGraphComponent";
 import FeelingIconData from "../data/FeelingIconData";
-export default function EmotionalDiaryScreen({navigation}) {
-
+export default function EmotionalDiaryScreen({ navigation }) {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hoy me siento:</Text>
@@ -16,7 +15,9 @@ export default function EmotionalDiaryScreen({navigation}) {
                 name={feeling.icon}
                 size={50}
                 color={feeling.color}
-                onPress={()=>{console.log(feeling.value)}}
+                onPress={() => {
+                  console.log(feeling.value);
+                }}
               />
             </View>
           );

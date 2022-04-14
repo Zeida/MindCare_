@@ -14,7 +14,6 @@ export default function SafePlaceScreen() {
     getSafeCards(setSafeCards);
   }, []);
 
-
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Mi lugar seguro</Text>

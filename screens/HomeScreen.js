@@ -6,11 +6,11 @@ import { IconButtonComponent } from "../components/ComponentsIndex";
 import ChallengeScopesData from "../data/ChallengeScopesData";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 import { loggingOut } from "../api/FirebaseMethods";
-import { useFocusEffect } from '@react-navigation/native';
+import { useFocusEffect } from "@react-navigation/native";
 
 export default function HomeScreen(props) {
   const { user } = useContext(AuthenticatedUserContext);
-  const [ displayName, setDisplayName] = useState("");
+  const [displayName, setDisplayName] = useState("");
   const handleLogginOut = async () => {
     loggingOut();
   };
@@ -19,7 +19,6 @@ export default function HomeScreen(props) {
     React.useCallback(() => {
       setDisplayName(user.displayName);
     }, [])
-    
   );
 
   return (
@@ -38,22 +37,20 @@ export default function HomeScreen(props) {
       <Text style={styles.text}>¿Qué área te gustaría mejorar?</Text>
       {ChallengeScopesData.map((challengeScope, index) => {
         return (
-          
-            <TouchableRipple
-              onPress={() => {
-                props.navigation.navigate("Todolist", {
-                  title: challengeScope.title,
-                });
-              }}
+          <TouchableRipple
+            onPress={() => {
+              props.navigation.navigate("Todolist", {
+                title: challengeScope.title,
+              });
+            }}
+            key={index}
+          >
+            <Image
+              style={styles.image}
+              source={challengeScope.image}
               key={index}
-            >
-              <Image
-                style={styles.image}
-                source={challengeScope.image}
-                key={index}
-              />
-            </TouchableRipple>
-
+            />
+          </TouchableRipple>
         );
       })}
     </SafeAreaView>
@@ -68,7 +65,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     flexWrap: "wrap",
     paddingVertical: 50,
-    backgroundColor:"#fff"
+    backgroundColor: "#fff",
   },
   text: {
     fontSize: 22,
@@ -76,7 +73,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "black",
-    margin:10
+    margin: 10,
   },
   title: {
     fontSize: 24,
