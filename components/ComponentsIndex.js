@@ -24,5 +24,5 @@ export {
   PieChartComponent,
   PixelGraphComponent,
   SafeCardComponent,
-  AlertModalComponet
+  AlertModalComponet,
 };

@@ -1,5 +1,5 @@
-import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import React from "react";
+import { StyleSheet, Text } from "react-native";
 
 const ErrorMessageComponent = ({ error, visible }) => {
   if (!error || !visible) {
@@ -11,12 +11,12 @@ const ErrorMessageComponent = ({ error, visible }) => {
 
 const styles = StyleSheet.create({
   errorText: {
-    color: 'red',
+    color: "red",
     fontSize: 15,
     marginBottom: 10,
-    fontWeight: '600',
-    marginHorizontal:20
-  }
+    fontWeight: "600",
+    marginHorizontal: 20,
+  },
 });
 
 export default ErrorMessageComponent;

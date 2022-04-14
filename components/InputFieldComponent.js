@@ -1,14 +1,14 @@
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import React from 'react';
-import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import React from "react";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 
 const InputFieldComponent = ({
   leftIcon,
-  iconColor = '#000',
+  iconColor = "#000",
   rightIcon,
   inputStyle,
   containerStyle,
-  placeholderTextColor = '#444',
+  placeholderTextColor = "#444",
   handlePasswordVisibility,
   ...rest
 }) => {
@@ -44,32 +44,32 @@ const InputFieldComponent = ({
 const styles = StyleSheet.create({
   container: {
     borderRadius: 4,
-    borderColor:'black',
-    borderWidth:1,
-    flexDirection: 'row',
+    borderColor: "black",
+    borderWidth: 1,
+    flexDirection: "row",
     paddingVertical: 8,
     paddingHorizontal: 30,
-    marginLeft:15,
-    marginRight:15,
+    marginLeft: 15,
+    marginRight: 15,
   },
   leftIcon: {
     marginRight: 5,
-    marginTop:5,
-    marginBottom:5,
+    marginTop: 5,
+    marginBottom: 5,
   },
   input: {
     flex: 1,
-    width: '100%',
+    width: "100%",
     fontSize: 18,
-    marginTop:2,
-    marginBottom:2,
+    marginTop: 2,
+    marginBottom: 2,
   },
   rightIcon: {
-    alignSelf: 'center',
-    marginLeft: 5, 
-    marginTop:5,
-    marginBottom:5,
-  }
+    alignSelf: "center",
+    marginLeft: 5,
+    marginTop: 5,
+    marginBottom: 5,
+  },
 });
 
 export default InputFieldComponent;

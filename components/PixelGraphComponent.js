@@ -3,7 +3,12 @@ import { Dimensions, StyleSheet, View } from "react-native";
 import { ContributionGraph } from "react-native-chart-kit";
 import { ScrollView } from "react-native-gesture-handler";
 import {
-  DARK_BLUE, MIDDLE_BLUE, ORANGE, SOFT_GREEN, SOFT_GREY, SOFT_PINK
+  DARK_BLUE,
+  MIDDLE_BLUE,
+  ORANGE,
+  SOFT_GREEN,
+  SOFT_GREY,
+  SOFT_PINK,
 } from "../constants/Colors";
 const screenWidth = Dimensions.get("window").width;
 
@@ -31,7 +36,7 @@ const chartConfig = {
   backgroundGradientTo: "#fff",
   style: {
     borderRadius: 10,
-  }
+  },
 };
 
 const commitsData = [
@@ -73,7 +78,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginTop:10,
+    marginTop: 10,
   },
 });
 

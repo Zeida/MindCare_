@@ -26,8 +26,8 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 0.7,
-    marginTop:40,
-    alignSelf:'center'
+    marginTop: 40,
+    alignSelf: "center",
   },
   title: {
     fontWeight: "800",
@@ -35,8 +35,8 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     color: "#493d8a",
     textAlign: "center",
-    marginLeft:20,
-    marginRight:20
+    marginLeft: 20,
+    marginRight: 20,
   },
   description: {
     fontWeight: "300",

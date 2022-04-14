@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
   base: {
     alignItems: "center",
     justifyContent: "center",
-    alignSelf:'center',
+    alignSelf: "center",
     minHeight: 42,
     borderRadius: 40,
     paddingHorizontal: 12,

@@ -6,10 +6,10 @@ const screenWidth = Dimensions.get("window").width;
 
 const chartConfig = {
   color: (opacity = 1) => `rgba(255, 255, 255, ${opacity})`,
-  useShadowColorFromDataset: false, 
+  useShadowColorFromDataset: false,
 };
 
-const PieChartComponent = ({data}) => {
+const PieChartComponent = ({ data }) => {
   return (
     <PieChart
       data={data}
@@ -24,6 +24,5 @@ const PieChartComponent = ({data}) => {
     />
   );
 };
-
 
 export default PieChartComponent;
