@@ -5,6 +5,7 @@ import SafeCardComponent from "../components/SafeCardComponent";
 import SafeCardModalComponent from "../components/SafeCardModalComponent";
 import { ORANGE } from "../constants/Colors";
 import { getSafeCards } from "../api/FirebaseMethods";
+
 export default function SafePlaceScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [safeCards, setSafeCards] = useState([]);
@@ -12,6 +13,7 @@ export default function SafePlaceScreen() {
   useEffect(() => {
     getSafeCards(setSafeCards);
   }, []);
+
 
   return (
     <View style={styles.container}>
