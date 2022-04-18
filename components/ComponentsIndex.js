@@ -10,7 +10,6 @@ import PaginatorComponent from "./PaginatorComponent";
 import PieChartComponent from "./PieChartComponent";
 import PixelGraphComponent from "./PixelGraphComponent";
 import SafeCardComponent from "./SafeCardComponent";
-import AlertModalComponet from "./AlertModalComponent";
 export {
   IconButtonComponent,
   ButtonComponent,
@@ -24,5 +23,4 @@ export {
   PieChartComponent,
   PixelGraphComponent,
   SafeCardComponent,
-  AlertModalComponet,
 };

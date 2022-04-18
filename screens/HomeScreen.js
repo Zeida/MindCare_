@@ -25,7 +25,7 @@ export default function HomeScreen(props) {
     <SafeAreaView style={styles.container}>
       <StatusBar style="dark-content" />
       <View style={styles.row}>
-        <Text style={styles.title}>Hola {user.displayName}! </Text>
+        <Text style={styles.title}>¡Hola {user.displayName}! </Text>
 
         <IconButtonComponent
           name="logout"

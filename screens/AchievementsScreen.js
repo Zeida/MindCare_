@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import AchievementComponent from "../components/AchievementComponent";
-import AlertModalComponent from "../components/AlertModalComponent";
 
 export default function AchievementsScreen() {
-  const [modalVisible, setModalVisible] = useState(false);
   return (
     <View style={styles.container}>
       <Text style={styles.text}> Puedo conseguir todo lo que me proponga</Text>
@@ -15,19 +13,14 @@ export default function AchievementsScreen() {
       />
       <Text style={styles.subtext}>Mis insignias:</Text>
       <ScrollView>
-        <AlertModalComponent
-          modalVisible={modalVisible}
-          setModalVisible={setModalVisible}
-          modalText={""}
-          modalOptionText={""}
-        />
         <AchievementComponent
-          name="logout"
+          color={"red"}
           size={25}
-          color="red"
+          name={"home"}
           borderColor={"black"}
-          onPress={() => setModalVisible(true)}
-          text={"insignia prueba"}
+          text={"hola"}
+          modalText={"aleluya"}
+          modalTitle={"lo conseguiste"}
         />
       </ScrollView>
     </View>

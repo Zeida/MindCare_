@@ -10,6 +10,7 @@ const SafeCardComponent = ({ safeCard }) => {
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   safeCardContainer: {
     backgroundColor: SOFT_BLUE,

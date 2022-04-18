@@ -1,14 +1,15 @@
 import { AntDesign } from "@expo/vector-icons";
 import React from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text, Alert } from "react-native";
 
 const AchievementComponent = ({
   color,
   size,
-  onPress,
   name,
   borderColor,
   text,
+  modalText,
+  modalTitle,
 }) => {
   return (
     <Pressable
@@ -32,7 +33,7 @@ const AchievementComponent = ({
           },
         ];
       }}
-      onPress={onPress}
+      onPress={() => Alert.alert(modalTitle, modalText)}
     >
       <AntDesign name={name} size={size} color={color} />
       <Text style={styles.text}>{text}</Text>
