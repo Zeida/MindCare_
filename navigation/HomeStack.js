@@ -99,43 +99,73 @@ export default function HomeStack() {
       <Stack.Screen
         name={toDoListScreenName}
         component={ToDoListScreen}
-        options={{ headerTitle: " " }}
+        options={{
+          headerTitle: " ",
+          headerStyle: {
+            height: 80,
+          },
+        }}
       />
-      <Stack.Screen name={statsScreenName} component={StatsScreen} />
       <Stack.Screen
         name={emotionalDiaryScreenName}
         component={EmotionalDiaryScreen}
-        options={{ headerTitle: " " }}
-      />
-      <Stack.Screen
-        name={achievementsScreenName}
-        component={AchievementsScreen}
+        options={{
+          headerTitle: " ",
+          headerStyle: {
+            height: 80,
+          },
+        }}
       />
       <Stack.Screen name={profileScreenName} component={ProfileScreen} />
       <Stack.Screen
         name={safePlaceScreenName}
         component={SafePlaceScreen}
-        options={{ headerTitle: " " }}
+        options={{
+          headerTitle: " ",
+          headerStyle: {
+            height: 80,
+          },
+        }}
       />
       <Stack.Screen
         name={resourcesForHelpScreenName}
         component={ResourcesForHelpScreen}
-        options={{ headerTitle: " " }}
+        options={{
+          headerTitle: " ",
+          headerStyle: {
+            height: 80,
+          },
+        }}
       />
       <Stack.Screen
         name={editProfileScreenName}
         component={EditProfileScreen}
-        options={{ headerTitle: " " }}
+        options={{
+          headerTitle: " ",
+          headerStyle: {
+            height: 80,
+          },
+        }}
       />
       <Stack.Screen
         name={cardsForHelpScreenName}
         component={CardsForHelpScreen}
-        options={{ headerTitle: " " }}
+        options={{
+          headerTitle: " ",
+          headerStyle: {
+            height: 80,
+          },
+        }}
       />
       <Stack.Screen
         name={aboutUsCardScreenName}
         component={AboutUsCardScreen}
-        options={{ headerTitle: " " }}
+        options={{
+          headerTitle: " ",
+          headerStyle: {
+            height: 80,
+          },
+        }}
       />
     </Stack.Navigator>
   );

@@ -101,11 +101,12 @@ export async function getSafeCards(setSafeCards) {
   setSafeCards(achievements);
 }
 
-export async function getResourcesForHelp(setResources) {
+export async function getResourcesForHelp(setResources, setIsLoading) {
   const data = await db.collection("ResourcesForHelp").get();
   const resources = data.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
   setResources(resources);
+  setIsLoading(false);
 }

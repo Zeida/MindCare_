@@ -9,20 +9,19 @@ import {
 import { Card, Paragraph, Title } from "react-native-paper";
 import { SOFT_BLUE } from "../constants/Colors";
 import { getResourcesForHelp } from "../api/FirebaseMethods";
-
+import { ORANGE } from "../constants/Colors";
 export default function ResourcesForHelpScreen() {
   const [resources, setResources] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getResourcesForHelp(setResources);
-    setIsLoading(false);
+    getResourcesForHelp(setResources, setIsLoading);
   }, []);
 
   if (isLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <ActivityIndicator size="large" />
+      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", alignSelf:"center" }}>
+        <ActivityIndicator size="large" color={ORANGE}/>
       </View>
     );
   }
