@@ -92,13 +92,14 @@ export async function loginAnonymously(displayName, setUpdateError) {
 }
 
 //collection de prueba hay que cambiarlo
-export async function getSafeCards(setSafeCards) {
+export async function getSafeCards(setSafeCards, setIsLoading) {
   const data = await db.collection("achievements").get();
   const achievements = data.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
   }));
   setSafeCards(achievements);
+  setIsLoading(false);
 }
 
 export async function getResourcesForHelp(setResources, setIsLoading) {

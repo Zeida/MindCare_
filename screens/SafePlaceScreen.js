@@ -1,5 +1,12 @@
 import { useEffect, useState } from "react";
-import { FlatList, Image, StyleSheet, Text, View } from "react-native";
+import {
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import ButtonComponent from "../components/ButtonComponent";
 import SafeCardComponent from "../components/SafeCardComponent";
 import SafeCardModalComponent from "../components/SafeCardModalComponent";
@@ -9,9 +16,10 @@ import { getSafeCards } from "../api/FirebaseMethods";
 export default function SafePlaceScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [safeCards, setSafeCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getSafeCards(setSafeCards);
+    getSafeCards(setSafeCards, setIsLoading);
   }, []);
 
   return (
@@ -19,13 +27,26 @@ export default function SafePlaceScreen() {
       <Text style={styles.text}>Mi lugar seguro</Text>
       <Image style={styles.image} source={require("../images/safeplace.png")} />
       <Text style={styles.subtext}>Mis herramientas para el bienestar:</Text>
-      <FlatList
-        style={styles.flatlist}
-        showsVerticalScrollIndicator={false}
-        data={safeCards}
-        renderItem={({ item }) => <SafeCardComponent safeCard={item} />}
-        keyExtractor={(safeCard) => safeCard.body}
-      />
+      {isLoading ? (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            alignSelf: "center",
+          }}
+        >
+          <ActivityIndicator size="large" color={ORANGE} />
+        </View>
+      ) : (
+        <FlatList
+          style={styles.flatlist}
+          showsVerticalScrollIndicator={false}
+          data={safeCards}
+          renderItem={({ item }) => <SafeCardComponent safeCard={item} />}
+          keyExtractor={(safeCard) => safeCard.body}
+        />
+      )}
       <ButtonComponent
         onPress={() => setModalVisible(true)}
         title={"Añadir"}
@@ -33,10 +54,11 @@ export default function SafePlaceScreen() {
         titleColor={"#fff"}
         titleSize={17}
         containerStyle={{
-          marginBottom: 10,
+          marginBottom: 25,
           alignItems: "center",
         }}
       />
+
       <SafeCardModalComponent
         visible={modalVisible}
         setVisible={setModalVisible}

@@ -20,8 +20,15 @@ export default function ResourcesForHelpScreen() {
 
   if (isLoading) {
     return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center", alignSelf:"center" }}>
-        <ActivityIndicator size="large" color={ORANGE}/>
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+        }}
+      >
+        <ActivityIndicator size="large" color={ORANGE} />
       </View>
     );
   }
