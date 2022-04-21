@@ -104,7 +104,7 @@ export default function SignupScreen({ navigation }) {
         <ButtonComponent
           onPress={() => navigation.navigate("Login")}
           backgroundColor="#BEDEFF"
-          title="Tengo cuenta"
+          title="Iniciar sesión"
           titleColor="#F27C38"
           titleSize={20}
           containerStyle={{
