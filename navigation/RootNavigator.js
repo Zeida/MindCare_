@@ -5,6 +5,7 @@ import { AuthenticatedUserContext } from './AuthenticatedUserProvider ';
 import AuthStack from './AuthStack';
 import HomeStack from './HomeStack';
 import { auth } from '../config/firebase';
+import { ORANGE } from "../constants/Colors";
 
 export default function RootNavigator() {
   const { user, setUser } = useContext(AuthenticatedUserContext);
@@ -27,7 +28,7 @@ export default function RootNavigator() {
   if (isLoading) {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <ActivityIndicator size='large' />
+        <ActivityIndicator size='large' color={ORANGE}  />
       </View>
     );
   }
