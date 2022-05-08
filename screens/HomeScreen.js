@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TouchableRipple } from "react-native-paper";
 import { IconButtonComponent } from "../components/ComponentsIndex";
@@ -25,8 +25,7 @@ export default function HomeScreen(props) {
     <SafeAreaView style={styles.container}>
       <StatusBar style="dark-content" />
       <View style={styles.row}>
-        <Text style={styles.title}>¡Hola {user.displayName}! </Text>
-
+        <Text style={styles.title}>¡Hola! </Text>
         <IconButtonComponent
           name="logout"
           size={24}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import {
@@ -7,6 +7,7 @@ import {
   InputFieldComponent,
 } from "../components/ComponentsIndex";
 import { registration } from "../api/FirebaseMethods";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider "; 
 
 export default function SignupScreen({ navigation }) {
   const [displayName, setDisplayName] = useState("");
@@ -15,6 +16,7 @@ export default function SignupScreen({ navigation }) {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
   const [rightIcon, setRightIcon] = useState("eye");
   const [signupError, setSignupError] = useState("");
+
 
   const handlePasswordVisibility = () => {
     if (rightIcon === "eye") {
@@ -27,7 +29,7 @@ export default function SignupScreen({ navigation }) {
   };
 
   const onHandleSignup = async () => {
-    useEffect(registration(email, password, displayName, setSignupError));
+    await registration(email, password, displayName, setSignupError);
   };
 
   return (

@@ -1,8 +1,7 @@
-import * as firebase from "firebase";
 import "firebase/firestore";
+import { useContext } from "react";
 import { auth, db } from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import React, { useContext } from "react";
 
 export async function registration(
   email,
@@ -11,18 +10,17 @@ export async function registration(
   setSignupError
 ) {
   try {
-    return await auth
-      .createUserWithEmailAndPassword(email, password)
-      .then(async (res) => {
-        const update = {
-          displayName: displayName,
-        };
-        await res.user.updateProfile(update);
-        await db.collection("users").doc(currentUser.uid).set({
-          email: currentUser.email,
-          displayName: displayName,
-        });
-      });
+    const res = await auth.createUserWithEmailAndPassword(email, password);
+    const update = {
+      displayName: displayName,
+    };
+    await res.user.updateProfile(update);
+    await db.collection("Users").doc(res.user.uid).set({
+      creationDate: Date.now(),
+      displayName: displayName,
+      email: res.user.email,
+      uid: res.user.uid,
+    });
   } catch (error) {
     switch (error.code) {
       case "auth/weak-password":
@@ -38,10 +36,9 @@ export async function registration(
 }
 
 export async function login(email, password, setLoginError) {
+  if (email == "" && password == "") return;
   try {
-    if (email !== "" && password !== "") {
-      await auth.signInWithEmailAndPassword(email, password);
-    }
+    await auth.signInWithEmailAndPassword(email, password);
   } catch (error) {
     switch (error.code) {
       case "auth/user-not-found":
@@ -103,18 +100,15 @@ export async function getSafeCards(setSafeCards, setIsLoading) {
 }
 
 export async function createSafeCards({ title, body }) {
-  db.collection("achievements")
-    .add({
-      title: title,
-      body: body,
-    })
+  db.collection("achievements").add({
+    title: title,
+    body: body,
+  });
 }
 
 export async function deleteSafeCard(item) {
-  await db.collection("achievements")
-    .doc(item.id)
-    .delete()
-    return this;
+  await db.collection("achievements").doc(item.id).delete();
+  return this;
 }
 
 export async function getResourcesForHelp(setResources, setIsLoading) {

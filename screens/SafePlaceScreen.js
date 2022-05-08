@@ -1,20 +1,16 @@
-import { useEffect, useState, useCallback } from "react";
-import { useFocusEffect } from "@react-navigation/native";
+import { useEffect, useState } from "react";
 import {
-  FlatList,
-  Image,
-  StyleSheet,
-  Text,
-  View,
   ActivityIndicator,
-  Alert,
+  Alert, FlatList,
+  Image, Pressable, StyleSheet,
+  Text,
+  View
 } from "react-native";
+import { deleteSafeCard, getSafeCards } from "../api/FirebaseMethods";
 import ButtonComponent from "../components/ButtonComponent";
 import SafeCardComponent from "../components/SafeCardComponent";
 import SafeCardModalComponent from "../components/SafeCardModalComponent";
 import { ORANGE } from "../constants/Colors";
-import { getSafeCards, deleteSafeCard } from "../api/FirebaseMethods";
-import { Pressable } from "react-native";
 
 export default function SafePlaceScreen() {
   const [modalVisible, setModalVisible] = useState(false);
