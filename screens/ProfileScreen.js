@@ -1,6 +1,6 @@
 import { Fontisto, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useCallback } from "react";
 import { Alert, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
@@ -13,7 +13,6 @@ import {
 import { loggingOut } from "../api/FirebaseMethods";
 import { ShareComponent } from "../components/ComponentsIndex";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import { useCallback } from "react";
 
 export default function ProfileScreen(props) {
   const { user, setUser } = useContext(AuthenticatedUserContext);

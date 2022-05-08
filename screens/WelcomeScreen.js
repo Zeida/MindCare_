@@ -39,7 +39,7 @@ export default function WelcomeScreen({ navigation }) {
         <ButtonComponent
           onPress={() => navigation.navigate("Signup")}
           backgroundColor="#BEDEFF"
-          title="No tengo cuenta"
+          title="Registrarme"
           titleColor="#F27C38"
           titleSize={20}
           containerStyle={{

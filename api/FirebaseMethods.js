@@ -102,6 +102,21 @@ export async function getSafeCards(setSafeCards, setIsLoading) {
   setIsLoading(false);
 }
 
+export async function createSafeCards({ title, body }) {
+  db.collection("achievements")
+    .add({
+      title: title,
+      body: body,
+    })
+}
+
+export async function deleteSafeCard(item) {
+  await db.collection("achievements")
+    .doc(item.id)
+    .delete()
+    return this;
+}
+
 export async function getResourcesForHelp(setResources, setIsLoading) {
   const data = await db.collection("ResourcesForHelp").get();
   const resources = data.docs.map((doc) => ({

@@ -9,28 +9,14 @@ import {
 } from "react-native";
 import ButtonComponent from "../components/ButtonComponent";
 import { SOFT_GREEN } from "../constants/Colors";
+import { createSafeCards } from "../api/FirebaseMethods";
 export default function SafeCardModalComponent({
   visible,
   setVisible,
-  setSafeCards,
+  updateScreen
 }) {
   const [safeCardTitle, setSafeCardTitle] = React.useState("");
   const [safeCardBody, setSafeCardBody] = React.useState("");
-
-  const createSafeCard = () => {
-    setSafeCards((safeCards) => [
-      ...safeCards,
-      {
-        id: Date.now(),
-        title: { safeCardTitle },
-        body: { safeCardBody },
-        createdAt: Date.now(),
-      },
-    ]);
-    setSafeCardTitle("");
-    setSafeCardBody("");
-    setVisible(false);
-  };
 
   return (
     <Modal visible={visible} transparent={true}>
@@ -61,7 +47,13 @@ export default function SafeCardModalComponent({
           </View>
           <View style={styles.buttonContainer}>
             <ButtonComponent
-              onPress={() => createSafeCard()}
+              onPress={() => {
+                createSafeCards({ title: safeCardTitle, body: safeCardBody }),
+                  updateScreen(),
+                  setSafeCardTitle(""),
+                  setSafeCardBody(""),
+                  setVisible(false)
+              }}
               title={"Añadir"}
               backgroundColor={SOFT_GREEN}
               titleColor={"#fff"}

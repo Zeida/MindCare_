@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import {
   FlatList,
   Image,
@@ -6,21 +7,42 @@ import {
   Text,
   View,
   ActivityIndicator,
+  Alert,
 } from "react-native";
 import ButtonComponent from "../components/ButtonComponent";
 import SafeCardComponent from "../components/SafeCardComponent";
 import SafeCardModalComponent from "../components/SafeCardModalComponent";
 import { ORANGE } from "../constants/Colors";
-import { getSafeCards } from "../api/FirebaseMethods";
+import { getSafeCards, deleteSafeCard } from "../api/FirebaseMethods";
+import { Pressable } from "react-native";
 
 export default function SafePlaceScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [safeCards, setSafeCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
+  const updateScreen = () => {
     getSafeCards(setSafeCards, setIsLoading);
+  };
+
+  useEffect(() => {
+    updateScreen();
   }, []);
+
+  const deleteAlert = (item) => {
+    Alert.alert("Borrar carta", "¿Quieres eliminarla?", [
+      {
+        text: "Mantener",
+      },
+      {
+        text: "Si",
+        onPress:async () => {
+          await deleteSafeCard(item);
+          updateScreen();
+        },
+      },
+    ]);
+  };
 
   return (
     <View style={styles.container}>
@@ -43,8 +65,18 @@ export default function SafePlaceScreen() {
           style={styles.flatlist}
           showsVerticalScrollIndicator={false}
           data={safeCards}
-          renderItem={({ item }) => <SafeCardComponent safeCard={item} />}
-          keyExtractor={(safeCard) => safeCard.body}
+          renderItem={({ item }) => {
+            return (
+              <Pressable
+                onLongPress={() => {
+                  deleteAlert(item);
+                }}
+              >
+                <SafeCardComponent safeCard={item} />
+              </Pressable>
+            );
+          }}
+          keyExtractor={(safeCard) => safeCard.id}
         />
       )}
       <ButtonComponent
@@ -62,7 +94,7 @@ export default function SafePlaceScreen() {
       <SafeCardModalComponent
         visible={modalVisible}
         setVisible={setModalVisible}
-        setSafeCards={setSafeCards}
+        updateScreen={updateScreen}
       />
     </View>
   );
