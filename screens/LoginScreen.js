@@ -32,7 +32,7 @@ export default function LoginScreen({ navigation }) {
     <SafeAreaView style={styles.container}>
       <View style={styles.view}>
         <Image style={styles.logo} source={require("../images/logo.png")} />
-        <Text style={styles.title}>Bienvenid@ de vuelta!</Text>
+        <Text style={styles.title}>¡Bienvenid@ de vuelta!</Text>
 
         <InputFieldComponent
           inputStyle={{
