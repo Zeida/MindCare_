@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import {
   ActivityIndicator,
   Alert, FlatList,
@@ -11,14 +11,16 @@ import ButtonComponent from "../components/ButtonComponent";
 import SafeCardComponent from "../components/SafeCardComponent";
 import SafeCardModalComponent from "../components/SafeCardModalComponent";
 import { ORANGE } from "../constants/Colors";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
 export default function SafePlaceScreen() {
   const [modalVisible, setModalVisible] = useState(false);
   const [safeCards, setSafeCards] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { user } = useContext(AuthenticatedUserContext);
 
   const updateScreen = () => {
-    getSafeCards(setSafeCards, setIsLoading);
+    getSafeCards(setSafeCards, setIsLoading, user);
   };
 
   useEffect(() => {

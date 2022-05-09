@@ -89,8 +89,8 @@ export async function loginAnonymously(displayName, setUpdateError) {
 }
 
 //collection de prueba hay que cambiarlo
-export async function getSafeCards(setSafeCards, setIsLoading) {
-  const data = await db.collection("achievements").get();
+export async function getSafeCards(setSafeCards, setIsLoading, user) {
+  const data = await db.collection("Users").doc(user.uid).collection("SafeCards").get();
   const achievements = data.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
@@ -99,15 +99,15 @@ export async function getSafeCards(setSafeCards, setIsLoading) {
   setIsLoading(false);
 }
 
-export async function createSafeCards({ title, body }) {
-  db.collection("achievements").add({
+export async function createSafeCards({ title, body, user }) {
+  db.collection("Users").doc(user.uid).collection("SafeCards").add({
     title: title,
     body: body,
   });
 }
 
-export async function deleteSafeCard(item) {
-  await db.collection("achievements").doc(item.id).delete();
+export async function deleteSafeCard({item, user}) {
+  await db.collection("Users").doc(user.uid).collection("SafeCards").doc(item.id).delete();
   return this;
 }
 

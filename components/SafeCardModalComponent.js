@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   Modal,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
+import { createSafeCards } from "../api/FirebaseMethods";
 import ButtonComponent from "../components/ButtonComponent";
 import { SOFT_GREEN } from "../constants/Colors";
-import { createSafeCards } from "../api/FirebaseMethods";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+
 export default function SafeCardModalComponent({
   visible,
   setVisible,
-  updateScreen
+  updateScreen,
 }) {
   const [safeCardTitle, setSafeCardTitle] = React.useState("");
   const [safeCardBody, setSafeCardBody] = React.useState("");
-
+  const { user } = useContext(AuthenticatedUserContext);
   return (
     <Modal visible={visible} transparent={true}>
       <View style={styles.modalContainer}>
@@ -48,11 +50,11 @@ export default function SafeCardModalComponent({
           <View style={styles.buttonContainer}>
             <ButtonComponent
               onPress={() => {
-                createSafeCards({ title: safeCardTitle, body: safeCardBody }),
+                createSafeCards({ title: safeCardTitle, body: safeCardBody, user: user }),
                   updateScreen(),
                   setSafeCardTitle(""),
                   setSafeCardBody(""),
-                  setVisible(false)
+                  setVisible(false);
               }}
               title={"Añadir"}
               backgroundColor={SOFT_GREEN}
