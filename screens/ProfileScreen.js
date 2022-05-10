@@ -1,6 +1,6 @@
 import { Fontisto, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
-import React, { useContext, useState, useCallback } from "react";
+import React, { useCallback, useContext, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
@@ -8,14 +8,14 @@ import {
   Caption,
   Text,
   Title,
-  TouchableRipple,
+  TouchableRipple
 } from "react-native-paper";
 import { loggingOut } from "../api/FirebaseMethods";
 import { ShareComponent } from "../components/ComponentsIndex";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
 export default function ProfileScreen(props) {
-  const { user, setUser } = useContext(AuthenticatedUserContext);
+  const { user } = useContext(AuthenticatedUserContext);
   const [displayName, setDisplayName] = useState("");
   const handleSignOut = async () => {
     loggingOut();

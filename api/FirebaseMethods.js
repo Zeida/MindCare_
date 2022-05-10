@@ -88,9 +88,12 @@ export async function loginAnonymously(displayName, setUpdateError) {
     });
 }
 
-//collection de prueba hay que cambiarlo
 export async function getSafeCards(setSafeCards, setIsLoading, user) {
-  const data = await db.collection("Users").doc(user.uid).collection("SafeCards").get();
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("SafeCards")
+    .get();
   const achievements = data.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
@@ -106,8 +109,13 @@ export async function createSafeCards({ title, body, user }) {
   });
 }
 
-export async function deleteSafeCard({item, user}) {
-  await db.collection("Users").doc(user.uid).collection("SafeCards").doc(item.id).delete();
+export async function deleteSafeCard({ item, user }) {
+  await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("SafeCards")
+    .doc(item.id)
+    .delete();
   return this;
 }
 
@@ -120,3 +128,32 @@ export async function getResourcesForHelp(setResources, setIsLoading) {
   setResources(resources);
   setIsLoading(false);
 }
+
+export async function setChallenges(user) {
+  const data = await db.collection("Challenges").get();
+  data.forEach((doc) => {
+    db.collection("Users")
+      .doc(user.uid)
+      .collection("Challenges")
+      .add({
+        id: doc.id,
+        ...doc.data(),
+      });
+  });
+}
+
+export async function getChallenges(user, scope, setIsLoading) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .where("scope", "==", scope)
+    .get();
+  const challenges = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  setChallenges(challenges);
+  setIsLoading(false);
+}
+

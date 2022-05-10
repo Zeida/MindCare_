@@ -3,6 +3,7 @@ import { SafeAreaView, StyleSheet, Text } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 import CardsForHelpData from "../data/CardsForHelpData";
 import { SOFT_BLUE } from "../constants/Colors";
+import { ScrollView } from "react-native-gesture-handler";
 
 export default function CardsForHelpScreen() {
   return (
@@ -10,18 +11,20 @@ export default function CardsForHelpScreen() {
       <Text style={styles.text}>
         Recursos gratuitos de atención profesional
       </Text>
-      {CardsForHelpData.map((card) => {
-        return (
-          <Card key={card.id} value={card.title} style={styles.item}>
-            <Card.Content>
-              <Title style={styles.title}>{card.title}</Title>
-              <Paragraph style={styles.subtitle}>{card.subtitle}</Paragraph>
-              <Title style={styles.number}>{card.number}</Title>
-              <Paragraph style={styles.link}>{card.link}</Paragraph>
-            </Card.Content>
-          </Card>
-        );
-      })}
+      <ScrollView>
+        {CardsForHelpData.map((card) => {
+          return (
+            <Card key={card.id} value={card.title} style={styles.item}>
+              <Card.Content>
+                <Title style={styles.title}>{card.title}</Title>
+                <Paragraph style={styles.subtitle}>{card.subtitle}</Paragraph>
+                <Title style={styles.number}>{card.number}</Title>
+                <Paragraph style={styles.link}>{card.link}</Paragraph>
+              </Card.Content>
+            </Card>
+          );
+        })}
+      </ScrollView>
     </SafeAreaView>
   );
 }
