@@ -16,6 +16,7 @@ export async function registration(
     };
     await res.user.updateProfile(update);
     await setInitialChallenges(res.user);
+    await setInitialAchievements(res.user);
     await db.collection("Users").doc(res.user.uid).set({
       creationDate: Date.now(),
       displayName: displayName,
