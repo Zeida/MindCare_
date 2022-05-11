@@ -1,15 +1,11 @@
 import { useEffect, useState } from "react";
 import {
-  SafeAreaView,
-  StyleSheet,
-  Image,
-  ActivityIndicator,
-  View,
+  ActivityIndicator, Image, SafeAreaView,
+  StyleSheet, View
 } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
-import { SOFT_BLUE } from "../constants/Colors";
 import { getResourcesForHelp } from "../api/FirebaseMethods";
-import { ORANGE } from "../constants/Colors";
+import { ORANGE, SOFT_BLUE } from "../constants/Colors";
 export default function ResourcesForHelpScreen() {
   const [resources, setResources] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

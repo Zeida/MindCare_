@@ -15,6 +15,7 @@ export async function registration(
       displayName: displayName,
     };
     await res.user.updateProfile(update);
+    await setInitialChallenges(res.user);
     await db.collection("Users").doc(res.user.uid).set({
       creationDate: Date.now(),
       displayName: displayName,
@@ -74,7 +75,7 @@ export async function updateProfile(displayName, setUpdateError) {
   }
 }
 
-export async function loginAnonymously(displayName, setUpdateError) {
+export async function loginAnonymously() {
   auth
     .signInAnonymously()
     .then(() => {
@@ -129,7 +130,7 @@ export async function getResourcesForHelp(setResources, setIsLoading) {
   setIsLoading(false);
 }
 
-export async function setChallenges(user) {
+export async function setInitialChallenges(user) {
   const data = await db.collection("Challenges").get();
   data.forEach((doc) => {
     db.collection("Users")
@@ -142,7 +143,20 @@ export async function setChallenges(user) {
   });
 }
 
-export async function getChallenges(user, scope, setIsLoading) {
+export async function setInitialAchievements(user) {
+  const data = await db.collection("Achievements").get();
+  data.forEach((doc) => {
+    db.collection("Users")
+      .doc(user.uid)
+      .collection("Achievements")
+      .add({
+        id: doc.id,
+        ...doc.data(),
+      });
+  });
+}
+
+export async function getChallenges(user, scope, setChallenges, setIsLoading) {
   const data = await db
     .collection("Users")
     .doc(user.uid)
@@ -156,4 +170,3 @@ export async function getChallenges(user, scope, setIsLoading) {
   setChallenges(challenges);
   setIsLoading(false);
 }
-
