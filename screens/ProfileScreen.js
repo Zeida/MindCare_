@@ -8,7 +8,7 @@ import {
   Caption,
   Text,
   Title,
-  TouchableRipple
+  TouchableRipple,
 } from "react-native-paper";
 import { loggingOut } from "../api/FirebaseMethods";
 import { ShareComponent } from "../components/ComponentsIndex";

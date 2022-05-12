@@ -5,7 +5,7 @@ import { registration } from "../api/FirebaseMethods";
 import {
   ButtonComponent,
   ErrorMessageComponent,
-  InputFieldComponent
+  InputFieldComponent,
 } from "../components/ComponentsIndex";
 
 export default function SignupScreen({ navigation }) {

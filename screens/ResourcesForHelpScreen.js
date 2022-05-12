@@ -4,7 +4,7 @@ import {
   Image,
   SafeAreaView,
   StyleSheet,
-  View
+  View,
 } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 import { getResourcesForHelp } from "../api/FirebaseMethods";

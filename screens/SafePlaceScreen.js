@@ -1,10 +1,13 @@
 import React, { useContext, useState, useEffect } from "react";
 import {
   ActivityIndicator,
-  Alert, FlatList,
-  Image, Pressable, StyleSheet,
+  Alert,
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
   Text,
-  View
+  View,
 } from "react-native";
 import { deleteSafeCard, getSafeCards } from "../api/FirebaseMethods";
 import ButtonComponent from "../components/ButtonComponent";
@@ -34,7 +37,7 @@ export default function SafePlaceScreen() {
       },
       {
         text: "Si",
-        onPress:async () => {
+        onPress: async () => {
           await deleteSafeCard(item, user);
           updateScreen();
         },
