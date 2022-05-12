@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import {
-  ActivityIndicator, Image, SafeAreaView,
-  StyleSheet, View
+  ActivityIndicator,
+  Image,
+  SafeAreaView,
+  StyleSheet,
+  View
 } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 import { getResourcesForHelp } from "../api/FirebaseMethods";

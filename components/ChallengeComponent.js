@@ -19,7 +19,7 @@ export default function ChallengeComponent(props) {
           textDecorationLine: props.data.isSelected ? "line-through" : "none",
         }}
       >
-        {props.data.text}
+        {props.data.title}
       </Text>
     </Pressable>
   );

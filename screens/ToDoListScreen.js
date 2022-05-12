@@ -1,5 +1,5 @@
 import { Entypo } from "@expo/vector-icons";
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   Alert,
   FlatList,
@@ -8,28 +8,52 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  ActivityIndicator,
 } from "react-native";
+import { getChallenges } from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
+import { ORANGE } from "../constants/Colors";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+import { challenge, validateChallenge } from "../utils/ChallengeFormat";
 
 export default function ToDoListScreen({ route }) {
+  const { user } = useContext(AuthenticatedUserContext);
   const [list, setList] = useState([]);
   const [value, setValue] = useState("");
-  const { title } = route.params;
+  const { title, scope } = route.params;
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentChallenge, setCurrentChallenge] = useState(challenge);
+  useEffect(() => {
+    getChallenges(user, scope, setList, setIsLoading);
+  }, []);
 
-  function addText(text) {
-    if (value !== "") {
-      setList((prev) => {
-        return [...prev, { text: text, isSelected: false }];
-      });
-      setValue("");
-    } else {
+  if (isLoading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+        }}
+      >
+        <ActivityIndicator size="large" color={ORANGE} />
+      </View>
+    );
+  }
+  function addText() {
+    if (!validateChallenge(currentChallenge)) {
       Alert.alert("Upss!", "No has escrito nada");
+      return;
     }
+    setList((prev) => {
+      return [...prev, { ...currentChallenge, isSelected: false }];
+    });
+    setCurrentChallenge(challenge);
   }
 
   function setIsSelected(index, value) {
     let data = [];
-
     for (let i = 0; i < list.length; i++) {
       if (index === i) {
         data.push({ ...list[i], isSelected: value });
@@ -78,10 +102,18 @@ export default function ToDoListScreen({ route }) {
           style={styles.textInput}
           placeholder="Añadir nuevo reto"
           placeholderTextColor={"#003131"}
-          onChangeText={(text) => setValue(text)}
-          value={value}
+          //onChangeText={(value) => setValue(value)}
+          onChangeText={(value) =>
+            setCurrentChallenge({ ...currentChallenge, title: value, scope })
+          }
+          value={currentChallenge.title}
         />
-        <TouchableOpacity style={styles.btn} onPress={() => addText(value)}>
+        <TouchableOpacity
+          style={styles.btn}
+          onPress={() => {
+            console.log(value), addText();
+          }}
+        >
           <Entypo name="plus" size={24} color="white" />
         </TouchableOpacity>
       </View>

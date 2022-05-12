@@ -40,6 +40,7 @@ export default function HomeScreen(props) {
             onPress={() => {
               props.navigation.navigate("Todolist", {
                 title: challengeScope.title,
+                scope: challengeScope.scope,
               });
             }}
             key={index}
