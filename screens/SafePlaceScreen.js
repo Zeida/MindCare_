@@ -27,7 +27,7 @@ export default function SafePlaceScreen() {
     updateScreen();
   }, []);
 
-  const deleteAlert = (item) => {
+  const deleteAlert = (item, user) => {
     Alert.alert("Borrar carta", "¿Quieres eliminarla?", [
       {
         text: "Mantener",
@@ -35,7 +35,7 @@ export default function SafePlaceScreen() {
       {
         text: "Si",
         onPress:async () => {
-          await deleteSafeCard(item);
+          await deleteSafeCard(item, user);
           updateScreen();
         },
       },
@@ -67,7 +67,7 @@ export default function SafePlaceScreen() {
             return (
               <Pressable
                 onLongPress={() => {
-                  deleteAlert(item);
+                  deleteAlert(item, user);
                 }}
               >
                 <SafeCardComponent safeCard={item} />

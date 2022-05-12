@@ -111,7 +111,7 @@ export async function createSafeCards({ title, body, user }) {
   });
 }
 
-export async function deleteSafeCard({ item, user }) {
+export async function deleteSafeCard(item, user) {
   await db
     .collection("Users")
     .doc(user.uid)
