@@ -1,16 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import IconButtonComponent from "../components/IconButtonComponent";
 import FeelingIconData from "../data/FeelingIconData";
 import { Calendar } from "react-native-calendars";
 import { LocaleConfig } from "react-native-calendars";
-import {
-  DARK_BLUE,
-  MIDDLE_BLUE,
-  SOFT_GREEN,
-  ORANGE,
-  SOFT_PINK,
-} from "../constants/Colors";
+import { storeFeeling } from "../api/FirebaseMethods";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
 LocaleConfig.locales["es"] = {
   monthNames: [
@@ -56,7 +51,7 @@ LocaleConfig.locales["es"] = {
 
 LocaleConfig.defaultLocale = "es";
 export default function EmotionalDiaryScreen() {
-
+  const { user } = useContext(AuthenticatedUserContext);
   const [date, setDate] = useState(null);
   let today = new Date();
   return (
@@ -75,7 +70,8 @@ export default function EmotionalDiaryScreen() {
                   today.substring(0, 10);
                   setDate(today.substring(0, 10));
                   console.log(date);
-                  console.log(feeling.value);
+                  console.log(feeling.feeling);
+                  storeFeeling(feeling.feeling, date, feeling.color, user)
                 }}
               />
             </View>
@@ -86,8 +82,7 @@ export default function EmotionalDiaryScreen() {
       <View style={styles.pixelgraph}>
         <Calendar
           markingType={"multi-dot"}
-          markedDates={{
-          }}
+          markedDates={{}}
           style={{
             height: 450,
             width: 350,

@@ -171,3 +171,21 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
   setChallenges(challenges);
   setIsLoading(false);
 }
+
+export async function storeFeeling( feeling, date, color, user ) {
+  // const feelingdoc= await db.collection("Users").doc(user.uid).collection("Feelings").where("date", "==", date).get();
+  // console.log(feelingdoc.id);
+  // console.log(date);
+  // db.collection("Users").doc(user.uid).collection("Feelings").doc(feelingdoc.id).update({
+  //   feeling:feeling,
+  //   color:color,
+  // });
+  db.collection("Users").doc(user.uid).collection("Feelings").add({
+    feeling:feeling,
+    date:date,
+    color:color
+  });
+  db.collection("Users").doc(user.uid).collection("Feelings").where("date", "==", date);
+  
+
+}
