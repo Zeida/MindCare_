@@ -17,6 +17,7 @@ export async function registration(
     await res.user.updateProfile(update);
     await setInitialChallenges(res.user);
     await setInitialAchievements(res.user);
+    await setInitialStats(res.user);
     await db.collection("Users").doc(res.user.uid).set({
       creationDate: Date.now(),
       displayName: displayName,
@@ -157,6 +158,19 @@ export async function setInitialAchievements(user) {
   });
 }
 
+export async function setInitialStats(user) {
+  const data = await db.collection("Stats").get();
+  data.forEach((doc) => {
+    db.collection("Users")
+      .doc(user.uid)
+      .collection("Stats")
+      .add({
+        id: doc.id,
+        ...doc.data(),
+      });
+  });
+}
+
 export async function getChallenges(user, scope, setChallenges, setIsLoading) {
   const data = await db
     .collection("Users")
@@ -172,7 +186,8 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
   setIsLoading(false);
 }
 
-export async function storeFeeling( feeling, date, color, user ) {
+//error
+export async function storeFeeling(feeling, date, color, user) {
   // const feelingdoc= await db.collection("Users").doc(user.uid).collection("Feelings").where("date", "==", date).get();
   // console.log(feelingdoc.id);
   // console.log(date);
@@ -181,11 +196,55 @@ export async function storeFeeling( feeling, date, color, user ) {
   //   color:color,
   // });
   db.collection("Users").doc(user.uid).collection("Feelings").add({
-    feeling:feeling,
-    date:date,
-    color:color
+    feeling: feeling,
+    date: date,
+    color: color,
   });
-  db.collection("Users").doc(user.uid).collection("Feelings").where("date", "==", date);
-  
+  db.collection("Users")
+    .doc(user.uid)
+    .collection("Feelings")
+    .where("date", "==", date);
+}
+//OK
+export async function createChallenge(
+  challenge,
+  title,
+  description,
+  scope,
+  user
+) {
+  db.collection("Users").doc(user.uid).collection("Challenges").add({
+    challenge: challenge,
+    title: title,
+    description: description,
+    achievement: "",
+    completed: false,
+    scope: scope,
+  });
+}
 
+//error
+export async function completeChallenge(challenge, user) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .where("challenge", "==", challenge)
+    .get();
+  console.log(data);
+}
+
+export async function getAchievements(setAchievements, setIsLoading, user) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Achievements")
+    .where("won", "==", true)
+    .get();
+  const achievements = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  setAchievements(achievements);
+  setIsLoading(false);
 }

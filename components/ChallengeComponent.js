@@ -1,12 +1,13 @@
 import Checkbox from "expo-checkbox";
 import React from "react";
-import { Pressable, StyleSheet, Text } from "react-native";
+import { Pressable, StyleSheet, Text, Alert} from "react-native";
 
 export default function ChallengeComponent(props) {
   return (
     <Pressable
       style={styles.view}
       onLongPress={() => props.deleteItem(props.index)}
+      onPress={() => Alert.alert(props.data.title, props.data.description)}
     >
       <Checkbox
         style={styles.checkbox}
@@ -19,7 +20,7 @@ export default function ChallengeComponent(props) {
           textDecorationLine: props.data.isSelected ? "line-through" : "none",
         }}
       >
-        {props.data.title}
+        {props.data.challenge}
       </Text>
     </Pressable>
   );

@@ -1,9 +1,33 @@
-import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { getAchievements } from "../api/FirebaseMethods";
 import AchievementComponent from "../components/AchievementComponent";
+import { ORANGE } from "../constants/Colors";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+export default function AchievementsScreen({ navigation }) {
+  const [achievements, setAchievements] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { user } = useContext(AuthenticatedUserContext);
+  useEffect(() => {
+    getAchievements(setAchievements, setIsLoading, user);
+  }, []);
 
-export default function AchievementsScreen() {
+  if (isLoading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+        }}
+      >
+        <ActivityIndicator size="large" color={ORANGE} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}> Puedo conseguir todo lo que me proponga</Text>
@@ -13,15 +37,20 @@ export default function AchievementsScreen() {
       />
       <Text style={styles.subtext}>Mis insignias:</Text>
       <ScrollView>
-        <AchievementComponent
-          color={"red"}
-          size={25}
-          name={"home"}
-          borderColor={"black"}
-          text={"hola"}
-          modalText={"aleluya"}
-          modalTitle={"lo conseguiste"}
-        />
+        {achievements.map((achievement) => {
+          return (
+            <AchievementComponent
+              key={achievement.id}
+              color={achievement.color}
+              size={25}
+              name={achievement.icon}
+              borderColor={"black"}
+              text={achievement.name}
+              modalText={achievement.modalText}
+              modalTitle={achievement.modalTitle}
+            />
+          );
+        })}
       </ScrollView>
     </View>
   );

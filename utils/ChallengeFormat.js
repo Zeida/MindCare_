@@ -6,7 +6,7 @@ export const challenge = {
   title: "",
 };
 
-export function validateChallenge({id="", achievement="", isCompleted=false, scope="", title=""}) {
-    if(scope == "" || title == "" ) return false;
+export function validateChallenge({ achievement="", isCompleted=false, scope="", challenge=""}) {
+    if(scope == "" || challenge == "" ) return false;
     return true;
 }

@@ -1,16 +1,17 @@
 import { Entypo } from "@expo/vector-icons";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
-  Alert,
+  ActivityIndicator, Alert,
   FlatList,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
-  ActivityIndicator,
+  View
 } from "react-native";
-import { getChallenges } from "../api/FirebaseMethods";
+import {
+  createChallenge, getChallenges
+} from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 import { ORANGE } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
@@ -49,6 +50,13 @@ export default function ToDoListScreen({ route }) {
     setList((prev) => {
       return [...prev, { ...currentChallenge, isSelected: false }];
     });
+    createChallenge(
+      currentChallenge.challenge,
+      currentChallenge.title,
+      currentChallenge.description,
+      scope,
+      user
+    );
     setCurrentChallenge(challenge);
   }
 
@@ -61,7 +69,6 @@ export default function ToDoListScreen({ route }) {
         data.push(list[i]);
       }
     }
-
     setList(data);
   }
 
@@ -104,9 +111,15 @@ export default function ToDoListScreen({ route }) {
           placeholderTextColor={"#003131"}
           //onChangeText={(value) => setValue(value)}
           onChangeText={(value) =>
-            setCurrentChallenge({ ...currentChallenge, title: value, scope })
+            setCurrentChallenge({
+              ...currentChallenge,
+              challenge: value,
+              scope,
+              title: "¡Animo!",
+              description: "Puedes conseguir todo lo que te propongas",
+            })
           }
-          value={currentChallenge.title}
+          value={currentChallenge.challenge}
         />
         <TouchableOpacity
           style={styles.btn}
