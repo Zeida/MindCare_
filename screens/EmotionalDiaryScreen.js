@@ -52,7 +52,7 @@ LocaleConfig.locales["es"] = {
 LocaleConfig.defaultLocale = "es";
 export default function EmotionalDiaryScreen() {
   const { user } = useContext(AuthenticatedUserContext);
-  const [date, setDate] = useState(null);
+  const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
   let today = new Date();
   return (
     <View style={styles.container}>
@@ -66,9 +66,8 @@ export default function EmotionalDiaryScreen() {
                 size={50}
                 color={feeling.color}
                 onPress={() => {
-                  let today = new Date().toISOString();
-                  today.substring(0, 10);
-                  setDate(today.substring(0, 10));
+                  
+                  setDate(date);
                   console.log(date);
                   console.log(feeling.feeling);
                   storeFeeling(feeling.feeling, date, feeling.color, user)
