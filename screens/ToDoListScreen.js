@@ -10,7 +10,7 @@ import {
   View
 } from "react-native";
 import {
-  createChallenge, getChallenges
+  createChallenge, getChallenges, deleteChallenge
 } from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 import { ORANGE } from "../constants/Colors";
@@ -57,7 +57,7 @@ export default function ToDoListScreen({ route }) {
       scope,
       user
     );
-    setCurrentChallenge(challenge);
+    getChallenges(user, scope, setList, setIsLoading);
   }
 
   function setIsSelected(index, value) {
@@ -80,8 +80,7 @@ export default function ToDoListScreen({ route }) {
       {
         text: "Si",
         onPress: () => {
-          const data = list.filter((item, index) => index !== idx);
-          setList(data);
+          deleteChallenge(user, idx);
         },
       },
     ]);
@@ -96,12 +95,12 @@ export default function ToDoListScreen({ route }) {
         renderItem={({ item, index }) => (
           <ChallengeComponent
             data={item}
-            index={index}
+            index={item.id}
             setIsSelected={setIsSelected}
             deleteItem={deleteItem}
           />
         )}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(item, index) => item.id}
       />
 
       <View style={styles.textBoxWrapper}>

@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import IconButtonComponent from "../components/IconButtonComponent";
 import FeelingIconData from "../data/FeelingIconData";
 import { Calendar } from "react-native-calendars";
 import { LocaleConfig } from "react-native-calendars";
-import { storeFeeling } from "../api/FirebaseMethods";
+import { storeFeeling, getFeelings } from "../api/FirebaseMethods";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-
+import { ORANGE } from "../constants/Colors";
 LocaleConfig.locales["es"] = {
   monthNames: [
     "Enero",
@@ -53,7 +53,28 @@ LocaleConfig.defaultLocale = "es";
 export default function EmotionalDiaryScreen() {
   const { user } = useContext(AuthenticatedUserContext);
   const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
-  let today = new Date();
+  const [feelings, setFeelings] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getFeelings(user, setFeelings, setIsLoading);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+        }}
+      >
+        <ActivityIndicator size="large" color={ORANGE} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hoy me siento:</Text>
@@ -66,11 +87,9 @@ export default function EmotionalDiaryScreen() {
                 size={50}
                 color={feeling.color}
                 onPress={() => {
-                  
                   setDate(date);
-                  console.log(date);
-                  console.log(feeling.feeling);
-                  storeFeeling(feeling.feeling, date, feeling.color, user)
+                  storeFeeling(feeling.feeling, date, feeling.color, user);
+                  getFeelings(user, setFeelings, setIsLoading);
                 }}
               />
             </View>
@@ -81,7 +100,7 @@ export default function EmotionalDiaryScreen() {
       <View style={styles.pixelgraph}>
         <Calendar
           markingType={"multi-dot"}
-          markedDates={{}}
+          markedDates={feelings}
           style={{
             height: 450,
             width: 350,

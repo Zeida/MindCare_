@@ -187,11 +187,27 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
 }
 
 export async function storeFeeling(feeling, date, color, user) {
-  db.collection("Users").doc(user.uid).collection("Feelings").add({
+  db.collection("Users").doc(user.uid).collection("Feelings").doc(date).set({
     feeling: feeling,
-    date: date,
-    color: color,
+    selectedColor: color,
+    selected: true,
   });
+}
+
+export async function getFeelings(user, setFeelings, setIsLoading) {
+  let feelingsCalendar = {};
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Feelings")
+    .get();
+  data.docs.forEach((feelingDate) => {
+    feelingsCalendar[feelingDate.id] = {
+      ...feelingDate.data(),
+    };
+  });
+  setFeelings(feelingsCalendar);
+  setIsLoading(false);
 }
 //OK
 export async function createChallenge(
@@ -235,4 +251,15 @@ export async function getAchievements(setAchievements, setIsLoading, user) {
   }));
   setAchievements(achievements);
   setIsLoading(false);
+}
+
+export async function deleteChallenge(user, id) {
+  await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .doc(id)
+    .delete();
+
+  return this;
 }
