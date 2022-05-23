@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { auth, db } from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
+
 export async function registration(
   email,
   password,
@@ -254,12 +255,10 @@ export async function getAchievements(setAchievements, setIsLoading, user) {
 }
 
 export async function deleteChallenge(user, id) {
-  await db
+  const challenge=await db
     .collection("Users")
     .doc(user.uid)
     .collection("Challenges")
     .doc(id)
     .delete();
-
-  return this;
 }

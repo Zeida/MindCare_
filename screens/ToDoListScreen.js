@@ -1,16 +1,19 @@
 import { Entypo } from "@expo/vector-icons";
 import React, { useContext, useEffect, useState } from "react";
 import {
-  ActivityIndicator, Alert,
+  ActivityIndicator,
+  Alert,
   FlatList,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import {
-  createChallenge, getChallenges, deleteChallenge
+  createChallenge,
+  getChallenges,
+  deleteChallenge,
 } from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 import { ORANGE } from "../constants/Colors";
@@ -24,8 +27,13 @@ export default function ToDoListScreen({ route }) {
   const { title, scope } = route.params;
   const [isLoading, setIsLoading] = useState(true);
   const [currentChallenge, setCurrentChallenge] = useState(challenge);
-  useEffect(() => {
+
+  const updateScreen = () => {
     getChallenges(user, scope, setList, setIsLoading);
+  };
+
+  useEffect(() => {
+    updateScreen();
   }, []);
 
   if (isLoading) {
@@ -57,19 +65,18 @@ export default function ToDoListScreen({ route }) {
       scope,
       user
     );
+    setCurrentChallenge(challenge);
     getChallenges(user, scope, setList, setIsLoading);
   }
 
   function setIsSelected(index, value) {
-    let data = [];
-    for (let i = 0; i < list.length; i++) {
-      if (index === i) {
-        data.push({ ...list[i], isSelected: value });
-      } else {
-        data.push(list[i]);
+    let copy = list.map((item) => {
+      if (item.id == index) {
+        return { ...item, isSelected: value };
       }
-    }
-    setList(data);
+      return item;
+    });
+    setList(copy);
   }
 
   function deleteItem(idx) {
@@ -81,6 +88,7 @@ export default function ToDoListScreen({ route }) {
         text: "Si",
         onPress: () => {
           deleteChallenge(user, idx);
+          updateScreen();
         },
       },
     ]);
@@ -108,7 +116,6 @@ export default function ToDoListScreen({ route }) {
           style={styles.textInput}
           placeholder="Añadir nuevo reto"
           placeholderTextColor={"#003131"}
-          //onChangeText={(value) => setValue(value)}
           onChangeText={(value) =>
             setCurrentChallenge({
               ...currentChallenge,
