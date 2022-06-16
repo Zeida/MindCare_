@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { auth, db } from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
+
 export async function registration(
   email,
   password,
@@ -17,6 +18,7 @@ export async function registration(
     await res.user.updateProfile(update);
     await setInitialChallenges(res.user);
     await setInitialAchievements(res.user);
+    await setInitialStats(res.user);
     await db.collection("Users").doc(res.user.uid).set({
       creationDate: Date.now(),
       displayName: displayName,
@@ -157,6 +159,19 @@ export async function setInitialAchievements(user) {
   });
 }
 
+export async function setInitialStats(user) {
+  const data = await db.collection("Stats").get();
+  data.forEach((doc) => {
+    db.collection("Users")
+      .doc(user.uid)
+      .collection("Stats")
+      .add({
+        id: doc.id,
+        ...doc.data(),
+      });
+  });
+}
+
 export async function getChallenges(user, scope, setChallenges, setIsLoading) {
   const data = await db
     .collection("Users")
@@ -170,4 +185,80 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
   }));
   setChallenges(challenges);
   setIsLoading(false);
+}
+
+export async function storeFeeling(feeling, date, color, user) {
+  db.collection("Users").doc(user.uid).collection("Feelings").doc(date).set({
+    feeling: feeling,
+    selectedColor: color,
+    selected: true,
+  });
+}
+
+export async function getFeelings(user, setFeelings, setIsLoading) {
+  let feelingsCalendar = {};
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Feelings")
+    .get();
+  data.docs.forEach((feelingDate) => {
+    feelingsCalendar[feelingDate.id] = {
+      ...feelingDate.data(),
+    };
+  });
+  setFeelings(feelingsCalendar);
+  setIsLoading(false);
+}
+//OK
+export async function createChallenge(
+  challenge,
+  title,
+  description,
+  scope,
+  user
+) {
+  db.collection("Users").doc(user.uid).collection("Challenges").add({
+    challenge: challenge,
+    title: title,
+    description: description,
+    achievement: "",
+    completed: false,
+    scope: scope,
+  });
+}
+
+//error
+export async function completeChallenge(challenge, user) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .where("challenge", "==", challenge)
+    .get();
+  console.log(data);
+}
+
+export async function getAchievements(setAchievements, setIsLoading, user) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Achievements")
+    .where("won", "==", true)
+    .get();
+  const achievements = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  setAchievements(achievements);
+  setIsLoading(false);
+}
+
+export async function deleteChallenge(user, id) {
+  const challenge=await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .doc(id)
+    .delete();
 }

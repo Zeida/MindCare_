@@ -1,6 +1,7 @@
 import { Entypo } from "@expo/vector-icons";
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
+  ActivityIndicator,
   Alert,
   FlatList,
   StyleSheet,
@@ -8,9 +9,12 @@ import {
   TextInput,
   TouchableOpacity,
   View,
-  ActivityIndicator,
 } from "react-native";
-import { getChallenges } from "../api/FirebaseMethods";
+import {
+  createChallenge,
+  getChallenges,
+  deleteChallenge,
+} from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 import { ORANGE } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
@@ -23,8 +27,13 @@ export default function ToDoListScreen({ route }) {
   const { title, scope } = route.params;
   const [isLoading, setIsLoading] = useState(true);
   const [currentChallenge, setCurrentChallenge] = useState(challenge);
-  useEffect(() => {
+
+  const updateScreen = () => {
     getChallenges(user, scope, setList, setIsLoading);
+  };
+
+  useEffect(() => {
+    updateScreen();
   }, []);
 
   if (isLoading) {
@@ -49,20 +58,25 @@ export default function ToDoListScreen({ route }) {
     setList((prev) => {
       return [...prev, { ...currentChallenge, isSelected: false }];
     });
+    createChallenge(
+      currentChallenge.challenge,
+      currentChallenge.title,
+      currentChallenge.description,
+      scope,
+      user
+    );
     setCurrentChallenge(challenge);
+    getChallenges(user, scope, setList, setIsLoading);
   }
 
   function setIsSelected(index, value) {
-    let data = [];
-    for (let i = 0; i < list.length; i++) {
-      if (index === i) {
-        data.push({ ...list[i], isSelected: value });
-      } else {
-        data.push(list[i]);
+    let copy = list.map((item) => {
+      if (item.id == index) {
+        return { ...item, isSelected: value };
       }
-    }
-
-    setList(data);
+      return item;
+    });
+    setList(copy);
   }
 
   function deleteItem(idx) {
@@ -73,8 +87,8 @@ export default function ToDoListScreen({ route }) {
       {
         text: "Si",
         onPress: () => {
-          const data = list.filter((item, index) => index !== idx);
-          setList(data);
+          deleteChallenge(user, idx);
+          updateScreen();
         },
       },
     ]);
@@ -89,12 +103,12 @@ export default function ToDoListScreen({ route }) {
         renderItem={({ item, index }) => (
           <ChallengeComponent
             data={item}
-            index={index}
+            index={item.id}
             setIsSelected={setIsSelected}
             deleteItem={deleteItem}
           />
         )}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(item, index) => item.id}
       />
 
       <View style={styles.textBoxWrapper}>
@@ -102,11 +116,16 @@ export default function ToDoListScreen({ route }) {
           style={styles.textInput}
           placeholder="Añadir nuevo reto"
           placeholderTextColor={"#003131"}
-          //onChangeText={(value) => setValue(value)}
           onChangeText={(value) =>
-            setCurrentChallenge({ ...currentChallenge, title: value, scope })
+            setCurrentChallenge({
+              ...currentChallenge,
+              challenge: value,
+              scope,
+              title: "¡Animo!",
+              description: "Puedes conseguir todo lo que te propongas",
+            })
           }
-          value={currentChallenge.title}
+          value={currentChallenge.challenge}
         />
         <TouchableOpacity
           style={styles.btn}

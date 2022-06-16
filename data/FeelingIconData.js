@@ -2,35 +2,35 @@ import { DARK_BLUE, MIDDLE_BLUE, SOFT_GREEN, ORANGE, SOFT_PINK,  } from "../cons
 const FeelingIconData = [
     {
         id: 0,
-        scope: "Cuidado emocional",
+        feeling: "verysad",
         icon: "emoticon-cry-outline",
         color: DARK_BLUE,
         value:1
     },
     {
         id: 1,
-        scope: "Cuidado personal",
+        feeling: "sad",
         icon: "emoticon-sad-outline",
         color: MIDDLE_BLUE,
         value:2
     },
     {
         id: 2,
-        scope: "Social",
+        feeling: "neutral",
         icon: "emoticon-neutral-outline",
         color: ORANGE,
         value:3
     },
     {
         id: 3,
-        scope: "Social",
+        feeling: "happy",
         icon: "emoticon-happy-outline",
         color: SOFT_PINK,
         value:4
     },
     {
         id: 4,
-        scope: "Social",
+        feeling: "veryhappy",
         icon: "emoticon-excited-outline",
         color: SOFT_GREEN,
         value:5

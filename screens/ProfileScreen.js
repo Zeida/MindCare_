@@ -71,11 +71,11 @@ export default function ProfileScreen(props) {
         <View style={styles.infoBoxWrapper}>
           <View style={styles.infoBox}>
             <Title>12</Title>
-            <Caption>Insignias</Caption>
+            <Caption>Retos completados</Caption>
           </View>
           <View style={styles.infoBox}>
             <Title>16</Title>
-            <Caption>Retos completados</Caption>
+            <Caption>Insignias</Caption>
           </View>
         </View>
         <View style={styles.menuWrapper}>

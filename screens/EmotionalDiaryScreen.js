@@ -1,9 +1,80 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { useContext, useEffect, useState } from "react";
+import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
 import IconButtonComponent from "../components/IconButtonComponent";
-import PixelGraphComponent from "../components/PixelGraphComponent";
 import FeelingIconData from "../data/FeelingIconData";
-export default function EmotionalDiaryScreen({ navigation }) {
+import { Calendar } from "react-native-calendars";
+import { LocaleConfig } from "react-native-calendars";
+import { storeFeeling, getFeelings } from "../api/FirebaseMethods";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+import { ORANGE } from "../constants/Colors";
+LocaleConfig.locales["es"] = {
+  monthNames: [
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
+    "Agosto",
+    "Septiembre",
+    "Octubre",
+    "Noviembre",
+    "Diciembre",
+  ],
+  monthNamesShort: [
+    "Ene.",
+    "Feb.",
+    "Mar",
+    "Abr",
+    "May",
+    "Jun",
+    "Jul.",
+    "Ago",
+    "Sept.",
+    "Oct.",
+    "Nov.",
+    "Dec.",
+  ],
+  dayNames: [
+    "Domingo",
+    "Lunes",
+    "Martes",
+    "Miércoles",
+    "Jueves",
+    "Viernes",
+    "Sábado",
+  ],
+  dayNamesShort: ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"],
+  today: "Hoy",
+};
+
+LocaleConfig.defaultLocale = "es";
+export default function EmotionalDiaryScreen() {
+  const { user } = useContext(AuthenticatedUserContext);
+  const [date, setDate] = useState(new Date().toISOString().substring(0, 10));
+  const [feelings, setFeelings] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    getFeelings(user, setFeelings, setIsLoading);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <View
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+          alignSelf: "center",
+        }}
+      >
+        <ActivityIndicator size="large" color={ORANGE} />
+      </View>
+    );
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Hoy me siento:</Text>
@@ -16,7 +87,9 @@ export default function EmotionalDiaryScreen({ navigation }) {
                 size={50}
                 color={feeling.color}
                 onPress={() => {
-                  console.log(feeling.value);
+                  setDate(date);
+                  storeFeeling(feeling.feeling, date, feeling.color, user);
+                  getFeelings(user, setFeelings, setIsLoading);
                 }}
               />
             </View>
@@ -25,7 +98,28 @@ export default function EmotionalDiaryScreen({ navigation }) {
       </View>
       <Text style={styles.text}>Mi diario emocional</Text>
       <View style={styles.pixelgraph}>
-        <PixelGraphComponent />
+        <Calendar
+          markingType={"multi-dot"}
+          markedDates={feelings}
+          style={{
+            height: 450,
+            width: 350,
+          }}
+          theme={{
+            textSectionTitleColor: "#b6c1cd",
+            textSectionTitleDisabledColor: "#d9e1e8",
+            todayTextColor: "#00adf5",
+            selectedDotColor: "#ffffff",
+            arrowColor: "orange",
+          }}
+          onDayPress={(day) => {
+            console.log("selected day", day);
+          }}
+          onDayLongPress={(day) => {
+            console.log("selected day", day);
+          }}
+          firstDay={1}
+        />
       </View>
     </View>
   );
@@ -42,8 +136,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "black",
-    marginBottom: 5,
+    marginBottom: 10,
     textAlign: "center",
+    marginTop: 10,
   },
   emotionalScaleContainer: {
     justifyContent: "center",
@@ -60,7 +155,7 @@ const styles = StyleSheet.create({
   pixelgraph: {
     alignSelf: "center",
     alignItems: "center",
-    marginLeft: 50,
+    marginLeft: 10,
     marginTop: 10,
   },
 });

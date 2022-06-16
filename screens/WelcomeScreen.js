@@ -21,7 +21,7 @@ export default function WelcomeScreen({ navigation }) {
         <Image style={styles.logo} source={require("../images/logo.png")} />
       </View>
       <View style={styles.view}>
-        <Text style={styles.title}>Bienvenid@!</Text>
+          <Text style={styles.title}>¡Bienvenid@!</Text>
         <Text style={styles.subtitle}>
           Estas a un paso de darle al cuidado emocional la importancia que se
           merece.
