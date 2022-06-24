@@ -128,22 +128,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    height: 220,
-    width: 220,
-    marginLeft: 60,
-    marginRight: 60,
-    marginBottom: 5,
-    marginTop: 10,
-  },
-  logoandtitle: {
-    margin: 10,
+    height: 250,
+    width: 250,
+    alignSelf: "center",
   },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: "600",
     color: "#192959",
     alignSelf: "center",
     margin: 20,
+    marginTop: 60,
   },
   background: {
     flex: 1,

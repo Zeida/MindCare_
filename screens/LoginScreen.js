@@ -101,8 +101,13 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
   },
+  view: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   title: {
-    fontSize: 24,
+    fontSize: 30,
     fontWeight: "600",
     color: "#192959",
     alignSelf: "center",
@@ -115,16 +120,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    height: 220,
-    width: 220,
-    marginLeft: 60,
-    marginRight: 60,
-    marginBottom: 10,
-    marginTop: 10,
-  },
-  view: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    height: 250,
+    width: 250,
+    alignSelf: "center",
   },
 });

@@ -56,12 +56,12 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: SOFT_BLUE,
-    padding: 20,
+    padding: 10,
     marginVertical: 8,
-    marginHorizontal: 16,
+    marginHorizontal: 10,
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     textAlign: "center",
   },
   subtitle: {
@@ -85,7 +85,6 @@ const styles = StyleSheet.create({
   image: {
     width: 300,
     height: 300,
-    marginLeft: 30,
-    marginRight: 30,
+    alignSelf: "center",
   },
 });

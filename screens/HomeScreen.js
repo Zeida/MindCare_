@@ -74,6 +74,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: "black",
     margin: 10,
+    padding:20,
   },
   title: {
     fontSize: 24,
@@ -83,10 +84,7 @@ const styles = StyleSheet.create({
   image: {
     width: 250,
     height: 155,
-    marginLeft: 30,
-    marginRight: 30,
-    marginTop: 5,
-    marginBottom: 5,
+    alignSelf: "center",
   },
   row: {
     flexDirection: "row",

@@ -36,12 +36,12 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: SOFT_BLUE,
-    padding: 10,
-    marginVertical: 10,
-    marginHorizontal: 16,
+    padding: 5,
+    marginVertical: 5,
+    marginHorizontal: 10,
   },
   title: {
-    fontSize: 25,
+    fontSize: 20,
     textAlign: "center",
   },
   subtitle: {
@@ -50,12 +50,12 @@ const styles = StyleSheet.create({
   },
   number: {
     textAlign: "center",
-    fontSize: 30,
-    padding: 10,
+    fontSize: 20,
+    padding: 5,
   },
   link: {
     textAlign: "center",
-    fontSize: 12,
+    fontSize: 15,
     fontWeight: "bold",
   },
   text: {

@@ -35,8 +35,7 @@ const styles = StyleSheet.create({
   image: {
     width: 300,
     height: 300,
-    marginLeft: 40,
-    marginRight: 40,
+    alignSelf: "center",
   },
   text: {
     fontSize: 20,

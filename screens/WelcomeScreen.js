@@ -17,11 +17,10 @@ export default function WelcomeScreen({ navigation }) {
 
   return (
     <SafeAreaView style={styles.container}>
-      <View style={styles.logoandtitle}>
-        <Image style={styles.logo} source={require("../images/logo.png")} />
-      </View>
       <View style={styles.view}>
-          <Text style={styles.title}>¡Bienvenid@!</Text>
+        <Image style={styles.logo} source={require("../images/logo.png")} />
+
+        <Text style={styles.title}>¡Bienvenid@!</Text>
         <Text style={styles.subtitle}>
           Estas a un paso de darle al cuidado emocional la importancia que se
           merece.
@@ -68,25 +67,17 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   logo: {
-    height: 220,
-    width: 220,
-    marginLeft: 60,
-    marginRight: 60,
-    marginBottom: 5,
-    marginTop: 10,
+    height: 250,
+    width: 250,
     alignSelf: "center",
   },
-  logoandtitle: {
-    margin: 10,
-  },
   title: {
-    fontWeight: "800",
-    fontSize: 28,
-    marginBottom: 10,
-    color: "#493d8a",
-    textAlign: "center",
-    marginLeft: 20,
-    marginRight: 20,
+    fontSize: 30,
+    fontWeight: "600",
+    color: "#192959",
+    alignSelf: "center",
+    margin: 20,
+    marginTop: 60,
   },
   subtitle: {
     fontSize: 15,
@@ -94,10 +85,6 @@ const styles = StyleSheet.create({
     color: "#606060",
     alignSelf: "center",
     paddingBottom: 24,
-  },
-  background: {
-    flex: 1,
-    resizeMode: "cover",
-    justifyContent: "center",
+    paddingHorizontal: 15,
   },
 });

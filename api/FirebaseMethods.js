@@ -239,6 +239,15 @@ export async function completeChallenge(challenge, user) {
   console.log(data);
 }
 
+export async function deleteChallenge(user, id) {
+  const challenge=await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .doc(id)
+    .delete();
+}
+
 export async function getAchievements(setAchievements, setIsLoading, user) {
   const data = await db
     .collection("Users")
@@ -254,11 +263,3 @@ export async function getAchievements(setAchievements, setIsLoading, user) {
   setIsLoading(false);
 }
 
-export async function deleteChallenge(user, id) {
-  const challenge=await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("Challenges")
-    .doc(id)
-    .delete();
-}
