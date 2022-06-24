@@ -1,4 +1,4 @@
-import { Fontisto, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { Fontisto, FontAwesome, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
 import React, { useCallback, useContext, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity, View } from "react-native";
@@ -85,12 +85,28 @@ export default function ProfileScreen(props) {
             }}
           >
             <View style={styles.menuItem}>
+              <FontAwesome
+                name="life-saver"
+                color={"black"}
+                size={25}
+              />
+              <Text style={styles.menuItemText}>Mi lugar seguro</Text>
+            </View>
+          </TouchableRipple>
+        </View>
+        <View style={styles.menuWrapper}>
+          <TouchableRipple
+            onPress={() => {
+              props.navigation.navigate("Mi caja de herramientas");
+            }}
+          >
+            <View style={styles.menuItem}>
               <MaterialCommunityIcons
                 name="treasure-chest"
                 color={"black"}
                 size={25}
               />
-              <Text style={styles.menuItemText}>Mi lugar seguro</Text>
+              <Text style={styles.menuItemText}>Mi caja de herramientas</Text>
             </View>
           </TouchableRipple>
         </View>

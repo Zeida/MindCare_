@@ -10,19 +10,30 @@ export default function AboutUsCardsScreen() {
         Un equipo multidisplinar concienciado con la importancia de la salud
         mental.
       </Text>
-      <Text style={styles.subtextleft}>En el proyecto han trabajado:</Text>
-      <Text style={styles.subtextteammembers}>
-        Crisamer Rivero Santana (Psicóloga)
-      </Text>
-      <Text style={styles.subtextteammembers}>
-        Zeida de los R. Rguez. Mendoza (Desarrolladora)
-      </Text>
-      <Text style={styles.subtextteammembers}>
-        Ana Maria Plácido (Tutora del proyecto)
-      </Text>
-      <Text style={styles.subtextteammembers}>
-        Arminda Castellano Quesada (Ilustradora)
-      </Text>
+      <View style={styles.container2}>
+        <Text style={styles.subtextleft}>En el proyecto han trabajado:</Text>
+        <Text style={styles.subtextteammembers}>
+          Crisamer Rivero Santana (Psicóloga)
+        </Text>
+        <Text style={styles.subtextteammembers}>
+          Zeida de los R. Rguez. Mendoza (Desarrolladora)
+        </Text>
+        <Text style={styles.subtextteammembers}>
+          Ana Maria Plácido (Tutora del proyecto)
+        </Text>
+        <Text style={styles.subtextteammembers}>
+          Arminda Castellano Quesada (Ilustradora)
+        </Text>
+      </View>
+      <View style={styles.container2}>
+        <Text style={styles.subtextleft}>
+          Algunos de los recursos visuales usados en la aplicación han sido
+          obtenidos de:
+        </Text>
+        <Text style={styles.subtextteammembers}>undraw.co</Text>
+        <Text style={styles.subtextteammembers}>storyset.com</Text>
+        <Text style={styles.subtextteammembers}>iconscout.com</Text>
+      </View>
     </View>
   );
 }
@@ -31,6 +42,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
+  },
+  container2: {
+    paddingVertical: 5,
   },
   image: {
     width: 300,

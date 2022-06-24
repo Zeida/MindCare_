@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState} from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TouchableRipple } from "react-native-paper";
 import { IconButtonComponent } from "../components/ComponentsIndex";
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     letterSpacing: 0.25,
     color: "black",
     margin: 10,
-    padding:20,
+    padding: 20,
   },
   title: {
     fontSize: 24,

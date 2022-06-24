@@ -9,6 +9,7 @@ import {
 import { Card, Paragraph, Title } from "react-native-paper";
 import { getResourcesForHelp } from "../api/FirebaseMethods";
 import { ORANGE, SOFT_BLUE } from "../constants/Colors";
+import { ScrollView } from "react-native-gesture-handler";
 export default function ResourcesForHelpScreen() {
   const [resources, setResources] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,6 +35,7 @@ export default function ResourcesForHelpScreen() {
   return (
     <SafeAreaView style={styles.container}>
       <Image style={styles.image} source={require("../images/helptips.png")} />
+      <ScrollView>
       {resources.map((resource) => {
         return (
           <Card key={resource.id} value={resource.title} style={styles.item}>
@@ -45,6 +47,7 @@ export default function ResourcesForHelpScreen() {
           </Card>
         );
       })}
+      </ScrollView>
     </SafeAreaView>
   );
 }
@@ -56,8 +59,7 @@ const styles = StyleSheet.create({
   },
   item: {
     backgroundColor: SOFT_BLUE,
-    padding: 10,
-    marginVertical: 8,
+    marginVertical: 5,
     marginHorizontal: 10,
   },
   title: {
@@ -79,7 +81,6 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "black",
-    marginBottom: 10,
     textAlign: "center",
   },
   image: {
