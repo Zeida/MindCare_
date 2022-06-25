@@ -1,19 +1,18 @@
 import { Entypo } from "@expo/vector-icons";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
   FlatList,
+  SafeAreaView,
   StyleSheet,
   Text,
   TextInput,
   TouchableOpacity,
-  View,
+  View
 } from "react-native";
 import {
-  createChallenge,
-  getChallenges,
-  deleteChallenge,
+  createChallenge, deleteChallenge, getChallenges
 } from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 import { ORANGE } from "../constants/Colors";
@@ -95,7 +94,7 @@ export default function ToDoListScreen({ route }) {
   }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <Text style={styles.text}>{title}</Text>
       <FlatList
         style={{ flex: 1 }}
@@ -136,7 +135,7 @@ export default function ToDoListScreen({ route }) {
           <Entypo name="plus" size={24} color="white" />
         </TouchableOpacity>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

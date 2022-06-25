@@ -43,6 +43,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     color: "#000000",
+    paddingRight:40,
   },
   checkbox: {
     height: 26,

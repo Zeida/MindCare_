@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   StyleSheet,
   View,
+  Text
 } from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 import { getResourcesForHelp } from "../api/FirebaseMethods";
@@ -34,7 +35,8 @@ export default function ResourcesForHelpScreen() {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.image} source={require("../images/helptips.png")} />
+      <Text style={styles.text}>Recursos recomendados</Text>
+      <Image style={styles.image} source={require("../images/resourcesforhelp.png")} />
       <ScrollView>
       {resources.map((resource) => {
         return (
