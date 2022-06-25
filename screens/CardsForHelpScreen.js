@@ -1,9 +1,8 @@
-import * as React from "react";
-import { SafeAreaView, StyleSheet, Text, Image} from "react-native";
-import { Card, Paragraph, Title } from "react-native-paper";
-import CardsForHelpData from "../data/CardsForHelpData";
-import { SOFT_BLUE } from "../constants/Colors";
+import { Image, SafeAreaView, StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { Card, Paragraph, Title } from "react-native-paper";
+import { SOFT_BLUE } from "../constants/Colors";
+import CardsForHelpData from "../data/CardsForHelpData";
 
 export default function CardsForHelpScreen() {
   return (

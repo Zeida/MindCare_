@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -7,7 +7,7 @@ import {
   Pressable,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
 import { deleteSafeCard, getSafeCards } from "../api/FirebaseMethods";
 import ButtonComponent from "../components/ButtonComponent";

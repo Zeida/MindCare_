@@ -71,11 +71,4 @@ const styles = StyleSheet.create({
   flatlist: {
     marginBottom: 10,
   },
-  button: {
-    borderRadius: 40,
-    backgroundColor: ORANGE,
-    alignItems: "center",
-    paddingVertical: 8,
-    paddingHorizontal: 30,
-  },
 });

@@ -3,14 +3,12 @@ import {
   ActivityIndicator,
   Image,
   SafeAreaView,
-  StyleSheet,
-  View,
-  Text
+  StyleSheet, Text, View
 } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { Card, Paragraph, Title } from "react-native-paper";
 import { getResourcesForHelp } from "../api/FirebaseMethods";
 import { ORANGE, SOFT_BLUE } from "../constants/Colors";
-import { ScrollView } from "react-native-gesture-handler";
 export default function ResourcesForHelpScreen() {
   const [resources, setResources] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

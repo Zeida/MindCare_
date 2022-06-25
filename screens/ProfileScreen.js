@@ -1,6 +1,6 @@
-import { Fontisto, FontAwesome, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome, Fontisto, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
-import React, { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
@@ -8,7 +8,7 @@ import {
   Caption,
   Text,
   Title,
-  TouchableRipple,
+  TouchableRipple
 } from "react-native-paper";
 import { loggingOut } from "../api/FirebaseMethods";
 import { ShareComponent } from "../components/ComponentsIndex";

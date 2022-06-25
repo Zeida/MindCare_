@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { registration } from "../api/FirebaseMethods";
 import {
   ButtonComponent,
   ErrorMessageComponent,
-  InputFieldComponent,
+  InputFieldComponent
 } from "../components/ComponentsIndex";
 
 export default function SignupScreen({ navigation }) {

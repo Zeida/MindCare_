@@ -1,10 +1,9 @@
-import React from "react";
 import {
   Button as RNButton,
   Image,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { loginAnonymously } from "../api/FirebaseMethods";

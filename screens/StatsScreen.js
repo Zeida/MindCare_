@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { Text, View, StyleSheet, Switch, Image } from "react-native";
+import { useState } from "react";
+import { Image, StyleSheet, Switch, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { daydata, weekdata } from "../data/StatsData";
 import {
-  PieChartComponent,
-  ButtonComponent,
+  ButtonComponent, PieChartComponent
 } from "../components/ComponentsIndex";
+import { daydata, weekdata } from "../data/StatsData";
 
 export default function StatsScreen(props) {
   const [isEnabled, setIsEnabled] = useState(false);

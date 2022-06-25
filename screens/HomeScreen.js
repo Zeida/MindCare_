@@ -1,12 +1,12 @@
+import { useFocusEffect } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TouchableRipple } from "react-native-paper";
+import { loggingOut } from "../api/FirebaseMethods";
 import { IconButtonComponent } from "../components/ComponentsIndex";
 import ChallengeScopesData from "../data/ChallengeScopesData";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import { loggingOut } from "../api/FirebaseMethods";
-import { useFocusEffect } from "@react-navigation/native";
 
 export default function HomeScreen(props) {
   const { user } = useContext(AuthenticatedUserContext);

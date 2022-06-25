@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { useContext, useEffect, useState } from "react";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { Calendar, LocaleConfig } from "react-native-calendars";
+import { getFeelings, storeFeeling } from "../api/FirebaseMethods";
 import IconButtonComponent from "../components/IconButtonComponent";
-import FeelingIconData from "../data/FeelingIconData";
-import { Calendar } from "react-native-calendars";
-import { LocaleConfig } from "react-native-calendars";
-import { storeFeeling, getFeelings } from "../api/FirebaseMethods";
-import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 import { ORANGE } from "../constants/Colors";
+import FeelingIconData from "../data/FeelingIconData";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 LocaleConfig.locales["es"] = {
   monthNames: [
     "Enero",

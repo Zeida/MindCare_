@@ -1,9 +1,9 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Animated, FlatList, StyleSheet, View } from "react-native";
 import {
   NextButtonComponent,
   OnBoardingItemComponent,
-  PaginatorComponent,
+  PaginatorComponent
 } from "../components/ComponentsIndex";
 import onboardingslidesdata from "../data/OnBoardingSlidesData";
 
