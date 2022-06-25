@@ -1,5 +1,5 @@
 import * as React from "react";
-import { SafeAreaView, StyleSheet, Text } from "react-native";
+import { SafeAreaView, StyleSheet, Text, Image} from "react-native";
 import { Card, Paragraph, Title } from "react-native-paper";
 import CardsForHelpData from "../data/CardsForHelpData";
 import { SOFT_BLUE } from "../constants/Colors";
@@ -11,6 +11,7 @@ export default function CardsForHelpScreen() {
       <Text style={styles.text}>
         Recursos gratuitos de atención profesional
       </Text>
+      <Image style={styles.image} source={require("../images/help.png")} />
       <ScrollView>
         {CardsForHelpData.map((card) => {
           return (
@@ -66,5 +67,10 @@ const styles = StyleSheet.create({
     color: "black",
     marginBottom: 10,
     textAlign: "center",
+  },
+  image: {
+    width: 300,
+    height: 200,
+    alignSelf: "center",
   },
 });
