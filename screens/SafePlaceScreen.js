@@ -49,7 +49,7 @@ export default function SafePlaceScreen() {
     <View style={styles.container}>
       <Text style={styles.text}>Mi lugar seguro</Text>
       <Image style={styles.image} source={require("../images/safeplace.png")} />
-      <Text style={styles.subtext}>Mis herramientas para el bienestar:</Text>
+      <Text style={styles.subtext}>Mis cartas para sentirme mejor:</Text>
       {isLoading ? (
         <View
           style={{

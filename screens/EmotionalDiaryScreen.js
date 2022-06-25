@@ -84,7 +84,7 @@ export default function EmotionalDiaryScreen() {
             <View key={index}>
               <IconButtonComponent
                 name={feeling.icon}
-                size={50}
+                size={60}
                 color={feeling.color}
                 onPress={() => {
                   setDate(date);
@@ -96,7 +96,7 @@ export default function EmotionalDiaryScreen() {
           );
         })}
       </View>
-      <Text style={styles.text}>Mi diario emocional</Text>
+      <Text style={styles.textdiary}>Mi diario emocional</Text>
       <View style={styles.pixelgraph}>
         <Calendar
           markingType={"multi-dot"}
@@ -140,17 +140,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 10,
   },
+  textdiary: {
+    fontSize: 20,
+    lineHeight: 30,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "black",
+    marginBottom: 10,
+    textAlign: "center",
+    marginTop: 50,
+  },
   emotionalScaleContainer: {
     justifyContent: "center",
     flexDirection: "row",
     flexWrap: "wrap",
-  },
-  tinyLogo: {
-    width: 50,
-    height: 50,
-  },
-  icon: {
-    padding: 10,
   },
   pixelgraph: {
     alignSelf: "center",

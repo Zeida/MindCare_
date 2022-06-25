@@ -17,7 +17,7 @@ export default function ToolBoxScreen() {
     <SafeAreaView style={styles.container}>
       <Text style={styles.text}>Mi caja de herramientas</Text>
       <Image style={styles.image} source={require("../images/toolbox.png")} />
-      <Text style={styles.subtext}>Lo que me hace bien, cuando estoy mal:</Text>
+      <Text style={styles.subtext}>Lo que me hace bien cuando estoy mal:</Text>
       {isLoading ? (
         <View
           style={{
