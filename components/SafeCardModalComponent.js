@@ -5,7 +5,8 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
+  Alert
 } from "react-native";
 import { createSafeCards } from "../api/FirebaseMethods";
 import ButtonComponent from "../components/ButtonComponent";
@@ -50,11 +51,20 @@ export default function SafeCardModalComponent({
           <View style={styles.buttonContainer}>
             <ButtonComponent
               onPress={() => {
-                createSafeCards({ title: safeCardTitle, body: safeCardBody, user: user }),
+                if (safeCardTitle != "" && safeCardBody != "") {
+                  createSafeCards({
+                    title: safeCardTitle,
+                    body: safeCardBody,
+                    user: user,
+                  });
                   updateScreen(),
-                  setSafeCardTitle(""),
-                  setSafeCardBody(""),
-                  setVisible(false);
+                    setSafeCardTitle(""),
+                    setSafeCardBody(""),
+                    setVisible(false);
+                } else {
+                  Alert.alert("Upss!", "Completa correctamente la carta.");
+                  return;
+                }
               }}
               title={"Añadir"}
               backgroundColor={SOFT_GREEN}

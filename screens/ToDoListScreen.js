@@ -17,7 +17,7 @@ import {
   getChallenges,
 } from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
-import { ORANGE } from "../constants/Colors";
+import { ORANGE, SOFT_GREY } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 import { challenge, validateChallenge } from "../utils/ChallengeFormat";
 
@@ -157,20 +157,21 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     padding: 19,
+    backgroundColor:"white",
   },
   textInput: {
     elevation: 5,
-    shadowColor: "#E9E9E9",
-    shadowOffset: { width: 2, height: 12 },
+    shadowColor: SOFT_GREY,
+    shadowOffset: { width: 5, height: 12 },
     shadowRadius: 12,
     borderRadius: 25,
-    backgroundColor: "#E9E9E9",
+    backgroundColor: SOFT_GREY,
     height: 42,
     paddingLeft: 15,
     width: "80%",
     color: "#003131",
     marginRight: 15,
-    fontSize: 15,
+    fontSize: 15
   },
   btn: {
     elevation: 7,
@@ -186,7 +187,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   text: {
-    fontSize: 22,
+    fontSize: 20,
     lineHeight: 30,
     fontWeight: "bold",
     letterSpacing: 0.25,

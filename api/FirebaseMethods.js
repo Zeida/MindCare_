@@ -245,7 +245,7 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
 }
 
 export async function completeChallenge(user, id, completed) {
-  const data = await db
+  const completeChallenge = await db
     .collection("Users")
     .doc(user.uid)
     .collection("Challenges")
@@ -254,6 +254,16 @@ export async function completeChallenge(user, id, completed) {
       completed: completed,
       date: new Date().toISOString().substring(0, 10),
     });
+
+  // const challenge = await db
+  //   .collection("Users")
+  //   .doc(user.uid)
+  //   .collection("Challenges")
+  //   .doc(id)
+  //   .get();
+  // console.log(challenge.date);
+
+  // updateAchievement("prueba", completed, user);
 }
 
 export async function getCompletedChallenges(
@@ -353,4 +363,22 @@ export async function getAchievements(setAchievements, setIsLoading, user) {
   }));
   setAchievements(achievements);
   setIsLoading(false);
+}
+
+export async function updateAchievement(achievementName, value, user) {
+  const achievement = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Achievements")
+    .where("name", "==", achievementName)
+    .get();
+
+  const achievementUpdated = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Achievements")
+    .doc(achievement.id)
+    .update({
+      won: value,
+    });
 }

@@ -11,7 +11,7 @@ import {
   TextInput,
   TouchableOpacity,
   Alert,
-  Pressable
+  Pressable,
 } from "react-native";
 import { ORANGE, SOFT_BLUE, MIDDLE_GREY } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
@@ -81,6 +81,10 @@ export default function ToolBoxScreen() {
       <Text style={styles.text}>Mi caja de herramientas</Text>
       <Image style={styles.image} source={require("../images/toolbox.png")} />
       <Text style={styles.subtext}>Lo que me hace bien cuando estoy mal:</Text>
+      <Text style={styles.tiptext}>
+        Escribe aquí pequeñas acciones o estrategias que te hagan sentir bien
+        como salir a pasear, tomar un baño, llamar a un amigo...
+      </Text>
       <FlatList
         style={styles.flatlist}
         showsVerticalScrollIndicator={false}
@@ -91,9 +95,10 @@ export default function ToolBoxScreen() {
               onLongPress={() => {
                 deleteAlert(item, user);
               }}
+              key={index}
             >
-              <View style={styles.toolContainer}>
-                <Text style={styles.toolTitle}>
+              <View style={styles.toolContainer} key={index}>
+                <Text style={styles.toolTitle} key={index}>
                   {item.tool}
                 </Text>
               </View>
@@ -111,14 +116,14 @@ export default function ToolBoxScreen() {
             setCurrentTool({
               ...currentTool,
               tool: value,
-            })
+            }),
           ]}
           value={currentTool.tool}
         />
         <TouchableOpacity
           style={styles.btn}
           onPress={() => {
-            addTool()
+            addTool();
           }}
         >
           <Entypo name="plus" size={24} color="white" />
@@ -154,30 +159,38 @@ const styles = StyleSheet.create({
     marginLeft: 20,
     textAlign: "left",
   },
+  tiptext: {
+    fontSize: 12,
+    color: "black",
+    marginBottom: 5,
+    marginRight: 20,
+    marginLeft: 20,
+    textAlign: "left",
+  },
   image: {
     width: 200,
     height: 250,
-    
     alignSelf: "center",
   },
   flatlist: {
-    marginBottom: 10,
+    marginBottom: 5,
   },
   toolContainer: {
     backgroundColor: SOFT_BLUE,
     marginHorizontal: 20,
-    marginVertical: 8,
+    marginVertical: 5,
     borderWidth: 1,
     borderColor: MIDDLE_GREY,
-    borderRadius: 10,
-    padding: 10,
+    borderRadius: 20,
+    padding: 5,
   },
   toolTitle: {
-    fontSize: 16,
+    fontSize: 20,
     color: "black",
-    fontWeight: "bold",
     textAlign: "left",
-    marginBottom: 5,
+    padding:5,
+    paddingLeft:15,
+
   },
   textBoxWrapper: {
     width: "100%",
@@ -188,6 +201,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "space-between",
     padding: 19,
+    backgroundColor:"white"
   },
   textInput: {
     elevation: 5,

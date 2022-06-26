@@ -68,13 +68,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   text: {
-    fontSize: 22,
+    fontSize: 20,
     lineHeight: 30,
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "black",
     margin: 10,
-    padding: 20,
+    padding: 30,
+    paddingTop:20
   },
   title: {
     fontSize: 24,

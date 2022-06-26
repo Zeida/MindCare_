@@ -18,7 +18,6 @@ export default function StatsScreen(props) {
 
   const updateScreen = () => {
     getCompletedChallenges(user, setIsLoading, setCompletedChallenges);
-    console.log(completedChallenges);
   };
 
   useEffect(() => {
@@ -97,13 +96,13 @@ const styles = StyleSheet.create({
   switchContainer: {
     margin: 10,
     marginTop: 50,
-    marginLeft: 20,
+    marginLeft: 40,
     flexDirection: "row",
   },
   switchText: {
     fontSize: 15,
     marginTop: 18,
-    paddingRight: 2,
+    paddingRight: 15,
     fontWeight: "bold",
   },
   switch: {

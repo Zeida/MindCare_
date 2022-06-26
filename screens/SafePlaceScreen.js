@@ -134,7 +134,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   flatlist: {
-    marginBottom: 10,
+    padding:2,
+    marginTop:2,
+    marginBottom:2,
+    
   },
   button: {
     borderRadius: 40,

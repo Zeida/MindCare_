@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: SOFT_BLUE,
     marginVertical: 5,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
   },
   title: {
     fontSize: 20,
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 30,
     fontWeight: "bold",
-    letterSpacing: 0.25,
     color: "black",
     textAlign: "center",
   },

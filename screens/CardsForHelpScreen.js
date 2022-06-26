@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: SOFT_BLUE,
     padding: 5,
     marginVertical: 5,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
   },
   title: {
     fontSize: 20,
