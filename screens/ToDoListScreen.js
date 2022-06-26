@@ -15,7 +15,6 @@ import {
   createChallenge,
   deleteChallenge,
   getChallenges,
-  completeChallenge,
 } from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 import { ORANGE } from "../constants/Colors";
@@ -74,7 +73,7 @@ export default function ToDoListScreen({ route }) {
   function setIsSelected(index, value) {
     let copy = list.map((item) => {
       if (item.id == index) {
-        return { ...item, isSelected: value };
+        return { ...item, completed: value };
       }
       return item;
     });
@@ -108,6 +107,7 @@ export default function ToDoListScreen({ route }) {
             index={item.id}
             setIsSelected={setIsSelected}
             deleteItem={deleteItem}
+
           />
         )}
         keyExtractor={(item, index) => item.id}

@@ -1,25 +1,3 @@
-const months = [
-  "Enero",
-  "Febrero",
-  "Marzo",
-  "Abril",
-  "Mayo",
-  "Junio",
-  "Julio",
-  "Agosto",
-  "Septiembre",
-  "Octubre",
-  "Noviembre",
-  "Diciembre",
-];
-
-// const data = {
-//   labels: ["Lu", "Ma", "Mi", "Ju", "Vi", "Sa", "Do"],
-//   data: [[60, 60, 60, 30], [30, 30, 60, 30], [], [], [], [], []],
-//   barColors: ["#F2989A", "#F27C38", "#74C4AB", "#BEDEFF"],
-//   legend: ["C. emocional", "Gratitud", "Bien. físico", "Meditación"],
-// };
-
 const daydata = [
   {
     name: "Emocional",

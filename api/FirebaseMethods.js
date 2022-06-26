@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { auth, db } from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
-//USER ACCOUNT 
+//USER ACCOUNT
 
 export async function registration(
   email,
@@ -134,7 +134,7 @@ export async function setInitialStats(user) {
   });
 }
 
-// SAFE CARDS 
+// SAFE CARDS
 
 export async function createSafeCards({ title, body, user }) {
   db.collection("Users").doc(user.uid).collection("SafeCards").add({
@@ -169,10 +169,7 @@ export async function deleteSafeCard(item, user) {
 
 // TOOLS
 
-export async function createTool(
-  tool,
-  user
-) {
+export async function createTool(tool, user) {
   db.collection("Users").doc(user.uid).collection("Tools").add({
     tool: tool,
   });
@@ -193,7 +190,7 @@ export async function getTools(user, setTools, setIsLoading) {
 }
 
 export async function deleteTool(user, id) {
-  const tool=await db
+  const tool = await db
     .collection("Users")
     .doc(user.uid)
     .collection("Tools")
@@ -247,22 +244,67 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
   setIsLoading(false);
 }
 
-//TO-DO
+export async function completeChallenge(user, id, completed) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .doc(id)
+    .update({
+      completed: completed,
+      date: new Date().toISOString().substring(0, 10),
+    });
+}
 
-export async function completeChallenge(user, id) {
-  // const data = await db
-  //   .collection("Users")
-  //   .doc(user.uid)
-  //   .collection("Challenges")
-  //   .where("challenge", "==", challenge)
-  //   .get();
-  // console.log(data);
+export async function getCompletedChallenges(
+  user,
+  setCompletedChallenges,
+  setIsLoading
+) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .where("completed", "==", true)
+    .get();
+  const challenges = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 
+  const stats = {
+    emotional: 0,
+    personal: 0,
+    social: 0,
+  };
 
+  //Filtrar las fechas :)
+  let result = challenges.filter((item) => {
+    return true;
+  });
+  //for each no devuelve array, map si
+  result.forEach((challenge) => {
+    let scope = challenge.scope;
+    stats[scope] += 1;
+  });
+
+  const statsFormatter = [];
+  //devuelve las claves del json en forma de array
+  Object.keys(stats).forEach((scope) => {
+    statsFormatter.push({
+      name: scope,
+      minutes: stats[scope],
+      color: "#F2989A",
+      legendFontColor: "#000000",
+      legendFontSize: 10,
+    });
+  });
+  setCompletedChallenges(statsFormatter);
+  setIsLoading(false);
 }
 
 export async function deleteChallenge(user, id) {
-  const challenge=await db
+  const challenge = await db
     .collection("Users")
     .doc(user.uid)
     .collection("Challenges")
@@ -312,4 +354,3 @@ export async function getAchievements(setAchievements, setIsLoading, user) {
   setAchievements(achievements);
   setIsLoading(false);
 }
-

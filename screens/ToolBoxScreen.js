@@ -27,7 +27,6 @@ export default function ToolBoxScreen() {
 
   const updateScreen = () => {
     getTools(user, setList, setIsLoading);
-    console.log(list);
   };
 
   useEffect(() => {
@@ -91,18 +90,17 @@ export default function ToolBoxScreen() {
             <Pressable
               onLongPress={() => {
                 deleteAlert(item, user);
-                key = { index };
               }}
             >
               <View style={styles.toolContainer}>
-                <Text style={styles.toolTitle} key={index}>
+                <Text style={styles.toolTitle}>
                   {item.tool}
                 </Text>
               </View>
             </Pressable>
           );
         }}
-        keyExtractor={(item, index) => tool.id}
+        keyExtractor={(item) => item.id}
       />
       <View style={styles.textBoxWrapper}>
         <TextInput

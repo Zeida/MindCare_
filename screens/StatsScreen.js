@@ -1,14 +1,29 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Image, StyleSheet, Switch, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { getCompletedChallenges } from "../api/FirebaseMethods";
 import {
-  ButtonComponent, PieChartComponent
+  ButtonComponent,
+  PieChartComponent,
 } from "../components/ComponentsIndex";
 import { daydata, weekdata } from "../data/StatsData";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
 export default function StatsScreen(props) {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const { user } = useContext(AuthenticatedUserContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completedChallenges, setCompletedChallenges] = useState([]);
+
+  const updateScreen = () => {
+    getCompletedChallenges(user, setIsLoading, setCompletedChallenges);
+    console.log(completedChallenges);
+  };
+
+  useEffect(() => {
+    updateScreen();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -21,7 +36,7 @@ export default function StatsScreen(props) {
           onValueChange={toggleSwitch}
           value={isEnabled}
         />
-        <Text style={styles.switchText}>Semana</Text>
+        <Text style={styles.switchText}>Todos</Text>
         <ButtonComponent
           title="Mi diario emocional"
           backgroundColor="#192959"
