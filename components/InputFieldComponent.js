@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     flexDirection: "row",
     paddingVertical: 8,
-    paddingHorizontal: 30,
+    paddingHorizontal: 12,
     marginLeft: 15,
     marginRight: 15,
   },
@@ -56,6 +56,7 @@ const styles = StyleSheet.create({
     marginRight: 5,
     marginTop: 5,
     marginBottom: 5,
+    padding:1,
   },
   input: {
     flex: 1,
