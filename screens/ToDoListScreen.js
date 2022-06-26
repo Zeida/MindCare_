@@ -9,10 +9,13 @@ import {
   Text,
   TextInput,
   TouchableOpacity,
-  View
+  View,
 } from "react-native";
 import {
-  createChallenge, deleteChallenge, getChallenges
+  createChallenge,
+  deleteChallenge,
+  getChallenges,
+  completeChallenge,
 } from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 import { ORANGE } from "../constants/Colors";
@@ -129,7 +132,7 @@ export default function ToDoListScreen({ route }) {
         <TouchableOpacity
           style={styles.btn}
           onPress={() => {
-            console.log(value), addText();
+            addText();
           }}
         >
           <Entypo name="plus" size={24} color="white" />

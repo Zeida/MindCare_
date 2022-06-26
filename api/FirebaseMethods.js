@@ -167,6 +167,40 @@ export async function deleteSafeCard(item, user) {
   return this;
 }
 
+// TOOLS
+
+export async function createTool(
+  tool,
+  user
+) {
+  db.collection("Users").doc(user.uid).collection("Tools").add({
+    tool: tool,
+  });
+}
+
+export async function getTools(user, setTools, setIsLoading) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Tools")
+    .get();
+  const tools = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  setTools(tools);
+  setIsLoading(false);
+}
+
+export async function deleteTool(user, id) {
+  const tool=await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Tools")
+    .doc(id)
+    .delete();
+}
+
 // RESOURCES FOR HELP
 
 export async function getResourcesForHelp(setResources, setIsLoading) {
@@ -215,14 +249,16 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
 
 //TO-DO
 
-export async function completeChallenge(challenge, user) {
-  const data = await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("Challenges")
-    .where("challenge", "==", challenge)
-    .get();
-  console.log(data);
+export async function completeChallenge(user, id) {
+  // const data = await db
+  //   .collection("Users")
+  //   .doc(user.uid)
+  //   .collection("Challenges")
+  //   .where("challenge", "==", challenge)
+  //   .get();
+  // console.log(data);
+
+
 }
 
 export async function deleteChallenge(user, id) {
