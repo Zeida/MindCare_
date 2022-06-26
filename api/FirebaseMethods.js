@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { auth, db } from "../config/firebase";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
+//USER ACCOUNT 
 
 export async function registration(
   email,
@@ -92,46 +93,7 @@ export async function loginAnonymously() {
     });
 }
 
-export async function getSafeCards(setSafeCards, setIsLoading, user) {
-  const data = await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("SafeCards")
-    .get();
-  const achievements = data.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  setSafeCards(achievements);
-  setIsLoading(false);
-}
-
-export async function createSafeCards({ title, body, user }) {
-  db.collection("Users").doc(user.uid).collection("SafeCards").add({
-    title: title,
-    body: body,
-  });
-}
-
-export async function deleteSafeCard(item, user) {
-  await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("SafeCards")
-    .doc(item.id)
-    .delete();
-  return this;
-}
-
-export async function getResourcesForHelp(setResources, setIsLoading) {
-  const data = await db.collection("ResourcesForHelp").get();
-  const resources = data.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  setResources(resources);
-  setIsLoading(false);
-}
+// INITIAL DATA FOR USER
 
 export async function setInitialChallenges(user) {
   const data = await db.collection("Challenges").get();
@@ -172,6 +134,70 @@ export async function setInitialStats(user) {
   });
 }
 
+// SAFE CARDS 
+
+export async function createSafeCards({ title, body, user }) {
+  db.collection("Users").doc(user.uid).collection("SafeCards").add({
+    title: title,
+    body: body,
+  });
+}
+
+export async function getSafeCards(setSafeCards, setIsLoading, user) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("SafeCards")
+    .get();
+  const achievements = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  setSafeCards(achievements);
+  setIsLoading(false);
+}
+
+export async function deleteSafeCard(item, user) {
+  await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("SafeCards")
+    .doc(item.id)
+    .delete();
+  return this;
+}
+
+// RESOURCES FOR HELP
+
+export async function getResourcesForHelp(setResources, setIsLoading) {
+  const data = await db.collection("ResourcesForHelp").get();
+  const resources = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  setResources(resources);
+  setIsLoading(false);
+}
+
+// CHALLENGES
+
+export async function createChallenge(
+  challenge,
+  title,
+  description,
+  scope,
+  user
+) {
+  db.collection("Users").doc(user.uid).collection("Challenges").add({
+    challenge: challenge,
+    title: title,
+    description: description,
+    achievement: "",
+    completed: false,
+    scope: scope,
+  });
+}
+
 export async function getChallenges(user, scope, setChallenges, setIsLoading) {
   const data = await db
     .collection("Users")
@@ -186,6 +212,29 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
   setChallenges(challenges);
   setIsLoading(false);
 }
+
+//TO-DO
+
+export async function completeChallenge(challenge, user) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .where("challenge", "==", challenge)
+    .get();
+  console.log(data);
+}
+
+export async function deleteChallenge(user, id) {
+  const challenge=await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .doc(id)
+    .delete();
+}
+
+// FEELINGS
 
 export async function storeFeeling(feeling, date, color, user) {
   db.collection("Users").doc(user.uid).collection("Feelings").doc(date).set({
@@ -210,43 +259,8 @@ export async function getFeelings(user, setFeelings, setIsLoading) {
   setFeelings(feelingsCalendar);
   setIsLoading(false);
 }
-//OK
-export async function createChallenge(
-  challenge,
-  title,
-  description,
-  scope,
-  user
-) {
-  db.collection("Users").doc(user.uid).collection("Challenges").add({
-    challenge: challenge,
-    title: title,
-    description: description,
-    achievement: "",
-    completed: false,
-    scope: scope,
-  });
-}
 
-//error
-export async function completeChallenge(challenge, user) {
-  const data = await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("Challenges")
-    .where("challenge", "==", challenge)
-    .get();
-  console.log(data);
-}
-
-export async function deleteChallenge(user, id) {
-  const challenge=await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("Challenges")
-    .doc(id)
-    .delete();
-}
+// ACHIEVEMENTS
 
 export async function getAchievements(setAchievements, setIsLoading, user) {
   const data = await db

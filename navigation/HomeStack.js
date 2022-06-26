@@ -1,21 +1,21 @@
 import { Ionicons } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
-import React from "react";
-import HeaderComponent from "../components/HeaderComponent";
+
 //Screens
-import HomeScreen from "../screens/HomeScreen.js";
-import ProfileScreen from "../screens/ProfileScreen.js";
-import StatsScreen from "../screens/StatsScreen.js";
-import ToDoListScreen from "../screens/ToDoListScreen";
+import AboutUsCardScreen from "../screens/AboutUsCardsScreen.js";
 import AchievementsScreen from "../screens/AchievementsScreen";
 import CardsForHelpScreen from "../screens/CardsForHelpScreen.js";
 import EditProfileScreen from "../screens/EditProfileScreen.js";
-import AboutUsCardScreen from "../screens/AboutUsCardsScreen.js";
 import EmotionalDiaryScreen from "../screens/EmotionalDiaryScreen.js";
-import SafePlaceScreen from "../screens/SafePlaceScreen.js";
+import HomeScreen from "../screens/HomeScreen.js";
+import ProfileScreen from "../screens/ProfileScreen.js";
 import ResourcesForHelpScreen from "../screens/ResourcesForHelpScreen.js";
+import SafePlaceScreen from "../screens/SafePlaceScreen.js";
+import StatsScreen from "../screens/StatsScreen.js";
+import ToDoListScreen from "../screens/ToDoListScreen";
 import ToolBoxScreen from "../screens/ToolBoxScreen.js";
+
 //Screens names
 const homeScreenName = "Inicio";
 const achievementsScreenName = "Insignias";
