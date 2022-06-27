@@ -18,7 +18,7 @@ export default function AboutUsCardsScreen() {
           Zeida de los R. Rguez. Mendoza (Desarrolladora)
         </Text>
         <Text style={styles.subtextteammembers}>
-          Ana Maria Plácido (Tutora del proyecto)
+          Ana Maria Plácido Castro(Tutora del proyecto)
         </Text>
         <Text style={styles.subtextteammembers}>
           Arminda Castellano Quesada (Ilustradora)
