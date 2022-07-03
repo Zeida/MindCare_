@@ -83,7 +83,7 @@ export default function ToDoListScreen({ route }) {
   function deleteItem(idx) {
     Alert.alert("Descartar reto", "¿Quieres eliminar este reto?", [
       {
-        text: "Mantener",
+        text: "No",
       },
       {
         text: "Si",

@@ -83,9 +83,11 @@ const styles = StyleSheet.create({
     color: "black",
   },
   image: {
-    width: 250,
-    height: 155,
+    width: 300,
+    height: 180,
     alignSelf: "center",
+    padding:5,
+    margin:10
   },
   row: {
     flexDirection: "row",

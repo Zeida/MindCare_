@@ -245,6 +245,9 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
 }
 
 export async function completeChallenge(user, id, completed) {
+  console.log(user.uid);
+  console.log(id);
+  console.log(completed);
   const completeChallenge = await db
     .collection("Users")
     .doc(user.uid)
@@ -254,7 +257,7 @@ export async function completeChallenge(user, id, completed) {
       completed: completed,
       date: new Date().toISOString().substring(0, 10),
     });
-
+    
   // const challenge = await db
   //   .collection("Users")
   //   .doc(user.uid)

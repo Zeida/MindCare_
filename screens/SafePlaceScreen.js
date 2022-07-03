@@ -33,7 +33,7 @@ export default function SafePlaceScreen() {
   const deleteAlert = (item, user) => {
     Alert.alert("Borrar carta", "¿Quieres eliminarla?", [
       {
-        text: "Mantener",
+        text: "No",
       },
       {
         text: "Si",

@@ -111,12 +111,6 @@ export default function EmotionalDiaryScreen() {
             selectedDotColor: "#ffffff",
             arrowColor: "orange",
           }}
-          onDayPress={(day) => {
-            console.log("selected day", day);
-          }}
-          onDayLongPress={(day) => {
-            console.log("selected day", day);
-          }}
           firstDay={1}
         />
       </View>

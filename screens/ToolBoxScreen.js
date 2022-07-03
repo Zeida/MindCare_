@@ -49,7 +49,7 @@ export default function ToolBoxScreen() {
   const deleteAlert = (item, user) => {
     Alert.alert("Borrar herramienta", "¿Quieres eliminarla?", [
       {
-        text: "Mantener",
+        text: "No",
       },
       {
         text: "Si",
