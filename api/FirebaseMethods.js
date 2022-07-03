@@ -254,16 +254,6 @@ export async function completeChallenge(user, id, completed) {
       completed: completed,
       date: new Date().toISOString().substring(0, 10),
     });
-    
-  // const challenge = await db
-  //   .collection("Users")
-  //   .doc(user.uid)
-  //   .collection("Challenges")
-  //   .doc(id)
-  //   .get();
-  // console.log(challenge.date);
-
-  // updateAchievement("prueba", completed, user);
 }
 
 export async function getCompletedChallenges(
@@ -293,7 +283,7 @@ export async function getCompletedChallenges(
     emotionalColor: "#F2989A",
     personalColor: "#74C4AB",
     socialColor: "#90D0CF",
-  }
+  };
 
   //Filtrar las fechas :)
   let result = challenges.filter((item) => {
@@ -308,7 +298,7 @@ export async function getCompletedChallenges(
   const statsFormatter = [];
   //devuelve las claves del json en forma de array
 
-  //No coge el color por scope.. :/ 
+  //No coge el color por scope.. :/
 
   Object.keys(stats).forEach((scope) => {
     statsFormatter.push({
@@ -323,7 +313,10 @@ export async function getCompletedChallenges(
   setIsLoading(false);
 }
 
-export async function getNumberCompletedChallenges(user, setNumberCompletedChallenges) {
+export async function getNumberCompletedChallenges(
+  user,
+  setNumberCompletedChallenges
+) {
   const data = await db
     .collection("Users")
     .doc(user.uid)

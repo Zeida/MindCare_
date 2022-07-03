@@ -1,21 +1,14 @@
-import { useContext, useEffect, useState } from "react";
 import { Entypo } from "@expo/vector-icons";
+import { useContext, useEffect, useState } from "react";
 import {
-  ActivityIndicator,
-  Image,
-  SafeAreaView,
+  ActivityIndicator, Alert, FlatList, Image, Pressable, SafeAreaView,
   StyleSheet,
-  Text,
-  View,
-  FlatList,
-  TextInput,
-  TouchableOpacity,
-  Alert,
-  Pressable,
+  Text, TextInput,
+  TouchableOpacity, View
 } from "react-native";
-import { ORANGE, SOFT_BLUE, MIDDLE_GREY } from "../constants/Colors";
-import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 import { createTool, deleteTool, getTools } from "../api/FirebaseMethods";
+import { ORANGE, SOFT_BLUE } from "../constants/Colors";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 import { tool, validateTool } from "../utils/ToolFormat";
 
 export default function ToolBoxScreen() {

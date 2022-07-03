@@ -4,9 +4,9 @@ import { ScrollView } from "react-native-gesture-handler";
 import { getCompletedChallenges } from "../api/FirebaseMethods";
 import {
   ButtonComponent,
-  PieChartComponent,
+  PieChartComponent
 } from "../components/ComponentsIndex";
-import { daydata, weekdata } from "../data/StatsData";
+import { daydata } from "../data/StatsData";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
 export default function StatsScreen(props) {

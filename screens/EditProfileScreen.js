@@ -1,11 +1,10 @@
-import React, { useState, useContext } from "react";
-import { ImageBackground, StyleSheet, Text, View, Alert } from "react-native";
+import { useContext, useState } from "react";
+import { Alert, ImageBackground, StyleSheet, Text, View } from "react-native";
 import ButtonComponent from "../components/ButtonComponent";
 import { InputFieldComponent } from "../components/ComponentsIndex";
 import ErrorMessageComponent from "../components/ErrorMessageComponent";
 import { ORANGE } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import { updatePassword } from "firebase/auth";
 
 export default function EditProfileScreen(props) {
   const [displayName, setDisplayName] = useState();

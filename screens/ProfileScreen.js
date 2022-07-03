@@ -32,7 +32,7 @@ export default function ProfileScreen(props) {
 
   const updateScreen = () => {
     getAchievements(setAchievements, null, user);
-    getCompletedChallenges(user, null, null, setNumber)
+    getCompletedChallenges(user, null, null, setNumber);
   };
 
   useEffect(() => {
