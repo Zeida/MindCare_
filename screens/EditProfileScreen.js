@@ -27,7 +27,6 @@ export default function EditProfileScreen(props) {
       setUser(user);
       return props.navigation.goBack(user);
     } catch (error) {
-      console.log(error);
       setUpdateError(error.message);
     }
   };

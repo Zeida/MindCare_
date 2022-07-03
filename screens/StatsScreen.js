@@ -17,7 +17,8 @@ export default function StatsScreen(props) {
   const [completedChallenges, setCompletedChallenges] = useState([]);
 
   const updateScreen = () => {
-    getCompletedChallenges(user, setIsLoading, setCompletedChallenges);
+    getCompletedChallenges(user, setCompletedChallenges, setIsLoading );
+    console.log(completedChallenges);
   };
 
   useEffect(() => {
@@ -51,8 +52,8 @@ export default function StatsScreen(props) {
         <Image style={styles.image} source={require("../images/stats.png")} />
         {isEnabled ? (
           <View>
-            <Text style={styles.subtext}>Mis retos cumplidos esta semana:</Text>
-            <PieChartComponent data={weekdata} />
+            <Text style={styles.subtext}>Todos mis retos cumplidos:</Text>
+            <PieChartComponent data={completedChallenges} />
           </View>
         ) : (
           <View>

@@ -245,9 +245,6 @@ export async function getChallenges(user, scope, setChallenges, setIsLoading) {
 }
 
 export async function completeChallenge(user, id, completed) {
-  console.log(user.uid);
-  console.log(id);
-  console.log(completed);
   const completeChallenge = await db
     .collection("Users")
     .doc(user.uid)
@@ -272,7 +269,8 @@ export async function completeChallenge(user, id, completed) {
 export async function getCompletedChallenges(
   user,
   setCompletedChallenges,
-  setIsLoading
+  setIsLoading,
+  setNumber
 ) {
   const data = await db
     .collection("Users")
@@ -284,12 +282,18 @@ export async function getCompletedChallenges(
     id: doc.id,
     ...doc.data(),
   }));
-
+  setNumber(challenges.length);
   const stats = {
     emotional: 0,
     personal: 0,
     social: 0,
   };
+
+  const color = {
+    emotionalColor: "#F2989A",
+    personalColor: "#74C4AB",
+    socialColor: "#90D0CF",
+  }
 
   //Filtrar las fechas :)
   let result = challenges.filter((item) => {
@@ -300,20 +304,37 @@ export async function getCompletedChallenges(
     let scope = challenge.scope;
     stats[scope] += 1;
   });
-
+  console.log(stats);
   const statsFormatter = [];
   //devuelve las claves del json en forma de array
+
+  //No coge el color por scope.. :/ 
+
   Object.keys(stats).forEach((scope) => {
     statsFormatter.push({
       name: scope,
       minutes: stats[scope],
-      color: "#F2989A",
+      color: "#90D0CF",
       legendFontColor: "#000000",
       legendFontSize: 10,
     });
   });
   setCompletedChallenges(statsFormatter);
   setIsLoading(false);
+}
+
+export async function getNumberCompletedChallenges(user, setNumberCompletedChallenges) {
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .where("completed", "==", true)
+    .get();
+  const challenges = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  setNumberCompletedChallenges(challenges.length);
 }
 
 export async function deleteChallenge(user, id) {
