@@ -18,8 +18,9 @@ export default function ProfileScreen(props) {
   const { user } = useContext(AuthenticatedUserContext);
   const [displayName, setDisplayName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [number, setNumber] = useState("");
+  const [number, setNumber] = useState(0);
   const [achievements, setAchievements] = useState([]);
+  const [completedChallenges, setCompletedChallenges] = useState([]);
   const handleSignOut = async () => {
     loggingOut();
   };
@@ -31,8 +32,8 @@ export default function ProfileScreen(props) {
   );
 
   const updateScreen = () => {
-    getAchievements(setAchievements, null, user);
-    getCompletedChallenges(user, null, null, setNumber);
+    getAchievements(setAchievements, setIsLoading, user);
+    getCompletedChallenges(user, setCompletedChallenges, setIsLoading, setNumber);
   };
 
   useEffect(() => {

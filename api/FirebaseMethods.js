@@ -254,6 +254,14 @@ export async function completeChallenge(user, id, completed) {
       completed: completed,
       date: new Date().toISOString().substring(0, 10),
     });
+    //no funciona :/
+  const challenge = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .doc(id)
+    .get();
+  updateAchievement(challenge.achievement, completed, user);
 }
 
 export async function getCompletedChallenges(
@@ -272,7 +280,7 @@ export async function getCompletedChallenges(
     id: doc.id,
     ...doc.data(),
   }));
-  setNumber(challenges.length);
+
   const stats = {
     emotional: 0,
     personal: 0,
@@ -280,9 +288,9 @@ export async function getCompletedChallenges(
   };
 
   const color = {
-    emotionalColor: "#F2989A",
-    personalColor: "#74C4AB",
-    socialColor: "#90D0CF",
+    emotional: "#F2989A",
+    personal: "#74C4AB",
+    social: "#90D0CF",
   };
 
   //Filtrar las fechas :)
@@ -294,40 +302,23 @@ export async function getCompletedChallenges(
     let scope = challenge.scope;
     stats[scope] += 1;
   });
-  console.log(stats);
+
   const statsFormatter = [];
   //devuelve las claves del json en forma de array
-
-  //No coge el color por scope.. :/
 
   Object.keys(stats).forEach((scope) => {
     statsFormatter.push({
       name: scope,
       minutes: stats[scope],
-      color: "#90D0CF",
+      color: color[scope],
       legendFontColor: "#000000",
       legendFontSize: 10,
     });
   });
+
+  setNumber(challenges.length);
   setCompletedChallenges(statsFormatter);
   setIsLoading(false);
-}
-
-export async function getNumberCompletedChallenges(
-  user,
-  setNumberCompletedChallenges
-) {
-  const data = await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("Challenges")
-    .where("completed", "==", true)
-    .get();
-  const challenges = data.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  setNumberCompletedChallenges(challenges.length);
 }
 
 export async function deleteChallenge(user, id) {
@@ -388,13 +379,6 @@ export async function updateAchievement(achievementName, value, user) {
     .doc(user.uid)
     .collection("Achievements")
     .where("name", "==", achievementName)
-    .get();
-
-  const achievementUpdated = await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("Achievements")
-    .doc(achievement.id)
     .update({
       won: value,
     });

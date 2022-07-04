@@ -15,10 +15,10 @@ export default function StatsScreen(props) {
   const { user } = useContext(AuthenticatedUserContext);
   const [isLoading, setIsLoading] = useState(true);
   const [completedChallenges, setCompletedChallenges] = useState([]);
+  const [number, setNumber] = useState(0);
 
   const updateScreen = () => {
-    getCompletedChallenges(user, setCompletedChallenges, setIsLoading );
-    console.log(completedChallenges);
+    getCompletedChallenges(user, setCompletedChallenges, setIsLoading, setNumber );
   };
 
   useEffect(() => {
