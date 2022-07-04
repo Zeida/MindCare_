@@ -261,7 +261,7 @@ export async function completeChallenge(user, id, completed) {
     .collection("Challenges")
     .doc(id)
     .get();
-  updateAchievement(challenge.achievement, completed, user);
+  await updateAchievement(challenge.achievement, completed, user);
 }
 
 export async function getCompletedChallenges(
@@ -373,12 +373,12 @@ export async function getAchievements(setAchievements, setIsLoading, user) {
   setIsLoading(false);
 }
 
-export async function updateAchievement(achievementName, value, user) {
-  const achievement = await db
+export async function updateAchievement(name, value, user) {
+  const achievementUpdating = await db
     .collection("Users")
     .doc(user.uid)
     .collection("Achievements")
-    .where("name", "==", achievementName)
+    .where("name", "==", name)
     .update({
       won: value,
     });

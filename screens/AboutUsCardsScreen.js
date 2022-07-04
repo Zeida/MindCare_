@@ -26,7 +26,7 @@ export default function AboutUsCardsScreen() {
       </View>
       <View style={styles.container2}>
         <Text style={styles.subtextleft}>
-          Algunos de los recursos visuales usados en la aplicación han sido
+          Los recursos visuales usados en la aplicación han sido
           obtenidos de:
         </Text>
         <Text style={styles.subtextteammembers}>undraw.co</Text>
@@ -75,6 +75,7 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 20,
     textAlign: "left",
+    marginRight:10,
   },
   subtextteammembers: {
     fontSize: 15,

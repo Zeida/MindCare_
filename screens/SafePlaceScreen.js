@@ -119,7 +119,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   subtext: {
-    fontSize: 15,
+    fontSize: 20,
     lineHeight: 30,
     fontWeight: "bold",
     letterSpacing: 0.25,

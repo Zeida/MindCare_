@@ -143,7 +143,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   subtext: {
-    fontSize: 15,
+    fontSize: 20,
     lineHeight: 30,
     fontWeight: "bold",
     letterSpacing: 0.25,
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
     textAlign: "left",
   },
   tiptext: {
-    fontSize: 12,
+    fontSize: 14,
     color: "black",
     marginBottom: 5,
     marginRight: 20,

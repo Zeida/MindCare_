@@ -1,11 +1,20 @@
-import { useContext, useEffect, useState } from "react";
-import { Image, StyleSheet, Switch, Text, View } from "react-native";
+import { useFocusEffect } from "@react-navigation/native";
+import { useCallback, useContext, useState } from "react";
+import {
+  ActivityIndicator,
+  Image,
+  StyleSheet,
+  Switch,
+  Text,
+  View,
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { getCompletedChallenges } from "../api/FirebaseMethods";
 import {
   ButtonComponent,
-  PieChartComponent
+  PieChartComponent,
 } from "../components/ComponentsIndex";
+import { ORANGE } from "../constants/Colors";
 import { daydata } from "../data/StatsData";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
@@ -18,12 +27,19 @@ export default function StatsScreen(props) {
   const [number, setNumber] = useState(0);
 
   const updateScreen = () => {
-    getCompletedChallenges(user, setCompletedChallenges, setIsLoading, setNumber );
+    getCompletedChallenges(
+      user,
+      setCompletedChallenges,
+      setIsLoading,
+      setNumber
+    );
   };
 
-  useEffect(() => {
-    updateScreen();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      updateScreen();
+    }, [])
+  );
 
   return (
     <View style={styles.container}>
@@ -50,17 +66,48 @@ export default function StatsScreen(props) {
       <ScrollView style={styles.scrollview}>
         <Text style={styles.text}>Mis estadísticas de cuidado</Text>
         <Image style={styles.image} source={require("../images/stats.png")} />
-        {isEnabled ? (
-          <View>
-            <Text style={styles.subtext}>Todos mis retos cumplidos:</Text>
-            <PieChartComponent data={completedChallenges} />
-          </View>
-        ) : (
-          <View>
-            <Text style={styles.subtext}>Mis retos cumplidos hoy:</Text>
-            <PieChartComponent data={daydata} />
-          </View>
-        )}
+
+        <View>
+          {isEnabled ? (
+            <View>
+              <Text style={styles.subtext}>Todos mis retos cumplidos:</Text>
+              {isLoading ? (
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    alignSelf: "center",
+                    margin: 80,
+                  }}
+                >
+                  <ActivityIndicator size="large" color={ORANGE} />
+                </View>
+              ) : (
+                <PieChartComponent data={completedChallenges} />
+              )}
+            </View>
+          ) : (
+            <View>
+              <Text style={styles.subtext}>Mis retos cumplidos hoy:</Text>
+              {isLoading ? (
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: "center",
+                    alignItems: "center",
+                    alignSelf: "center",
+                    margin: 80,
+                  }}
+                >
+                  <ActivityIndicator size="large" color={ORANGE} />
+                </View>
+              ) : (
+                <PieChartComponent data={daydata} />
+              )}
+            </View>
+          )}
+        </View>
       </ScrollView>
     </View>
   );
@@ -85,7 +132,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   subtext: {
-    fontSize: 15,
+    fontSize: 20,
     lineHeight: 30,
     fontWeight: "bold",
     letterSpacing: 0.25,

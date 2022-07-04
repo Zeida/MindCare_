@@ -62,7 +62,7 @@ export default function EditProfileScreen(props) {
             fontSize: 15,
           }}
         >
-          Actualizar mi perfil
+          Actualizar perfil
         </Text>
         <View style={styles.action}>
           <InputFieldComponent

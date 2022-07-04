@@ -46,15 +46,16 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     padding: 10,
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 20,
+    marginRight: 20,
     margin:5,
     borderWidth: 1,
     borderRadius: 50,
   },
   text: {
     marginHorizontal: 5,
-    fontSize: 20,
+    fontSize: 16,
+    fontWeight: "bold",
   },
 });
 

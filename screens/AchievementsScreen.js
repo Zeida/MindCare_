@@ -1,4 +1,5 @@
-import { useContext, useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import { useCallback, useContext, useState } from "react";
 import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { getAchievements } from "../api/FirebaseMethods";
@@ -8,10 +9,17 @@ import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvide
 export default function AchievementsScreen({ navigation }) {
   const [achievements, setAchievements] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const { user } = useContext(AuthenticatedUserContext);
-  useEffect(() => {
+  const { user } = useContext(AuthenticatedUserContext);;
+
+  const updateScreen = () => {
     getAchievements(setAchievements, setIsLoading, user);
-  }, []);
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      updateScreen();
+    }, [])
+  );
 
   if (isLoading) {
     return (
@@ -75,7 +83,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
   },
   subtext: {
-    fontSize: 15,
+    fontSize: 20,
     lineHeight: 30,
     fontWeight: "bold",
     letterSpacing: 0.25,
