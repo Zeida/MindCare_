@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import {
   ActivityIndicator,
   Alert,
@@ -7,7 +7,7 @@ import {
   Pressable,
   StyleSheet,
   Text,
-  View,
+  View
 } from "react-native";
 import { deleteSafeCard, getSafeCards } from "../api/FirebaseMethods";
 import ButtonComponent from "../components/ButtonComponent";
@@ -33,7 +33,7 @@ export default function SafePlaceScreen() {
   const deleteAlert = (item, user) => {
     Alert.alert("Borrar carta", "¿Quieres eliminarla?", [
       {
-        text: "Mantener",
+        text: "No",
       },
       {
         text: "Si",
@@ -49,7 +49,7 @@ export default function SafePlaceScreen() {
     <View style={styles.container}>
       <Text style={styles.text}>Mi lugar seguro</Text>
       <Image style={styles.image} source={require("../images/safeplace.png")} />
-      <Text style={styles.subtext}>Mis herramientas para el bienestar:</Text>
+      <Text style={styles.subtext}>Mis cartas para sentirme mejor:</Text>
       {isLoading ? (
         <View
           style={{
@@ -134,7 +134,10 @@ const styles = StyleSheet.create({
     alignSelf: "center",
   },
   flatlist: {
-    marginBottom: 10,
+    padding:2,
+    marginTop:2,
+    marginBottom:2,
+    
   },
   button: {
     borderRadius: 40,

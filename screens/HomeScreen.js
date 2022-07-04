@@ -1,12 +1,12 @@
+import { useFocusEffect } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
-import React, { useContext, useState} from "react";
+import React, { useContext, useState } from "react";
 import { Image, SafeAreaView, StyleSheet, Text, View } from "react-native";
 import { TouchableRipple } from "react-native-paper";
+import { loggingOut } from "../api/FirebaseMethods";
 import { IconButtonComponent } from "../components/ComponentsIndex";
 import ChallengeScopesData from "../data/ChallengeScopesData";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
-import { loggingOut } from "../api/FirebaseMethods";
-import { useFocusEffect } from "@react-navigation/native";
 
 export default function HomeScreen(props) {
   const { user } = useContext(AuthenticatedUserContext);
@@ -68,13 +68,14 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   text: {
-    fontSize: 22,
+    fontSize: 20,
     lineHeight: 30,
     fontWeight: "bold",
     letterSpacing: 0.25,
     color: "black",
     margin: 10,
-    padding: 20,
+    padding: 30,
+    paddingTop:20
   },
   title: {
     fontSize: 24,
@@ -82,9 +83,11 @@ const styles = StyleSheet.create({
     color: "black",
   },
   image: {
-    width: 250,
-    height: 155,
+    width: 300,
+    height: 180,
     alignSelf: "center",
+    padding:5,
+    margin:10
   },
   row: {
     flexDirection: "row",

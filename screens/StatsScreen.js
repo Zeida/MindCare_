@@ -1,15 +1,29 @@
-import React, { useState } from "react";
-import { Text, View, StyleSheet, Switch, Image } from "react-native";
+import { useContext, useEffect, useState } from "react";
+import { Image, StyleSheet, Switch, Text, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { daydata, weekdata } from "../data/StatsData";
+import { getCompletedChallenges } from "../api/FirebaseMethods";
 import {
-  PieChartComponent,
   ButtonComponent,
+  PieChartComponent
 } from "../components/ComponentsIndex";
+import { daydata } from "../data/StatsData";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
 export default function StatsScreen(props) {
   const [isEnabled, setIsEnabled] = useState(false);
   const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+  const { user } = useContext(AuthenticatedUserContext);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completedChallenges, setCompletedChallenges] = useState([]);
+  const [number, setNumber] = useState(0);
+
+  const updateScreen = () => {
+    getCompletedChallenges(user, setCompletedChallenges, setIsLoading, setNumber );
+  };
+
+  useEffect(() => {
+    updateScreen();
+  }, []);
 
   return (
     <View style={styles.container}>
@@ -22,7 +36,7 @@ export default function StatsScreen(props) {
           onValueChange={toggleSwitch}
           value={isEnabled}
         />
-        <Text style={styles.switchText}>Semana</Text>
+        <Text style={styles.switchText}>Todos</Text>
         <ButtonComponent
           title="Mi diario emocional"
           backgroundColor="#192959"
@@ -38,8 +52,8 @@ export default function StatsScreen(props) {
         <Image style={styles.image} source={require("../images/stats.png")} />
         {isEnabled ? (
           <View>
-            <Text style={styles.subtext}>Mis retos cumplidos esta semana:</Text>
-            <PieChartComponent data={weekdata} />
+            <Text style={styles.subtext}>Todos mis retos cumplidos:</Text>
+            <PieChartComponent data={completedChallenges} />
           </View>
         ) : (
           <View>
@@ -83,13 +97,13 @@ const styles = StyleSheet.create({
   switchContainer: {
     margin: 10,
     marginTop: 50,
-    marginLeft: 20,
+    marginLeft: 40,
     flexDirection: "row",
   },
   switchText: {
     fontSize: 15,
     marginTop: 18,
-    paddingRight: 2,
+    paddingRight: 15,
     fontWeight: "bold",
   },
   switch: {

@@ -1,6 +1,6 @@
-import { Fontisto, FontAwesome, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { FontAwesome, Fontisto, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { useFocusEffect } from "@react-navigation/native";
-import React, { useCallback, useContext, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { Alert, StyleSheet, TouchableOpacity, View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import {
@@ -8,15 +8,19 @@ import {
   Caption,
   Text,
   Title,
-  TouchableRipple,
+  TouchableRipple
 } from "react-native-paper";
-import { loggingOut } from "../api/FirebaseMethods";
+import { getAchievements, getCompletedChallenges, loggingOut } from "../api/FirebaseMethods";
 import { ShareComponent } from "../components/ComponentsIndex";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
 export default function ProfileScreen(props) {
   const { user } = useContext(AuthenticatedUserContext);
   const [displayName, setDisplayName] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [number, setNumber] = useState(0);
+  const [achievements, setAchievements] = useState([]);
+  const [completedChallenges, setCompletedChallenges] = useState([]);
   const handleSignOut = async () => {
     loggingOut();
   };
@@ -26,6 +30,15 @@ export default function ProfileScreen(props) {
       setDisplayName(user.displayName);
     }, [])
   );
+
+  const updateScreen = () => {
+    getAchievements(setAchievements, setIsLoading, user);
+    getCompletedChallenges(user, setCompletedChallenges, setIsLoading, setNumber);
+  };
+
+  useEffect(() => {
+    updateScreen();
+  }, [])
 
   return (
     <ScrollView style={styles.container}>
@@ -70,12 +83,12 @@ export default function ProfileScreen(props) {
         )}
         <View style={styles.infoBoxWrapper}>
           <View style={styles.infoBox}>
-            <Title>12</Title>
+            <Title>{number}</Title>
             <Caption>Retos completados</Caption>
           </View>
           <View style={styles.infoBox}>
-            <Title>16</Title>
-            <Caption>Insignias</Caption>
+            <Title>{achievements.length}</Title>
+            <Caption>Insignias ganadas</Caption>
           </View>
         </View>
         <View style={styles.menuWrapper}>

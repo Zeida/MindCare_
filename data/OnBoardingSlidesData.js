@@ -8,7 +8,7 @@ const onboardingslidesdata=[
     {
         id: '2',
         title: 'El diagnóstico y tratamiento profesional es vital.',
-        description: 'Esta aplicación no sustituye el tratamiento psicológico por parte de un/a profesional de la salud mental. Si puede ser usada como herramienta complementaria a los tratamientos.',
+        description: 'Esta aplicación puede ser usada como herramienta complementaria de los tratamientos psicológico por parte de un/a profesional de la salud mental, pero no los sustituye en ninguna medida.',
         image: require('../images/onboardingslides/slide2.png'),
     },
     {

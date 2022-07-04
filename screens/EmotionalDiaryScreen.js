@@ -1,12 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import { StyleSheet, Text, View, ActivityIndicator } from "react-native";
+import { useContext, useEffect, useState } from "react";
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { Calendar, LocaleConfig } from "react-native-calendars";
+import { getFeelings, storeFeeling } from "../api/FirebaseMethods";
 import IconButtonComponent from "../components/IconButtonComponent";
-import FeelingIconData from "../data/FeelingIconData";
-import { Calendar } from "react-native-calendars";
-import { LocaleConfig } from "react-native-calendars";
-import { storeFeeling, getFeelings } from "../api/FirebaseMethods";
-import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 import { ORANGE } from "../constants/Colors";
+import FeelingIconData from "../data/FeelingIconData";
+import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 LocaleConfig.locales["es"] = {
   monthNames: [
     "Enero",
@@ -84,7 +83,7 @@ export default function EmotionalDiaryScreen() {
             <View key={index}>
               <IconButtonComponent
                 name={feeling.icon}
-                size={50}
+                size={60}
                 color={feeling.color}
                 onPress={() => {
                   setDate(date);
@@ -96,7 +95,7 @@ export default function EmotionalDiaryScreen() {
           );
         })}
       </View>
-      <Text style={styles.text}>Mi diario emocional</Text>
+      <Text style={styles.textdiary}>Mi diario emocional</Text>
       <View style={styles.pixelgraph}>
         <Calendar
           markingType={"multi-dot"}
@@ -111,12 +110,6 @@ export default function EmotionalDiaryScreen() {
             todayTextColor: "#00adf5",
             selectedDotColor: "#ffffff",
             arrowColor: "orange",
-          }}
-          onDayPress={(day) => {
-            console.log("selected day", day);
-          }}
-          onDayLongPress={(day) => {
-            console.log("selected day", day);
           }}
           firstDay={1}
         />
@@ -140,17 +133,20 @@ const styles = StyleSheet.create({
     textAlign: "center",
     marginTop: 10,
   },
+  textdiary: {
+    fontSize: 20,
+    lineHeight: 30,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "black",
+    marginBottom: 10,
+    textAlign: "center",
+    marginTop: 50,
+  },
   emotionalScaleContainer: {
     justifyContent: "center",
     flexDirection: "row",
     flexWrap: "wrap",
-  },
-  tinyLogo: {
-    width: 50,
-    height: 50,
-  },
-  icon: {
-    padding: 10,
   },
   pixelgraph: {
     alignSelf: "center",

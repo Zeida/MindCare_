@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Image, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { login } from "../api/FirebaseMethods";
 import {
   ButtonComponent,
   ErrorMessageComponent,
-  InputFieldComponent,
+  InputFieldComponent
 } from "../components/ComponentsIndex";
-import { login } from "../api/FirebaseMethods";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");

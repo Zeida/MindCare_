@@ -3,13 +3,12 @@ import {
   ActivityIndicator,
   Image,
   SafeAreaView,
-  StyleSheet,
-  View,
+  StyleSheet, Text, View
 } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 import { Card, Paragraph, Title } from "react-native-paper";
 import { getResourcesForHelp } from "../api/FirebaseMethods";
 import { ORANGE, SOFT_BLUE } from "../constants/Colors";
-import { ScrollView } from "react-native-gesture-handler";
 export default function ResourcesForHelpScreen() {
   const [resources, setResources] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +33,8 @@ export default function ResourcesForHelpScreen() {
   }
   return (
     <SafeAreaView style={styles.container}>
-      <Image style={styles.image} source={require("../images/helptips.png")} />
+      <Text style={styles.text}>Recursos recomendados</Text>
+      <Image style={styles.image} source={require("../images/resourcesforhelp.png")} />
       <ScrollView>
       {resources.map((resource) => {
         return (
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   item: {
     backgroundColor: SOFT_BLUE,
     marginVertical: 5,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
   },
   title: {
     fontSize: 20,
@@ -79,7 +79,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 30,
     fontWeight: "bold",
-    letterSpacing: 0.25,
     color: "black",
     textAlign: "center",
   },

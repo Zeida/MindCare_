@@ -15,9 +15,8 @@ const styles = StyleSheet.create({
   safeCardContainer: {
     backgroundColor: SOFT_BLUE,
     marginHorizontal: 20,
-    marginVertical: 8,
-    borderWidth: 1,
-    borderColor: MIDDLE_GREY,
+    marginVertical: 5,
+
     borderRadius: 10,
     padding: 10,
   },

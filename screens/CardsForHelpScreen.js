@@ -1,9 +1,8 @@
-import * as React from "react";
-import { SafeAreaView, StyleSheet, Text } from "react-native";
-import { Card, Paragraph, Title } from "react-native-paper";
-import CardsForHelpData from "../data/CardsForHelpData";
-import { SOFT_BLUE } from "../constants/Colors";
+import { Image, SafeAreaView, StyleSheet, Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
+import { Card, Paragraph, Title } from "react-native-paper";
+import { SOFT_BLUE } from "../constants/Colors";
+import CardsForHelpData from "../data/CardsForHelpData";
 
 export default function CardsForHelpScreen() {
   return (
@@ -11,6 +10,7 @@ export default function CardsForHelpScreen() {
       <Text style={styles.text}>
         Recursos gratuitos de atención profesional
       </Text>
+      <Image style={styles.image} source={require("../images/help.png")} />
       <ScrollView>
         {CardsForHelpData.map((card) => {
           return (
@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
     backgroundColor: SOFT_BLUE,
     padding: 5,
     marginVertical: 5,
-    marginHorizontal: 10,
+    marginHorizontal: 20,
   },
   title: {
     fontSize: 20,
@@ -66,5 +66,10 @@ const styles = StyleSheet.create({
     color: "black",
     marginBottom: 10,
     textAlign: "center",
+  },
+  image: {
+    width: 300,
+    height: 200,
+    alignSelf: "center",
   },
 });
