@@ -1,7 +1,7 @@
 import Checkbox from "expo-checkbox";
 import { useContext } from "react";
 import { Alert, Pressable, StyleSheet, Text } from "react-native";
-import { completeChallenge } from "../api/FirebaseMethods";
+import { completeChallenge, getCompletedChallengeData } from "../api/FirebaseMethods";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
 export default function ChallengeComponent(props) {
@@ -15,7 +15,7 @@ export default function ChallengeComponent(props) {
       <Checkbox
         style={styles.checkbox}
         value={props.data.completed}
-        onValueChange={(value) =>{props.setIsSelected(props.index, value), completeChallenge(user, props.index, value)}}
+        onValueChange={(value) =>{props.setIsSelected(props.index, value), completeChallenge(user, props.index, value);}}
       />
       <Text
         style={{

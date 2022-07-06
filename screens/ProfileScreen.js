@@ -28,6 +28,7 @@ export default function ProfileScreen(props) {
   useFocusEffect(
     useCallback(() => {
       setDisplayName(user.displayName);
+      updateScreen();
     }, [])
   );
 

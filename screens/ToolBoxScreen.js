@@ -90,8 +90,8 @@ export default function ToolBoxScreen() {
               }}
               key={index}
             >
-              <View style={styles.toolContainer} key={index}>
-                <Text style={styles.toolTitle} key={index}>
+              <View style={styles.toolContainer}>
+                <Text style={styles.toolTitle}>
                   {item.tool}
                 </Text>
               </View>

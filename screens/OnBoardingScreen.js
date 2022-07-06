@@ -20,7 +20,7 @@ export default function OnBoardingScreen(props) {
     if (currentIndex < onboardingslidesdata.length - 1) {
       slidesRef.current.scrollToIndex({ index: currentIndex + 1 });
     } else {
-      props.navigation.navigate("Welcome");
+      props.navigation.navigate("UseTerms");
     }
   };
   return (

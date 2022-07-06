@@ -15,6 +15,7 @@ import {
   createChallenge,
   deleteChallenge,
   getChallenges,
+  getCompletedChallengeData,
 } from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 import { ORANGE, SOFT_GREY } from "../constants/Colors";
@@ -31,6 +32,7 @@ export default function ToDoListScreen({ route }) {
 
   const updateScreen = () => {
     getChallenges(user, scope, setList, setIsLoading);
+    
   };
 
   useEffect(() => {
@@ -107,7 +109,6 @@ export default function ToDoListScreen({ route }) {
             index={item.id}
             setIsSelected={setIsSelected}
             deleteItem={deleteItem}
-
           />
         )}
         keyExtractor={(item, index) => item.id}

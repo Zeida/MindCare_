@@ -102,7 +102,6 @@ export async function setInitialChallenges(user) {
       .doc(user.uid)
       .collection("Challenges")
       .add({
-        id: doc.id,
         ...doc.data(),
       });
   });
@@ -115,7 +114,6 @@ export async function setInitialAchievements(user) {
       .doc(user.uid)
       .collection("Achievements")
       .add({
-        id: doc.id,
         ...doc.data(),
       });
   });
@@ -254,14 +252,19 @@ export async function completeChallenge(user, id, completed) {
       completed: completed,
       date: new Date().toISOString().substring(0, 10),
     });
-    //no funciona :/
+    getCompletedChallengeData(user, id, completed);
+}
+
+export async function getCompletedChallengeData(user, id, completed) {
   const challenge = await db
     .collection("Users")
     .doc(user.uid)
     .collection("Challenges")
     .doc(id)
     .get();
-  await updateAchievement(challenge.achievement, completed, user);
+    const challengeData = challenge.data();
+  updateAchievement(challengeData.achievement, completed, user);
+  
 }
 
 export async function getCompletedChallenges(
@@ -379,7 +382,19 @@ export async function updateAchievement(name, value, user) {
     .doc(user.uid)
     .collection("Achievements")
     .where("name", "==", name)
+    .get();
+
+    const challenges = achievementUpdating.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    const completeChallenge = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Achievements")
+    .doc(challenges[0].id)
     .update({
-      won: value,
+      won:value,
     });
 }

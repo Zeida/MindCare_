@@ -1,5 +1,6 @@
 import { Image, StyleSheet, Text, View } from "react-native";
-
+import OpenURLButton from "../components/OpenURLButton";
+import { iconscout, storyset, undraw } from "../data/URL";
 export default function AboutUsCardsScreen() {
   return (
     <View style={styles.container}>
@@ -24,14 +25,22 @@ export default function AboutUsCardsScreen() {
           Arminda Castellano Quesada (Ilustradora)
         </Text>
       </View>
+
       <View style={styles.container2}>
         <Text style={styles.subtextleft}>
-          Los recursos visuales usados en la aplicación han sido
-          obtenidos de:
+          Los recursos visuales usados en la aplicación han sido obtenidos de:
         </Text>
-        <Text style={styles.subtextteammembers}>undraw.co</Text>
-        <Text style={styles.subtextteammembers}>storyset.com</Text>
-        <Text style={styles.subtextteammembers}>iconscout.com</Text>
+        <View style={styles.container3}>
+          <View style={styles.container4}>
+            <OpenURLButton url={storyset}>storyset.com</OpenURLButton>
+          </View>
+          <View style={styles.container4}>
+            <OpenURLButton url={iconscout}>iconscout.com</OpenURLButton>
+          </View>
+          <View style={styles.container4}>
+            <OpenURLButton url={undraw}>undraw.co</OpenURLButton>
+          </View>
+        </View>
       </View>
     </View>
   );
@@ -44,6 +53,20 @@ const styles = StyleSheet.create({
   },
   container2: {
     paddingVertical: 5,
+  },
+  container3: {
+    alignItems: "center",
+    justifyContent: "center",
+    alignSelf: "center",
+    backgroundColor: "white",
+    minHeight: 42,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    margin: 7,
+  },
+  container4: {
+    padding:2,
+    margin:2
   },
   image: {
     width: 300,
@@ -75,7 +98,7 @@ const styles = StyleSheet.create({
     color: "black",
     marginLeft: 20,
     textAlign: "left",
-    marginRight:10,
+    marginRight: 10,
   },
   subtextteammembers: {
     fontSize: 15,

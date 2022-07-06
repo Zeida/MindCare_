@@ -6,6 +6,7 @@ import { getAchievements } from "../api/FirebaseMethods";
 import AchievementComponent from "../components/AchievementComponent";
 import { ORANGE } from "../constants/Colors";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
+
 export default function AchievementsScreen({ navigation }) {
   const [achievements, setAchievements] = useState([]);
   const [isLoading, setIsLoading] = useState(true);

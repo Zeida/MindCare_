@@ -1,5 +1,4 @@
 export const challenge = {
-  id: "",
   achievement: "",
   isCompleted: false,
   scope: "",
