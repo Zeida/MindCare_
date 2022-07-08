@@ -1,47 +1,46 @@
-import { Image, StyleSheet, Text, View } from "react-native";
+import {Image, StyleSheet, Text, View } from "react-native";
 import OpenURLButton from "../components/OpenURLButton";
 import { iconscout, storyset, undraw } from "../data/URL";
 export default function AboutUsCardsScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>¿Quién está detrás de esta app?</Text>
-      <Image style={styles.image} source={require("../images/team.png")} />
+      <Text style={styles.text}> ¿Quién está detrás de esta app ? </Text> 
+      <Image style={styles.image} source={require("../images/team.png")} /> 
       <Text style={styles.subtext}>
         Un equipo multidisplinar concienciado con la importancia de la salud
-        mental.
-      </Text>
+        mental. 
+      </Text> 
       <View style={styles.container2}>
-        <Text style={styles.subtextleft}>En el proyecto han trabajado:</Text>
+        <Text style={styles.subtextleft}> En el proyecto han trabajado : </Text> 
         <Text style={styles.subtextteammembers}>
-          Crisamer Rivero Santana (Psicóloga)
-        </Text>
+          Crisamer Rivero Santana(Psicóloga) 
+        </Text> 
         <Text style={styles.subtextteammembers}>
-          Zeida de los R. Rguez. Mendoza (Desarrolladora)
-        </Text>
+          Zeida de los R.Rguez.Mendoza(Desarrolladora) 
+        </Text> 
         <Text style={styles.subtextteammembers}>
-          Ana Maria Plácido Castro(Tutora del proyecto)
-        </Text>
+          Ana Maria Plácido Castro(Tutora del proyecto) 
+        </Text> 
         <Text style={styles.subtextteammembers}>
-          Arminda Castellano Quesada (Ilustradora)
-        </Text>
-      </View>
-
+          Arminda Castellano Quesada(Ilustradora) 
+        </Text> 
+      </View> 
       <View style={styles.container2}>
         <Text style={styles.subtextleft}>
           Los recursos visuales usados en la aplicación han sido obtenidos de:
-        </Text>
+        </Text> 
         <View style={styles.container3}>
           <View style={styles.container4}>
-            <OpenURLButton url={storyset}>storyset.com</OpenURLButton>
-          </View>
+            <OpenURLButton url={storyset}> storyset.com </OpenURLButton> 
+          </View> 
           <View style={styles.container4}>
-            <OpenURLButton url={iconscout}>iconscout.com</OpenURLButton>
-          </View>
+            <OpenURLButton url={iconscout}> iconscout.com </OpenURLButton> 
+          </View> 
           <View style={styles.container4}>
-            <OpenURLButton url={undraw}>undraw.co</OpenURLButton>
-          </View>
-        </View>
-      </View>
+            <OpenURLButton url={undraw}> undraw.co </OpenURLButton> 
+          </View> 
+        </View> 
+      </View> 
     </View>
   );
 }
@@ -65,8 +64,8 @@ const styles = StyleSheet.create({
     margin: 7,
   },
   container4: {
-    padding:2,
-    margin:2
+    padding: 2,
+    margin: 2,
   },
   image: {
     width: 300,

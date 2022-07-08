@@ -252,7 +252,7 @@ export async function completeChallenge(user, id, completed) {
       completed: completed,
       date: new Date().toISOString().substring(0, 10),
     });
-    getCompletedChallengeData(user, id, completed);
+  getCompletedChallengeData(user, id, completed);
 }
 
 export async function getCompletedChallengeData(user, id, completed) {
@@ -262,9 +262,8 @@ export async function getCompletedChallengeData(user, id, completed) {
     .collection("Challenges")
     .doc(id)
     .get();
-    const challengeData = challenge.data();
+  const challengeData = challenge.data();
   updateAchievement(challengeData.achievement, completed, user);
-  
 }
 
 export async function getCompletedChallenges(
@@ -384,17 +383,43 @@ export async function updateAchievement(name, value, user) {
     .where("name", "==", name)
     .get();
 
-    const challenges = achievementUpdating.docs.map((doc) => ({
-      id: doc.id,
-      ...doc.data(),
-    }));
+  const challenges = achievementUpdating.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
 
-    const completeChallenge = await db
+  const completeChallenge = await db
     .collection("Users")
     .doc(user.uid)
     .collection("Achievements")
     .doc(challenges[0].id)
     .update({
-      won:value,
+      won: value,
     });
+}
+
+export async function createChallengesSet(challengesSet) {
+  const createSet = await challengesSet.forEach((challenge) => {
+    db.collection("Challenges").add({
+      challenge: challenge.challenge,
+      title: challenge.title,
+      description: challenge.description,
+      achievement: challenge.achievement,
+      completed: false,
+      scope: challenge.scope,
+    });
+  });
+}
+
+export async function createAchievementsSet(achievementsSet) {
+  const createSet = await achievementsSet.forEach((achievement) => {
+    db.collection("Achievements").add({
+      color: achievement.color,
+      icon: achievement.icon,
+      modalText: achievement.modalText,
+      modalTitle: achievement.modalTitle,
+      name: achievement.name,
+      won: false,
+    });
+  });
 }
