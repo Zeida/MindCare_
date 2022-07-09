@@ -8,7 +8,6 @@ import NextButtonComponent from "./NextButtonComponent";
 import OnBoardingItemComponent from "./OnBoardingItemComponent";
 import PaginatorComponent from "./PaginatorComponent";
 import PieChartComponent from "./PieChartComponent";
-import PixelGraphComponent from "./PixelGraphComponent";
 import SafeCardComponent from "./SafeCardComponent";
 export {
   IconButtonComponent,
@@ -21,6 +20,5 @@ export {
   OnBoardingItemComponent,
   PaginatorComponent,
   PieChartComponent,
-  PixelGraphComponent,
   SafeCardComponent,
 };

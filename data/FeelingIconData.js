@@ -14,7 +14,6 @@ const FeelingIconData = [
         color: MIDDLE_BLUE,
         value:2
     },
-    
     {
         id: 2,
         feeling: "angry",
