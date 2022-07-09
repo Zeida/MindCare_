@@ -15,7 +15,6 @@ import {
   createChallenge,
   deleteChallenge,
   getChallenges,
-  getCompletedChallengeData,
 } from "../api/FirebaseMethods";
 import { ChallengeComponent } from "../components/ComponentsIndex";
 import { ORANGE, SOFT_GREY } from "../constants/Colors";
@@ -29,10 +28,9 @@ export default function ToDoListScreen({ route }) {
   const { title, scope } = route.params;
   const [isLoading, setIsLoading] = useState(true);
   const [currentChallenge, setCurrentChallenge] = useState(challenge);
-
+  
   const updateScreen = () => {
     getChallenges(user, scope, setList, setIsLoading);
-    
   };
 
   useEffect(() => {

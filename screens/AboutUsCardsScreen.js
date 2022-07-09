@@ -8,21 +8,21 @@ export default function AboutUsCardsScreen() {
       <Image style={styles.image} source={require("../images/team.png")} /> 
       <Text style={styles.subtext}>
         Un equipo multidisplinar concienciado con la importancia de la salud
-        mental. 
+        mental 
       </Text> 
       <View style={styles.container2}>
-        <Text style={styles.subtextleft}> En el proyecto han trabajado : </Text> 
+        <Text style={styles.subtextleft}>En el proyecto han trabajado: </Text> 
         <Text style={styles.subtextteammembers}>
-          Crisamer Rivero Santana(Psicóloga) 
+          Crisamer Rivero Santana (Psicóloga) 
         </Text> 
         <Text style={styles.subtextteammembers}>
-          Zeida de los R.Rguez.Mendoza(Desarrolladora) 
+          Zeida de los R.Rguez.Mendoza (Desarrolladora) 
         </Text> 
         <Text style={styles.subtextteammembers}>
-          Ana Maria Plácido Castro(Tutora del proyecto) 
+          Ana Maria Plácido Castro (Tutora del proyecto) 
         </Text> 
         <Text style={styles.subtextteammembers}>
-          Arminda Castellano Quesada(Ilustradora) 
+          Arminda Castellano Quesada (Ilustradora) 
         </Text> 
       </View> 
       <View style={styles.container2}>

@@ -252,10 +252,6 @@ export async function completeChallenge(user, id, completed) {
       completed: completed,
       date: new Date().toISOString().substring(0, 10),
     });
-  getCompletedChallengeData(user, id, completed);
-}
-
-export async function getCompletedChallengeData(user, id, completed) {
   const challenge = await db
     .collection("Users")
     .doc(user.uid)
@@ -263,7 +259,28 @@ export async function getCompletedChallengeData(user, id, completed) {
     .doc(id)
     .get();
   const challengeData = challenge.data();
-  updateAchievement(challengeData.achievement, completed, user);
+  if (challengeData.achievement != "") {
+    const achievementName = await db
+      .collection("Users")
+      .doc(user.uid)
+      .collection("Achievements")
+      .where("name", "==", challengeData.achievement)
+      .get();
+
+    const achievementsName = achievementName.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+
+    const updateAchievement = await db
+      .collection("Users")
+      .doc(user.uid)
+      .collection("Achievements")
+      .doc(achievementsName[0].id)
+      .update({
+        won: completed,
+      });
+  }
 }
 
 export async function getCompletedChallenges(
@@ -295,18 +312,16 @@ export async function getCompletedChallenges(
     social: "#90D0CF",
   };
 
-  //Filtrar las fechas :)
   let result = challenges.filter((item) => {
     return true;
   });
-  //for each no devuelve array, map si
+
   result.forEach((challenge) => {
     let scope = challenge.scope;
     stats[scope] += 1;
   });
 
   const statsFormatter = [];
-  //devuelve las claves del json en forma de array
 
   Object.keys(stats).forEach((scope) => {
     statsFormatter.push({
@@ -320,6 +335,62 @@ export async function getCompletedChallenges(
 
   setNumber(challenges.length);
   setCompletedChallenges(statsFormatter);
+  setIsLoading(false);
+}
+
+export async function getDayCompletedChallenges(
+  user,
+  setDayCompletedChallenges,
+  setIsLoading,
+  setNumber
+) {
+  const day = new Date().toISOString().substring(0, 10);
+  const data = await db
+    .collection("Users")
+    .doc(user.uid)
+    .collection("Challenges")
+    .where("completed", "==", true)
+    .where("date", "==", day)
+    .get();
+  const challenges = data.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+
+  const stats = {
+    emotional: 0,
+    personal: 0,
+    social: 0,
+  };
+
+  const color = {
+    emotional: "#F2989A",
+    personal: "#74C4AB",
+    social: "#90D0CF",
+  };
+
+  let result = challenges.filter((item) => {
+    return true;
+  });
+
+  result.forEach((challenge) => {
+    let scope = challenge.scope;
+    stats[scope] += 1;
+  });
+
+  const statsFormatter = [];
+
+  Object.keys(stats).forEach((scope) => {
+    statsFormatter.push({
+      name: scope,
+      minutes: stats[scope],
+      color: color[scope],
+      legendFontColor: "#000000",
+      legendFontSize: 10,
+    });
+  });
+  setNumber(challenges.length);
+  setDayCompletedChallenges(statsFormatter);
   setIsLoading(false);
 }
 
@@ -373,29 +444,6 @@ export async function getAchievements(setAchievements, setIsLoading, user) {
   }));
   setAchievements(achievements);
   setIsLoading(false);
-}
-
-export async function updateAchievement(name, value, user) {
-  const achievementUpdating = await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("Achievements")
-    .where("name", "==", name)
-    .get();
-
-  const challenges = achievementUpdating.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-
-  const completeChallenge = await db
-    .collection("Users")
-    .doc(user.uid)
-    .collection("Achievements")
-    .doc(challenges[0].id)
-    .update({
-      won: value,
-    });
 }
 
 export async function createChallengesSet(challengesSet) {

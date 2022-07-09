@@ -39,7 +39,7 @@ export default function AchievementsScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> Puedo conseguir todo lo que me proponga</Text>
+      <Text style={styles.text}>Puedo conseguir todo lo que me proponga</Text>
       <Image
         style={styles.image}
         source={require("../images/achievements/achievements.png")}

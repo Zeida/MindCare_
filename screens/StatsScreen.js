@@ -9,7 +9,7 @@ import {
   View,
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { getCompletedChallenges } from "../api/FirebaseMethods";
+import { getCompletedChallenges, getDayCompletedChallenges } from "../api/FirebaseMethods";
 import {
   ButtonComponent,
   PieChartComponent,
@@ -25,6 +25,8 @@ export default function StatsScreen(props) {
   const [isLoading, setIsLoading] = useState(true);
   const [completedChallenges, setCompletedChallenges] = useState([]);
   const [number, setNumber] = useState(0);
+  const [dayNumber, setDayNumber] = useState(0);
+  const [dayCompletedChallenge, setDayCompletedChallenges] = useState([]);
 
   const updateScreen = () => {
     getCompletedChallenges(
@@ -33,6 +35,8 @@ export default function StatsScreen(props) {
       setIsLoading,
       setNumber
     );
+    getDayCompletedChallenges(user, setDayCompletedChallenges, setIsLoading, setDayNumber);
+   
   };
 
   useFocusEffect(
@@ -103,7 +107,7 @@ export default function StatsScreen(props) {
                   <ActivityIndicator size="large" color={ORANGE} />
                 </View>
               ) : (
-                <PieChartComponent data={daydata} />
+                <PieChartComponent data={dayCompletedChallenge} />
               )}
             </View>
           )}
