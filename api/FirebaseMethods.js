@@ -119,19 +119,6 @@ export async function setInitialAchievements(user) {
   });
 }
 
-export async function setInitialStats(user) {
-  const data = await db.collection("Stats").get();
-  data.forEach((doc) => {
-    db.collection("Users")
-      .doc(user.uid)
-      .collection("Stats")
-      .add({
-        id: doc.id,
-        ...doc.data(),
-      });
-  });
-}
-
 // SAFE CARDS
 
 export async function createSafeCards({ title, body, user }) {

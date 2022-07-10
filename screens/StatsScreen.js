@@ -6,16 +6,18 @@ import {
   StyleSheet,
   Switch,
   Text,
-  View,
+  View
 } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
-import { getCompletedChallenges, getDayCompletedChallenges } from "../api/FirebaseMethods";
+import {
+  getCompletedChallenges,
+  getDayCompletedChallenges
+} from "../api/FirebaseMethods";
 import {
   ButtonComponent,
-  PieChartComponent,
+  PieChartComponent
 } from "../components/ComponentsIndex";
 import { ORANGE } from "../constants/Colors";
-import { daydata } from "../data/StatsData";
 import { AuthenticatedUserContext } from "../navigation/AuthenticatedUserProvider ";
 
 export default function StatsScreen(props) {
@@ -35,8 +37,12 @@ export default function StatsScreen(props) {
       setIsLoading,
       setNumber
     );
-    getDayCompletedChallenges(user, setDayCompletedChallenges, setIsLoading, setDayNumber);
-   
+    getDayCompletedChallenges(
+      user,
+      setDayCompletedChallenges,
+      setIsLoading,
+      setDayNumber
+    );
   };
 
   useFocusEffect(

@@ -57,7 +57,7 @@ export default function ProfileScreen(props) {
                 size={14}
                 color="red"
               />
-              Si cierra sesión perderá sus progresos.
+              Si cierras sesión perderás tus progresos.
             </Text>
           </View>
         ) : (

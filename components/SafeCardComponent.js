@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   safeCardBody: {
-    alignSelf: "center",
+    textAlign:"left",
     color: "black",
     fontSize: 14,
   },
